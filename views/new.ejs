@@ -1,0 +1,46 @@
+<% include partials/header %>
+<div class="container">
+    <h1>Add New Pen to the Database</h1>
+<form action="/pens" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formmaker">Maker</label>
+    <select class="form-control" name="maker" id="formmaker" placeholder="Maker">
+        <option value="ConwayStewart">Conway Stewart</option>
+        <option value="Esterbrook">Esterbrook</option>
+        <option value="Montblanc">Montblanc</option>
+        <option value="Parker">Parker</option>
+        <option value="Pelikan">Pelikan</option>
+        <option value="Sheaffer">Sheaffer</option>
+        <option value="SwanOnoto">Swan - Onoto</option>
+        <option value="WahlEversharp">Wahl - Eversharp</option>
+        <option value="Waterman">Waterman</option>
+        <option value="Other">Other Makers</option>
+    </select>
+    </div>
+    <div class="form-group">
+        <label for="formmodel">Model</label>
+        <input class="form-control" type="text" name="model" id="formmodel" placeholder="Model">
+        <label for="itemtype">Type of Item</label>
+        <select class="form-control" id="itemtype" name="type">
+            <option value="vintage">Vintage Fountain Pen</option>
+            <option value="modern">Modern Fountain Pen</option>
+            <option value="other">Other</option>
+        </select>
+    <label for="itemyear">Year</label>
+    <input class="form-control" type="text" name="year" id="itemyear" placeholder="Year (if known)">
+    <label for="itemprice">Price</label>
+    <input class="form-control" type="text" name="price" id="itemprice" placeholder="Price in Dollars">
+    </div>
+    <div class="form-group">
+        <label for="itemimages">Item Images</label>
+        <input class="form-control-file" type="file" name="image" id="itemimages" placeholder="Image" multiple>
+    </div>
+    <div class="form-group">
+    <label for="itemdescription">Description</label>
+    <textarea class="form-control" type="text" name="description" id="itemdescription" placeholder="Description" rows="4"></textarea>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+</form>
+</div>
+<% include partials/footer %>

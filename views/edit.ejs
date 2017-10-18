@@ -1,0 +1,97 @@
+<% include partials/header %>
+<div class="container">
+    <h1>Edit <%=pen.model%></h1>
+<form action="/pens/<%=pen._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formmaker">Maker</label>
+    <select class="form-control" name="pen[maker]" id="formmaker">
+        <option value="Conklin">Conklin</option>
+        <option value="ConwayStewart">Conway Stewart</option>
+        <option value="Esterbrook">Esterbrook</option>
+        <option value="Montblanc">Montblanc</option>
+        <option value="Parker">Parker</option>
+        <option value="Pelikan">Pelikan</option>
+        <option value="Sheaffer">Sheaffer</option>
+        <option value="SwanOnoto">Swan - Onoto</option>
+        <option value="WahlEversharp">Wahl - Eversharp</option>
+        <option value="Waterman">Waterman</option>
+        <option value="Omas">Omas</option>
+        <option value="Aurora">Aurora</option>
+        <option value="Stipula">Stipula</option>
+        <option value="Visconti">Visconti</option>
+        <option value="Edison">Edison</option>
+        <option value="Other">Other Makers</option>
+    </select>
+    </div>
+    <div class="form-group">
+        <label for="formmodel">Model</label>
+        <input class="form-control" type="text" name="pen[model]" id="formmodel" value="<%=pen.model%>">
+        <label for="itemtype">Type of Item</label>
+        <select class="form-control" id="itemtype" name="pen[type]" selected="<%=pen.type%>">
+            <option value="vintage">Vintage Fountain Pen</option>
+            <option value="modern">Modern Fountain Pen</option>
+            <option value="other">Other</option>
+        </select>
+    <label for="itemyear">Year</label>
+    <input class="form-control" type="text" name="pen[year]" id="itemyear" value="<%=pen.year%>">
+    <label for="itemprice">Price</label>
+    <input class="form-control" type="text" name="pen[price]" id="itemprice" value="<%=pen.price%>">
+    </div>
+    <div class="form-group">
+        <% pen.images.forEach(function(image) { %>
+            <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center">
+            <label class="image-checkbox">
+              <img class="img-responsive" src="<%=image%>" />
+              <input type="checkbox" name="image[]" value="" />        
+              </div>
+        <% }); %>
+    </div>
+    <div class="form-group">
+        <label for="itemimages">Add New Images</label>
+        <input class="form-control-file" type="file" name="newimages" id="itemimages" value="<%=pen.images%>" multiple>
+    </div>
+    <div class="form-group">
+    <label for="itemdescription">Description</label>
+    <textarea class="form-control" type="text" name="pen[description]" id="itemdescription" rows="4"><%=pen.description%></textarea>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+</form>
+</div>
+
+<script>
+    var makers = document.getElementById("formmaker");
+    for (var i = 0; i < makers.options.length; i++) {
+        if (makers.options[i].value === "<%=pen.maker%>") {
+            makers.options[i].setAttribute("selected", "selected");
+        }
+    }
+    var types = document.getElementById("itemtype");
+    for (var i = 0; i < types.options.length; i++) {
+        if (types.options[i].value === "<%=pen.type%>") {
+            types.options[i].setAttribute("selected", "selected");
+        }
+    }
+    
+    // image gallery
+    // init the state from the input
+    $(".image-checkbox").each(function () {
+      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+        $(this).addClass('image-checkbox-checked');
+      }
+      else {
+        $(this).removeClass('image-checkbox-checked');
+      }
+    });
+    
+    // sync the state to the input
+    $(".image-checkbox").on("click", function (e) {
+      $(this).toggleClass('image-checkbox-checked');
+      var $checkbox = $(this).find('input[type="checkbox"]');
+      $checkbox.prop("checked",!$checkbox.prop("checked"))
+    
+      e.preventDefault();
+    });
+</script>
+
+<% include partials/footer %>
