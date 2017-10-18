@@ -164,6 +164,7 @@ app.delete("/pens/:id", function(req, res) {
                 });
             }
         });
+    // Delete pen record
     Pen.findByIdAndRemove(req.params.id, function(err){
         if (err) {
             console.log(err)
@@ -198,23 +199,6 @@ app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
 });
-
-// app.get('/setup', function(req, res){
-//     var Ross = new User({
-//         username: "ross",
-//         admin: true
-//     });
-//     User.register(Ross, "rosspdvl21", function(err, user){
-//         if (err) {
-//             console.log(err);
-//             return res.render("/");
-//         }
-//         passport.authenticate("local")(req, res, function() {
-//             res.redirect('/');
-//         });
-//     });
-// });
-
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RossPens server has started.")

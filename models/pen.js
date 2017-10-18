@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var penSchema = new mongoose.Schema({
+   itemid: String,
    maker: String,
    model: String,
    type: String,
