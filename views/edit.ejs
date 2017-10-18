@@ -54,6 +54,7 @@
     <label for="itemdescription">Description</label>
     <textarea class="form-control" type="text" name="pen[description]" id="itemdescription" rows="4"><%=pen.description%></textarea>
     </div>
+    <input type="hidden" name="imagechanges" id="imagechanges" value="[]">
     <input class="btn btn-primary" type="submit" value="Submit">
     </div>
 </form>
@@ -75,23 +76,37 @@
     
     // image gallery
     // init the state from the input
-    $(".image-checkbox").each(function () {
+    
+    $(".image-checkbox").each(function (index, value) {
       if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
         $(this).addClass('image-checkbox-checked');
       }
       else {
         $(this).removeClass('image-checkbox-checked');
-      }
+        }
     });
     
     // sync the state to the input
     $(".image-checkbox").on("click", function (e) {
       $(this).toggleClass('image-checkbox-checked');
+      
       var $checkbox = $(this).find('input[type="checkbox"]');
-      $checkbox.prop("checked",!$checkbox.prop("checked"))
-    
+      $checkbox.prop("checked",!$checkbox.prop("checked"));
+        
       e.preventDefault();
+      var imagechangesform = document.getElementById("imagechanges");
+      imagechangesform.value = Array(changedImages());
     });
+    
+    function changedImages() {
+        var imagesarray = $('.image-checkbox');
+        var imagechanges = [];
+        $.each(imagesarray, function(index, value) {
+	        if ($(this).hasClass("image-checkbox-checked")) {
+		    imagechanges.push(index); 
+	    }});
+		return imagechanges;
+    }
 </script>
 
 <% include partials/footer %>

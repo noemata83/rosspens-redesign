@@ -141,6 +141,7 @@ app.get("/pens/:id/edit", isLoggedIn, function(req, res){
 });
 
 app.put("/pens/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('image'), function(req, res) {
+    var imagechanges = req.body.imagechanges.split(',').map(x => parseInt(x));
    Pen.findByIdAndUpdate(req.params.id, req.body.pen, function(err, updatedPen) {
        if (err) {
            res.redirect("/");
