@@ -33,8 +33,6 @@ catch (err) {
   console.log("unable to read file '" + fileName + "': ", err);
 }
 
-console.log("session secret is:", config.secret)
-
 app.use(require("express-session")(config));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -140,15 +138,43 @@ app.get("/pens/:id/edit", isLoggedIn, function(req, res){
    }) 
 });
 
-app.put("/pens/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('image'), function(req, res) {
-    var imagechanges = req.body.imagechanges.split(',').map(x => parseInt(x));
-   Pen.findByIdAndUpdate(req.params.id, req.body.pen, function(err, updatedPen) {
-       if (err) {
-           res.redirect("/");
-       } else {
-           res.redirect("/pens/" + updatedPen._id);
-       }
-   });
+app.put("/pens/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('newimages'), function(req, res) {
+    // Retrieve the array of images to be removed from the pen record
+    var imagedeletes= [];
+    if (req.body.imagechanges) {
+        imagedeletes = req.body.imagechanges.split(',').map(x => parseInt(x));
+    }
+    // Find the pen, delete the images at their paths and pop the entries from the images array.
+    Pen.findById(req.params.id, function(err, foundPen) {
+    if (err) {
+        console.log(err);
+        res.redirect('/');
+    } else {
+        console.log(imagedeletes);
+        console.log(imagedeletes.reverse());
+        if (imagedeletes.length > 0) {
+            imagedeletes.reverse().forEach(function(rmindex) {
+                console.log(foundPen.images[rmindex]);
+              fs.unlink(__dirname + "/public" + foundPen.images[rmindex], err => console.log(err));
+              foundPen.images.splice(rmindex, 1);
+            });
+        }
+        var images = foundPen.images;
+        req.files.forEach(function(file){
+            var path = String(file.path).replace("public", "");
+            images.push(path);
+        });
+        var penUpdates = req.body.pen;
+        penUpdates['images'] = images;
+        Pen.findByIdAndUpdate(req.params.id, penUpdates, function(err, foundPen) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect('/pens/' + foundPen._id);
+            }
+        });
+    }
+    });
 });
 
 app.delete("/pens/:id", function(req, res) {
