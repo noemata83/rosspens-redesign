@@ -1,4 +1,4 @@
-# For the time being, ignore all .json files: excludes config files and package.json
+# ignore config
 config/session-config.json
 
 # ignore images directory
