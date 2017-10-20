@@ -118,11 +118,10 @@ router.put("/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'
             images.push(path);
         });
         var penUpdates = req.body.pen;
-        penUpdates['images'] = images;
-        Pen.findByIdAndUpdate(req.params.id, penUpdates, function(err, foundPen) { // There *has* to be another way to do this. Find by Id and Update *inside* Find By Id? seems excessive.
-            if (err) {
-                console.log(err);
-            } else {
+        penUpdates.images = images;
+        Pen.update(foundPen, penUpdates, function(err, updatedPen){
+            if (err) { console.log(err);}
+            else {
                 res.redirect('/pens/' + foundPen._id);
             }
         });

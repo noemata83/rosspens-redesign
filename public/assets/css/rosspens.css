@@ -169,7 +169,7 @@ footer .thumbnail {
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
  
-body {
+p {
     font-family: 'Open Sans', sans-serif;
 }
 	
