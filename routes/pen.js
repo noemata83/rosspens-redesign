@@ -32,11 +32,11 @@ router.post('/', isLoggedIn, multer({ storage: storage, dest: '/assets/images'})
         images.push(path);
     });
     var newPen = {
-        itemid: req.body.itemid,
+        inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,
-        model: req.body.model,
+        title: req.body.title,
         type: req.body.type,
-        year: req.body.year,
+        nib: req.body.nib,
         price: req.body.price,
         images: images,
         description: req.body.description,

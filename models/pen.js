@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
 var penSchema = new mongoose.Schema({
-   itemid: String,
+   inventorynumber: String,
    maker: String,
-   model: String,
+   title: String,
    type: String,
-   year: Number,
+   nib: String,
    price: Number,
    images: [String],
    description: String,
