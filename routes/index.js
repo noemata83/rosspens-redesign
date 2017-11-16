@@ -12,9 +12,13 @@ router.get("/admin", function(req,res){
    res.render("login"); 
 });
 
+router.get("/admin/dashboard", isLoggedIn, function(req, res){
+    res.render("dashboard");
+})
+
 // Admin login route
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/pens",
+    successRedirect: "/admin/dashboard",
     failureRedirect: "/admin"
 }), function(req, res) {});
 
@@ -22,5 +26,12 @@ router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("back");
 });
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/admin');
+}
 
 module.exports = router;
