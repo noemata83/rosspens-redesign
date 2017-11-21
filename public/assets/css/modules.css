@@ -1,0 +1,153 @@
+/* Modules Styles */
+/* NavBar Styles */
+
+/* Landing Page Styles */
+.bgimage {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('../images/landing.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  display: inline-block;
+  position:relative;
+  flex-basis: 250px;
+}
+
+.dropdown-btn {
+  font-family: Montserrat;
+  display: inline;
+  border: none;
+  background: none;
+  font-size: 25px;
+  margin: 0 10%;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  transform: translateY(-2em);
+  background-color: #f9f9f9;
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.dropdown .dropdown-header {
+  font-family: 'Rochester', cursive;
+  font-size: 25px;
+  padding-left: 30px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover{
+  color: #118ea1;
+}
+
+/* Footer Styles */
+
+/* Update form Styles */
+.image-checkbox {
+  cursor: pointer;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  margin-bottom: 0;
+  outline: 0;
+}
+.image-checkbox input[type="checkbox"] {
+  display: none;
+}
+.image-checkbox .fa {
+  position: absolute;
+  color: #ed1f1c;
+  background-color: #fff;
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
+.btn.btn-primary.plus {
+  width: 100%;
+  font-size: 3em;
+}
+.inline-btn {
+  display: inline;
+}
+/* Uhhh... */
+/*.icon-ul {
+  list-style-type: none !important;
+  margin: 0px;
+  padding: 0px;
+}
+.icon-ul li {
+  line-height: 75px;
+  width: 100%;
+  float: left;
+}
+.icon {
+  float: left;
+  margin-right: 5px;
+}
+.copyright {
+  min-height: 40px;
+  background-color: #000000;
+}
+.copyright p {
+  text-align: left;
+  color: #FFF;
+  padding: 10px 0;
+  margin-bottom: 0px;
+}
+.heading7 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #3b3f44;
+  margin-bottom: 22px;
+}
+.post p {
+  font-size: 12px;
+  color: #FFF;
+  line-height: 20px;
+}
+.post p span {
+  display: block;
+  color: #8f8f8f;
+}
+.bottom_ul {
+  list-style-type: none;
+  float: right;
+  margin-bottom: 0px;
+}
+.bottom_ul li {
+  float: left;
+  line-height: 40px;
+}
+.bottom_ul li:after {
+  content: "/";
+  color: #FFF;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.bottom_ul li a {
+  color: #FFF;
+  font-size: 12px;
+}*/

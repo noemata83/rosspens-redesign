@@ -1,0 +1,35 @@
+/* State Styles */
+/* Update Form State Styles */
+.image-checkbox-checked {
+  border-color: #ed1f1c;
+  opacity: 0.40;
+  filter: alpha(opacity=40);
+}
+.image-checkbox-checked .fa {
+  display: block !important;
+}
+/* Flyout Menu Behavior Styles */
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0);
+  transition-delay: 0s, 0s, 0.3s;
+}
+
+.show {
+  display: block;
+}
+
+@media all and (max-width: 650px){
+  nav {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .dropdown {
+    flex: 0;
+  }
+ a.dropdown-btn{
+  margin: 0;
+  }
+}

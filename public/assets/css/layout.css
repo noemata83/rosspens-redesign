@@ -1,0 +1,24 @@
+/* Layout Styles */
+.page-header {
+  color: white;
+  font-family: 'Rochester', cursive;
+}
+.title {
+  color: white;
+  font-family: 'Rochester', cursive;
+  font-size: 2em;
+}
+.brand {
+  font-family: Rochester;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.pageblurb {
+  width: 450px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-top: 10%;
+  color: white;
+}
+
+/*# sourceMappingURL=layout.css.map */
