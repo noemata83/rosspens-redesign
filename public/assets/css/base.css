@@ -11,14 +11,15 @@ body {
 
 nav {
   display: flex;
-  background-color: #1f242b;
-  background-clip: content-box;
+  position: fixed;
+  background-color: rgba(58,71,73, 0.8);
   align-items: baseline;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
+  padding-bottom: 5px;
   width: 100vw;
-  color: white;
+  color: #f5f5f5;
 }
 
 a {

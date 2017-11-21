@@ -3,6 +3,7 @@
   color: white;
   font-family: 'Rochester', cursive;
 }
+
 .title {
   color: white;
   font-family: 'Rochester', cursive;
@@ -11,14 +12,81 @@
 .brand {
   font-family: Rochester;
   font-size: 40px;
-  margin-right: 10px;
+  margin: 0 20px;
 }
 
-.pageblurb {
-  width: 450px;
-  background-color: rgba(0, 0, 0, 0.4);
-  margin-top: 10%;
-  color: white;
+section {
+  /*font-family: "Open Sans",sans-serif;*/
+  text-align: center;
+  padding: 20px 20px 40px 20px;
 }
+
+section h2, section h3 {
+  /*font-family: "Rochester", cursive;*/
+  font-size: 40px;
+}
+
+section:nth-child(odd) {
+  background-color: #4c5a57;
+  color: #f5f5f5;
+  }
+
+.pageblurb {
+  text-align: center;
+  color: #f5f5f5;
+}
+
+.header h1, .header h2 {
+  font-family: "Rochester", cursive;
+  font-weight: 300;
+}
+
+.header h1 {
+  font-size: 50px;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+}
+
+.header h2 {
+  font-size: 25px;
+}
+
+
+.blurb {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 0 25px;
+}
+
+.portrait {
+  width: 100%;
+}
+
+.pic {
+  max-width: 15%;
+  padding: 0;
+  flex: 1 1 30%;
+}
+
+.blurb p {
+  text-align: center;
+  font-size: 20px;
+  max-width: 60%;
+  flex: 1 1 40%;
+}
+
+section.ourPens {
+  color: #555;
+  text-align: center;
+}
+
+section.restoration {
+
+}
+
+section.restoration h2 {
+
+}
+
 
 /*# sourceMappingURL=layout.css.map */

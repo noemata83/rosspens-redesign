@@ -1,17 +1,17 @@
-/* Modules Styles */
-/* NavBar Styles */
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Rochester);
+
 
 /* Landing Page Styles */
 .bgimage {
-  position: absolute;
+  position: relative;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 75vh;
   background-image: url('../images/landing.jpg');
   background-size: cover;
-  background-position: center;
+  background-position:center;
 }
 
 /* Dropdown Menu */
