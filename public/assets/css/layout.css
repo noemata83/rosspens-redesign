@@ -18,10 +18,10 @@
 section {
   /*font-family: "Open Sans",sans-serif;*/
   text-align: center;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
-section h2, section h3 {
+section h2 {
   /*font-family: "Rochester", cursive;*/
   font-size: 40px;
 }
@@ -76,7 +76,6 @@ section:nth-child(odd) {
 }
 
 section.ourPens {
-  color: #555;
   text-align: center;
 }
 

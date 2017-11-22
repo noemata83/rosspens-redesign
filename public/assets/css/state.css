@@ -8,18 +8,23 @@
 .image-checkbox-checked .fa {
   display: block !important;
 }
-/* Flyout Menu Behavior Styles */
+/* Dropdown Menu Behavior Styles */
 .dropdown:hover .dropdown-content {
   visibility: visible;
   opacity: 1;
   z-index: 1;
-  transform: translateY(0);
+  transform: translateY(9px);
   transition-delay: 0s, 0s, 0.3s;
 }
 
-.show {
-  display: block;
+.dropdown-content a:hover{
+  color: #c3be9b;
 }
+
+
+/*.show {
+  display: block;
+}*/
 
 @media all and (max-width: 650px){
   nav {
