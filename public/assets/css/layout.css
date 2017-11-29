@@ -12,7 +12,7 @@
 .brand {
   font-family: Rochester;
   font-size: 40px;
-  margin: 0 20px;
+  margin: 0px 40px 0px 10px;
 }
 
 section {
@@ -30,6 +30,10 @@ section:nth-child(odd) {
   background-color: #4c5a57;
   color: #f5f5f5;
   }
+
+nav a {
+  color: white;
+}
 
 .pageblurb {
   text-align: center;
@@ -73,6 +77,13 @@ section:nth-child(odd) {
   font-size: 20px;
   max-width: 60%;
   flex: 1 1 40%;
+}
+
+.menu-item {
+  flex-basis: 250px;
+  color: white;
+  display: inline;
+  font-size: 25px;
 }
 
 section.ourPens {

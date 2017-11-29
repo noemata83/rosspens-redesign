@@ -21,6 +21,9 @@
   color: #c3be9b;
 }
 
+nav a:hover{
+  color: #c3be9b;
+}
 
 /*.show {
   display: block;
