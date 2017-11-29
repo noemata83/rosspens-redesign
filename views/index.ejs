@@ -1,24 +1,24 @@
 <% include partials/header %>
-<div class="container">
+<div class="main">
   <% sort = sort.replace(/([A-Z])/g, ' $1').trim() %>
   <% sort = sort.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); %>
   <h1><%=sort%> Pens</h1>
 
 <% if(pens[0]) { %>
-<div class="row flex">
+<div class="gallery">
     <% pens.forEach(function(pen){ %>
-      <div class="col-lg-4 col-sm-6">
-          <div class="thumbnail">
+      <div class="item">
+          <div class="itemImg">
               <% if (pen.images.length > 0) { %>
-              <img class="img-responsive" src="<%=pen.images[0]%>" style="width:100%">
+              <img class="thumbnail" src="<%=pen.images[0]%>" style="width:100%">
               <% } else { %>
               <img class="img-responsive" src="/assets/images/filler.png" style="width:100%">
               <% } %>
+              </div>
             <div class="caption">
                 <p><%= pen.model %></p>
                 <p>$<%=pen.price %></p>
-                <a href="/pens/<%=pen._id%>" class="btn btn-primary">More Info</a>
-              </div>
+                <a href="/pens/<%=pen._id%>" class="infoBtn">More Info</a>
              </div>
         </div>
     <% }); %>

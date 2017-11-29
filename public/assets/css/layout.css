@@ -59,7 +59,7 @@ nav a {
 .blurb {
   display: flex;
   justify-content: space-around;
-  padding-right: 0 25px;
+  padding-right: 25px;
 }
 
 .portrait {
@@ -86,17 +86,38 @@ nav a {
   font-size: 25px;
 }
 
-section.ourPens {
+.ourPens {
   text-align: center;
 }
 
-section.restoration {
 
+.main {
+  padding: 60px 20px 0px 20px;
+  position: relative;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-section.restoration h2 {
-
+.item {
+  flex-basis: 22%;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 200px;
 }
 
+.itemImg {
+  padding: 3px;
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 5px;
+}
 
 /*# sourceMappingURL=layout.css.map */
