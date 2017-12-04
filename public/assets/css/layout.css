@@ -95,10 +95,12 @@ nav a {
   padding: 60px 20px 0px 20px;
   position: relative;
 }
+
 .gallery {
+  margin: 30px 50px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
@@ -106,7 +108,7 @@ nav a {
   flex-basis: 22%;
   margin: 5px;
   padding: 10px;
-  border: 1px solid lightgray;
+  /*border: 1px solid lightgray;*/
   border-radius: 5px;
   height: 200px;
 }
@@ -120,4 +122,3 @@ nav a {
   border-radius: 5px;
 }
 
-/*# sourceMappingURL=layout.css.map */

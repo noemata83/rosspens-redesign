@@ -18,22 +18,31 @@
             <div class="caption">
                 <p><%= pen.model %></p>
                 <p>$<%=pen.price %></p>
-                <a href="/pens/<%=pen._id%>" class="infoBtn">More Info</a>
+                <a href="/pens/<%=pen._id%>" class="btn infoBtn">More Info</a>
              </div>
         </div>
     <% }); %>
+    <% if(currentUser  && currentUser.username == 'ross') {%>
+      <div class="item">
+        <div class="itemImg">
+            <a class="btn btn-primary plus" href="/pens/new">+</a>
+        </div>
+      </div>
+    </div>
+    <% }%>
+</div>
     </div>
 <% } else { %>
 <p>No <%=sort%> pens currently in stock. Please check back later!</p>
-<% }%>
-    <% if(currentUser  && currentUser.username == 'ross') {%>
-    <div class="row flex">
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
+<% if(currentUser  && currentUser.username == 'ross') {%>
+    <div class="gallery">
+      <div class="item">
+        <div class="itemImg">
             <a class="btn btn-primary plus" href="/pens/new">+</a>
         </div>
-        </div>
-        </div>
-    <% }%>
+      </div>
+    </div>
+ <% }%>
+<% }%>
 </div>
 <% include partials/footer %>
