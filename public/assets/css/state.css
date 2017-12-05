@@ -9,11 +9,21 @@
   display: block !important;
 }
 /* Dropdown Menu Behavior Styles */
-.dropdown:hover .dropdown-content {
-  visibility: visible;
+/*.dropdown:hover .dropdown-content {*/
+/*  display: flex;*/
+/*  visibility: visible;*/
+/*  opacity: 1;*/
+/*  z-index: 1;*/
+/*  transform: translateY(4px);*/
+/*  transition-delay: 0s, 0s, 0.3s;*/
+/*}*/
+
+
+.show {
+  display: flex;
   opacity: 1;
   z-index: 1;
-  transform: translateY(9px);
+  transform: translateY(4px);
   transition-delay: 0s, 0s, 0.3s;
 }
 
@@ -28,16 +38,47 @@ nav a:hover{
 /*.show {
   display: block;
 }*/
+@media all and (max-width: 950px) {
+  .menu-item {
+    font-size: 16px;
+  }
+}
+
 
 @media all and (max-width: 650px){
   nav {
+    display: block;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .menu-item {
+    display: block;
+    margin: 5px 0px 5px 10px;
+  }
+  .show {
+    display: block;
+  }
+  .dropdown-content {
+    position: relative;
+    width: 100%;
+  }
+  .dropdown-list {
+    background: none;
+  }
+  .dropdown-columns {
     flex-direction: column;
-    justify-content: flex-start;
+  }
+  .dropdown-sub-list {
+    width: 100%;
   }
   .dropdown {
     flex: 0;
   }
- a.dropdown-btn{
-  margin: 0;
+  .dropdown-content li a {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+ .dropdown-btn{
+    margin: 0;
   }
 }
