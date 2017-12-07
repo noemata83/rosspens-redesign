@@ -82,6 +82,30 @@
 /* Footer Styles */
 
 /* Update form Styles */
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
 .image-checkbox {
   cursor: pointer;
   -moz-box-sizing: border-box;
@@ -90,17 +114,19 @@
   border: 4px solid transparent;
   margin-bottom: 0;
   outline: 0;
+  z-index: 1;
 }
 .image-checkbox input[type="checkbox"] {
   display: none;
 }
 .image-checkbox .fa {
-  position: absolute;
+  position: relative;
   color: #ed1f1c;
   background-color: #fff;
   padding: 10px;
   top: 0;
   right: 0;
+  z-index: 100;
 }
 .btn.btn-primary.plus {
   width: 100%;
