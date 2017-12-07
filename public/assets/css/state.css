@@ -65,14 +65,30 @@ nav a:hover{
     display: block;
   }
   .main {
+    margin-top: 5px;
     padding: 0;
+  }
+    .container {
+    flex-direction: column-reverse;
   }
   .gallery {
     margin: 0;
   }
   
+  .pen-name {
+    font-size: 20px;
+  }
+  .show-sidebar p {
+    font-size: 13px;
+    text-align: justify;
+  }
+  
   .gallery .item {
     flex-basis: 100%;
+  }
+  .gallery .item-lg {
+    flex-basis: 100%;
+    max-width: 100%;
   }
   .dropdown-content {
     position: relative;

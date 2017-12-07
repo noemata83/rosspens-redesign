@@ -2,17 +2,21 @@
 
 html {
 	margin: 0;
+	height: 100%;
 }
 
 body {
   font-family: "Montserrat";
   margin: 0;
+  height: 100%;
+  background-color: #f5f5f5;
 }
 
 nav {
   display: flex;
   position: fixed;
-  background-color: rgba(58,71,73, 0.8);
+  /*background-color: rgba(58,71,73, 0.8);*/
+  background-color: rgb(58,71,73);
   align-items: baseline;
   flex-direction: row;
   flex-wrap: nowrap;

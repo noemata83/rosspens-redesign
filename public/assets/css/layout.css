@@ -90,16 +90,22 @@ nav a {
   text-align: center;
 }
 
-
 .main {
   padding: 60px 0px 0px 0px;
   margin: 0px 10px;
   position: relative;
 }
 
+.sort {
+  text-align: center;
+  font-family: "Rochester", cursive;
+  font-size: 3em;
+}
+
 .gallery {
   margin: 30px 50px;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
@@ -107,11 +113,20 @@ nav a {
 
 .item {
   flex-basis: 22%;
+  flex-grow: 1;
   margin: 5px;
   padding: 10px;
   /*border: 1px solid lightgray;*/
   border-radius: 5px;
   height: 200px;
+}
+
+.item-lg {
+  flex-basis: 40%;
+  flex-grow: 1;
+  max-width: 50%;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 .itemImg {
@@ -123,3 +138,29 @@ nav a {
   border-radius: 5px;
 }
 
+/* Show Page Styles */
+
+.pen-name {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  align-items: center;
+}
+
+.show-sidebar {
+  flex-basis: 30%;
+}
+
+.show-main {
+  flex-basis: 70%;
+}
+
+.show-main .gallery {
+  margin: 0;
+  align-items: center;
+  justify-content: space-around;
+}
