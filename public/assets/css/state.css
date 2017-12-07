@@ -68,7 +68,7 @@ nav a:hover{
     margin-top: 5px;
     padding: 0;
   }
-    .container {
+  .container {
     flex-direction: column-reverse;
   }
   .gallery {
