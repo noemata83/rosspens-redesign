@@ -2,6 +2,10 @@
 <div class="main">
     <h1>Add New Pen to the Database</h1>
 <form action="/pens" method="POST" enctype="multipart/form-data">
+     <div class="form-group">
+        <label for="inventorynumber">Inventory Number</label>
+        <input class="form-control" type="text" name="inventorynumber" id="inventorynumber">
+    </div>
     <div class="form-group">
         <label for="formmaker">Maker</label>
     <select class="form-control" name="maker" id="formmaker" placeholder="Maker">
@@ -18,7 +22,7 @@
     </select>
     </div>
     <div class="form-group">
-        <label for="formmodel">Model</label>
+        <label for="formmodel">Item Title</label>
         <input class="form-control" type="text" name="model" id="formmodel" placeholder="Model">
         <label for="itemtype">Type of Item</label>
         <select class="form-control" id="itemtype" name="type">
@@ -26,8 +30,8 @@
             <option value="modern">Modern Fountain Pen</option>
             <option value="other">Other</option>
         </select>
-    <label for="itemyear">Year</label>
-    <input class="form-control" type="text" name="year" id="itemyear" placeholder="Year (if known)">
+    <label for="itemnib">Nib</label>
+    <input class="form-control" type="text" name="nib" id="itemnib" placeholder="Item nib">
     <label for="itemprice">Price</label>
     <input class="form-control" type="text" name="price" id="itemprice" placeholder="Price in Dollars">
     </div>

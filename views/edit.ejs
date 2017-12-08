@@ -1,7 +1,16 @@
 <% include partials/header %>
+<<<<<<< HEAD
 <div class="main">
 <h1>Edit <%=pen.model%></h1>
+=======
+<div class="container">
+    <h1>Edit <%=pen.inventorynumber%>: <%=pen.title%></h1>
+>>>>>>> master
 <form action="/pens/<%=pen._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="inventorynumber">Inventory Number</label>
+        <input class="form-control" type="text" name="pen[inventorynumber]" id="inventorynumber" value="<%=pen.inventorynumber%>">
+    </div>
     <div class="form-group">
         <label for="formmaker">Maker</label>
     <select class="form-control" name="pen[maker]" id="formmaker">
@@ -15,25 +24,20 @@
         <option value="SwanOnoto">Swan - Onoto</option>
         <option value="WahlEversharp">Wahl - Eversharp</option>
         <option value="Waterman">Waterman</option>
-        <option value="Omas">Omas</option>
-        <option value="Aurora">Aurora</option>
-        <option value="Stipula">Stipula</option>
-        <option value="Visconti">Visconti</option>
-        <option value="Edison">Edison</option>
         <option value="Other">Other Makers</option>
     </select>
     </div>
     <div class="form-group">
-        <label for="formmodel">Model</label>
-        <input class="form-control" type="text" name="pen[model]" id="formmodel" value="<%=pen.model%>">
+        <label for="formmodel">Item Title</label>
+        <input class="form-control" type="text" name="pen[title]" id="formmodel" value="<%=pen.title%>">
         <label for="itemtype">Type of Item</label>
         <select class="form-control" id="itemtype" name="pen[type]" selected="<%=pen.type%>">
             <option value="vintage">Vintage Fountain Pen</option>
             <option value="modern">Modern Fountain Pen</option>
             <option value="other">Other</option>
         </select>
-    <label for="itemyear">Year</label>
-    <input class="form-control" type="text" name="pen[year]" id="itemyear" value="<%=pen.year%>">
+    <label for="itemnib">Nib</label>
+    <input class="form-control" type="text" name="pen[nib]" id="itemnib" value="<%=pen.nib%>">
     <label for="itemprice">Price</label>
     <input class="form-control" type="text" name="pen[price]" id="itemprice" value="<%=pen.price%>">
     </div>

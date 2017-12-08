@@ -32,11 +32,11 @@ router.post('/', isLoggedIn, multer({ storage: storage, dest: '/assets/images'})
         images.push(path);
     });
     var newPen = {
-        itemid: req.body.itemid,
+        inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,
-        model: req.body.model,
+        title: req.body.title,
         type: req.body.type,
-        year: req.body.year,
+        nib: req.body.nib,
         price: req.body.price,
         images: images,
         description: req.body.description,
@@ -118,11 +118,10 @@ router.put("/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'
             images.push(path);
         });
         var penUpdates = req.body.pen;
-        penUpdates['images'] = images;
-        Pen.findByIdAndUpdate(req.params.id, penUpdates, function(err, foundPen) { // There *has* to be another way to do this. Find by Id and Update *inside* Find By Id? seems excessive.
-            if (err) {
-                console.log(err);
-            } else {
+        penUpdates.images = images;
+        Pen.update(foundPen, penUpdates, function(err, updatedPen){
+            if (err) { console.log(err);}
+            else {
                 res.redirect('/pens/' + foundPen._id);
             }
         });
