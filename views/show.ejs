@@ -3,11 +3,11 @@
 <div class="main">
     <div class="container">
         <div class="show-sidebar">
-            <h1 class="pen-name"><%= pen.model %></h1>
+            <h1 class="pen-name"><%= pen.title %></h1>
             <p><%= pen.description %></p>
             <p>$<%= pen.price %></p>
             <% if (!currentUser) { %>
-            <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.model%>&body=I would like to know more about the <%=pen.model%> currently listed on your website." class="btn btn-primary">Inquire</a>
+            <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.model%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="btn btn-primary">Inquire</a>
             <% } %>
             <% if (currentUser && currentUser.username === "ross") { %>
             <a href="/pens/<%=pen._id%>/edit" class="btn btn-warning inline-btn">EDIT</a>

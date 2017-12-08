@@ -20,7 +20,7 @@ function debounce(func, wait = 5, immediate = true) {
 }
 
 function checkSlide(e) {
-    if (window.scrollY <= 500) {
+    if (window.scrollY <= 500 && document.clientWidth >= 1050) {
         nav.style.backgroundColor = `rgba(58,71,73,${0.8 + (0.2 * window.scrollY/500)} )`;
         dropdowns.forEach(dropdown => dropdown.style.backgroundColor = `rgba(58,71,73,${0.8 + (0.2 * window.scrollY/500)})`);
     } else {
