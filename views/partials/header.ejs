@@ -11,47 +11,54 @@
   </head>
   <body>
     <nav>
-  <div class="brand">
-    <a href="/">Rosspens</a>
-  </div>
-  <div class="menu-item">
-    <a href="/pens/whatsnew">What's New</a>
-  </div>
-  <div class="menu-item dropdown">
-     <a class="dropdown-btn" onclick="showBrowse()">Vintage Pens</a>
-      <div id="BrowsePens" class="dropdown-content">
-        <div class="dropdown-list">
-          <div class="dropdown-columns">
-            <div class="dropdown-sub-list">
-              <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
-              <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
-              <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
-              <li><a href="/pens/Parker/vintage">Parker</a></li>
-              <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
-            </div>
-            <div class="dropdown-sub-list">
-              <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
-              <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
-              <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
-              <li><a href="/pens/Waterman/vintage">Waterman</a></li>
-              <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
+      <div id="menu-button" onclick="expandMenu(this)">
+        <div class="menu-bar1"></div>
+        <div class="menu-bar2"></div>
+        <div class="menu-bar3"></div>
+      </div>
+      <div class="brand">
+        <a href="/">Rosspens</a>
+      </div>
+      <div id="collapsible">
+        <div class="menu-item">
+          <a href="/pens/whatsnew">What's New</a>
+        </div>
+        <div class="menu-item dropdown">
+           <a class="dropdown-btn" onclick="showBrowse()">Vintage Pens</a>
+            <div id="BrowsePens" class="dropdown-content">
+              <div class="dropdown-list">
+                <div class="dropdown-columns">
+                  <div class="dropdown-sub-list">
+                    <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
+                    <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
+                    <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
+                    <li><a href="/pens/Parker/vintage">Parker</a></li>
+                    <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
+                  </div>
+                  <div class="dropdown-sub-list">
+                    <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
+                    <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
+                    <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
+                    <li><a href="/pens/Waterman/vintage">Waterman</a></li>
+                    <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
+                  </div>
+                </div>
             </div>
           </div>
+        </div>
+        <div class="menu-item">
+          <a href="/pens/type/modern">Modern Pens</a>
+        </div>
+        <div class="menu-item dropdown">
+          <a onclick="showExplore()" class="dropdown-btn">Explore</a>
+            <div id="ExplorePens" class="dropdown-content">
+              <ul class="dropdown-list">
+                <li><a href="#">About Ross</a></li>
+                <li><a href="#">Triangle Pen Club</a></li>
+                <li><a href="#">Moore Pen History</a></li>
+              </ul>
+            </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="menu-item">
-    <a href="/pens/type/modern">Modern Pens</a>
-  </div>
-  <div class="menu-item dropdown">
-    <a onclick="showExplore()" class="dropdown-btn">Explore</a>
-      <div id="ExplorePens" class="dropdown-content">
-        <ul class="dropdown-list">
-          <li><a href="#">About Ross</a></li>
-          <li><a href="#">Triangle Pen Club</a></li>
-          <li><a href="#">Moore Pen History</a></li>
-        </ul>
-      </div>
-  </div>
 </nav>
 

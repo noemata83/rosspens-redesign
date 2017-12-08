@@ -6,6 +6,11 @@ function showExplore() {
     document.getElementById('ExplorePens').classList.toggle('show');
 }
 
+function expandMenu(x) {
+  x.classList.toggle('change');
+  document.getElementById('collapsible').classList.toggle('expanded');
+}
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropdown-btn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");

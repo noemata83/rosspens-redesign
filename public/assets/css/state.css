@@ -28,7 +28,7 @@
   display: flex;
   opacity: 1;
   z-index: 1;
-  transform: translateY(4px);
+  transform: translateY(9px);
   transition-delay: 0s, 0s, 0.3s;
 }
 
@@ -41,17 +41,72 @@ nav a:hover{
   cursor: pointer;
 }
 
+/* Menu Button Animations */
+
+/* Rotate first bar */
+.change .menu-bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .menu-bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .menu-bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
 /*.show {
   display: block;
 }*/
-@media all and (max-width: 950px) {
+@media all and (max-width: 1050px) {
+  nav {
+    position: relative;
+    display: block;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .main {
+    padding: 0;
+  }
   .menu-item {
     font-size: 16px;
+  }
+  #menu-button {
+    vertical-align: text-bottom;
+    margin: 0px 10px;
+    display: inline-block;
+  }
+  #collapsible {
+    display: none;
+  }
+  #collapsible.expanded, #collapsible.expanded a {
+    display: block;
+  }
+  .menu-item {
+    margin: 3px 3px;
+  }
+ .dropdown-content {
+    position: relative;
+    width: 100%;
+  }
+  .dropdown-content li a {
+    font-size: 14px;
+  }
+  .item {
+    flex-basis: 40%;
+    max-width: none;
+    margin: 5px 0px;
   }
 }
 
 
-@media all and (max-width: 650px){
+@media all and (max-width: 700px){
   nav {
     display: block;
     position: relative;
@@ -73,6 +128,9 @@ nav a:hover{
   }
   .gallery {
     margin: 0;
+  }
+  .item {
+    max-width: 100%;
   }
   
   .pen-name {
