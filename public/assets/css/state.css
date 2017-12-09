@@ -45,8 +45,8 @@ nav a:hover{
 
 /* Rotate first bar */
 .change .menu-bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px) ;
+    transform: rotate(-45deg) translate(-6px, 6px) ;
 }
 
 /* Fade out the second bar */
@@ -56,8 +56,8 @@ nav a:hover{
 
 /* Rotate last bar */
 .change .menu-bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
+    -webkit-transform: rotate(45deg) translate(-6px, -8px) ;
+    transform: rotate(45deg) translate(-6px, -8px) ;
 }
 
 /*.show {
@@ -67,9 +67,6 @@ nav a:hover{
   nav {
     position: relative;
     display: block;
-    justify-content: flex-start;
-    align-items: center;
-    padding-bottom: 10px;
     background-color: rgb(58,71,73);
   }
   .main {
@@ -96,8 +93,14 @@ nav a:hover{
     position: relative;
     width: 100%;
   }
+  .dropdown-list {
+    width: 100%;
+  }
   .dropdown-content li a {
     font-size: 14px;
+  }
+  .dropdown-columns {
+    display: flex;
   }
   .item {
     flex-basis: 40%;
@@ -111,11 +114,11 @@ nav a:hover{
   nav {
     display: block;
     position: relative;
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
   }
   .menu-item {
     display: block;
-    margin: 5px 0px 5px 10px;
+    margin: 10px 0px 10px 10px;
   }
   .show {
     display: block;
@@ -153,9 +156,6 @@ nav a:hover{
     position: relative;
     width: 100%;
   }
-  .dropdown-list {
-    background: none;
-  }
   .dropdown-columns {
     flex-direction: column;
   }
@@ -163,7 +163,7 @@ nav a:hover{
     width: 100%;
   }
   .dropdown {
-    flex: 0;
+    flex: 1;
   }
   .dropdown-content li a {
     font-size: 14px;
