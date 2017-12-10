@@ -8,10 +8,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 75vh;
+  min-height: 90%;
   background-image: url('../images/landing.jpg');
   background-size: cover;
-  background-position:center;
+  background-position: top;
 }
 
 /* Menu Button */
