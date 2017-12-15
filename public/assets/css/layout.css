@@ -112,6 +112,7 @@ nav a {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  min-height: 300px;
 }
 
 .item {
@@ -131,6 +132,20 @@ nav a {
   max-width: 50%;
   margin: 5px;
   border-radius: 5px;
+}
+
+.edit-item {
+  flex-basis: 25%;
+  flex-grow: 1;
+  max-width: 33%;
+  margin: 5px;
+  padding: 10px;
+  /*border: 1px solid lightgray;*/
+  border-radius: 5px;
+  /*height: 200px;*/
+  display: block;
+  position: relative;
+  min-height: auto;
 }
 
 .itemImg {

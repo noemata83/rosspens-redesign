@@ -1,11 +1,7 @@
 <% include partials/header %>
-<<<<<<< HEAD
+
 <div class="main">
-<h1>Edit <%=pen.model%></h1>
-=======
-<div class="container">
     <h1>Edit <%=pen.inventorynumber%>: <%=pen.title%></h1>
->>>>>>> master
 <form action="/pens/<%=pen._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="inventorynumber">Inventory Number</label>
@@ -44,12 +40,14 @@
     <div class="form-group">
         <div class="gallery">
         <% pen.images.forEach(function(image) { %>
-            <div class="item">
+            <div class="edit-item">
             <label class="image-checkbox">
               <img class="thumbnail" src="<%=image%>" />
+              <i class="fa fa-remove hidden"></i>            
+               </label>
               <input type="checkbox" name="image<%=pen.images.indexOf(image)%>" value="" />
-              <i class="fa fa-remove hidden"></i>
-            </label>
+     
+          
               </div>
         <% }); %>
         </div>
