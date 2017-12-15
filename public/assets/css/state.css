@@ -63,7 +63,7 @@ nav a:hover{
 /*.show {
   display: block;
 }*/
-@media all and (max-width: 1050px) {
+@media all and (max-width: 991px) {
   nav {
     position: relative;
     display: block;
@@ -72,9 +72,9 @@ nav a:hover{
   .main {
     padding: 0;
   }
-  .menu-item {
-    font-size: 16px;
-  }
+  /*.menu-item {*/
+  /*  font-size: 16px;*/
+  /*}*/
   #menu-button {
     vertical-align: text-bottom;
     margin: 0px 10px;
@@ -96,9 +96,9 @@ nav a:hover{
   .dropdown-list {
     width: 100%;
   }
-  .dropdown-content li a {
-    font-size: 14px;
-  }
+  /*.dropdown-content li a {*/
+  /*  font-size: 14px;*/
+  /*}*/
   .dropdown-columns {
     display: flex;
   }
@@ -110,7 +110,7 @@ nav a:hover{
 }
 
 
-@media all and (max-width: 700px){
+@media all and (max-width: 768px){
   nav {
     display: block;
     position: relative;
