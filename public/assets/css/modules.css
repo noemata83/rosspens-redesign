@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100%;
+  min-height: 75%;
   background-image: url('../images/landing.jpg');
   background-origin: content-box;
   background-size: cover;
@@ -161,7 +161,7 @@ input[type="checkbox"] {
   padding: 10px;
   top: 0;
   right: 0;
-  z-index: 100;
+  /*z-index: 100;*/
 }
 .btn.btn-primary.plus {
   width: 100%;
