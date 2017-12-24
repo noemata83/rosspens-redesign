@@ -3,6 +3,7 @@
   <% sort = sort.replace(/([A-Z])/g, ' $1').trim() %>
   <% sort = sort.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); %>
   <h1 class="sort"><%=sort%> Pens</h1>
+  <img src="/assets/images/divider.png" class="divider">
 
 <% if(pens[0]) { %>
 <div class="gallery">

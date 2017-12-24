@@ -1,127 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>RossPens.com: Your source for reliable, affordable vintage pens</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/rosspens.css">
+      <title>RossPens.com: Your source for reliable, affordable vintage pens</title>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/rosspens-local.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   </head>
-
   <body>
-  <!--<body style="letter-spacing: 0px; vertical-align: middle" background="./rosspens_files/glotextb.gif" bgcolor="#FFFFFF" text="#000000" link="#666633" vlink="#CC9966" alink="#996633">mstheme<font face="Arial, Helvetica">-->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/"><span class="brand"><img src="assets/images/fountain-pen-icon-sm.png" alt="" height="33">RossPens</span></a>
+    <nav>
+      <div id="menu-button" onclick="expandMenu(this)">
+        <div class="menu-bar1"></div>
+        <div class="menu-bar2"></div>
+        <div class="menu-bar3"></div>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="/pens" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="/pens/whatsnew">What's New?<span class="sr-only">(current)</span></a></li>
-              <li class="dropdown-submenu"><a class="test" tabindex="-1" href="/pens/type/vintage">Vintage Pens</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
-                    <li><a tabindex="-1" href="/pens/Esterbrook/vintage">Esterbrook</a></li>
-                    <li><a tabindex="-1" href="/pens/Montblanc/vintage">Montblanc</a></li>
-                    <li><a tabindex="-1" href="/pens/Parker/vintage">Parker</a></li>
-                    <li><a tabindex="-1" href="/pens/Pelikan/vintage">Pelikan</a></li>
-                    <li><a tabindex="-1" href="/pens/Sheaffer/vintage">Sheaffer</a></li>
-                    <li><a tabindex="-1" href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
-                    <li><a tabindex="-1" href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
-                    <li><a tabindex="-1" href="/pens/Waterman/vintage">Waterman</a></li>
-                    <li><a tabindex="-1" href="/pens/Other/vintage">Other Vintage Pens</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown-submenu"><a class="test" tabindex="-1" href="/pens/type/modern">Modern Pens</a>
-                <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="/pens/Aurora/modern">Aurora</a></li>
-                    <li><a tabindex="-1" href="/pens/Montblanc/modern">Montblanc</a></li>
-                    <li><a tabindex="-1" href="/pens/Omas/modern">Omas</a></li>
-                    <li><a tabindex="-1" href="/pens/Parker/modern">Parker</a></li>
-                    <li><a tabindex="-1" href="/pens/Sheaffer/modern">Sheaffer</a></li>
-                    <li><a tabindex="-1" href="/pens/Stipula/modern">Stipula</a></li>
-                    <li><a tabindex="-1" href="/pens/Visconti/modern">Visconti</a></li>
-                </ul>
-              </li>
-           </ul>
-         </li>
-         <li><a href="#">Explore</a></li>
-         <!--<li><a href="#">Specials</a></li>-->
-        </ul>
-		</div>
-	  </div>
-<!--
-        <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <% if(currentUser) { %>
-                    <li><a href="#">Signed in as <%=currentUser.username%></a></li>
-                    <li><a href="/logout">Logout</a></li>
-                    <% } %>
-                </ul>
-          </div>  
--->
-		</nav>
-	  <div class="container">
-	  	<div id="myCarousel" class="carousel slide" style="width: 600px; margin:auto" data-ride="carousel">
-  			<!-- Indicators -->
- 	 <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="assets/images/moore/pen101.jpg" alt="Moore Safety Pen">
-		<div class="carousel-caption">
-			<h4>The Moore Safety Pen</h4>
+      <div class="brand">
+        <a href="/">Rosspens</a>
       </div>
-    </div>
+      <div id="collapsible">
+        <div class="menu-item">
+          <a href="/pens/whatsnew">What's New</a>
+        </div>
+        <div class="menu-item dropdown">
+           <a class="dropdown-btn" onclick="showBrowse()">Vintage Pens</a>
+            <div id="BrowsePens" class="dropdown-content">
+              <div class="dropdown-list">
+                <div class="dropdown-columns">
+                  <div class="dropdown-sub-list">
+                    <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
+                    <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
+                    <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
+                    <li><a href="/pens/Parker/vintage">Parker</a></li>
+                    <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
+                  </div>
+                  <div class="dropdown-sub-list">
+                    <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
+                    <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
+                    <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
+                    <li><a href="/pens/Waterman/vintage">Waterman</a></li>
+                    <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/pens/type/modern">Modern Pens</a>
+        </div>
+        <div class="menu-item dropdown">
+          <a onclick="showExplore()" class="dropdown-btn">Explore</a>
+            <div id="ExplorePens" class="dropdown-content">
+              <ul class="dropdown-list">
+                <li><a href="#">About Ross</a></li>
+                <li><a href="#">Triangle Pen Club</a></li>
+                <li><a href="#">Moore Pen History</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+</nav>
 
-    <div class="item">
-      <img src="assets/images/moore/Pen184.jpg" alt="Tuscan Red">
-		<div class="carousel-caption">
-		<h4>Moore Tuscan Red</h4></div>
-    </div>
-
-    <div class="item">
-      <img src="assets/images/moore/pen135.jpg" alt="Fingertip">
-		<div class="carousel-caption">
-		<h4>Moore Fingertip</h4>
-		</div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+<div class="main">
 		  <h2>The Moore Pen Company</h2>
 		  <p>The Moore Pen Company was based in Boston, Massachusetts, and made high quality fountain pens until the mid-1950s. The company began in 1899 as the American Fountain Pen Company with an excellent black hard rubber safety pen they made for nearly 30 years, known as the "Moore's Non-Leakable Fountain Pen."  The idea for the Moore safety came from a musician, Morris W. Moore, but he wasn't really a businessman or capitalist. His idea was developed by W.F. Cushman, an optical salesman, who worked with W.F. Cushing, a Boston stationer, to create the American Fountain Pen Company.  Their safety pen came in a variety of sizes, some with gold bands for ornamentation.  The company changed their name in 1917 to the Moore Pen Company. In 1918, they began to make hard rubber lever fillers.  These eventually included the gorgeous and nicely decorated Tuscan models, shown below.  Moore tried to compete with the the "Big Four" pen makers, although they were rarely in the same volume league. Their first plastic pens appeared in 1927.  Their pens were rarely original, although well executed, and only with the Fingertip Model (1946-1950) did they make a leap into truly creative design.  Unfortunately, this futuristic looking pen never reached a mass market, and the last years of the Moore Company were spent making mediocre aerometric fillers (the "Moore Specialist"). The company gave up pen manufacturing in 1956.</p>
 		  </div>

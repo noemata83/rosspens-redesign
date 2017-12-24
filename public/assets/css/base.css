@@ -9,20 +9,20 @@ body {
   font-family: "Montserrat";
   margin: 0;
   height: 100%;
-  background-color: #f5f5f5;
+  background-color: #DEDEDA;
 }
 
 nav {
   display: flex;
   position: fixed;
   /*background-color: rgba(58,71,73, 0.8);*/
-  background-color: rgb(58,71,73);
+  background-color: #334749;
   align-items: baseline;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   width: 100vw;
-  color: #f5f5f5;
+  color: #e2e4e3;
   z-index: 1;
   padding-bottom: 5px;
 }
@@ -45,8 +45,8 @@ li{
   font-size: 16px;
   width: auto;
   border: none;
-  background: rgb(58,71,73);
-  color: #f5f5f5;
+  background: #334749;
+  color: #e2e4e3;
   padding: 10px;
   border-radius: 10px;
 }

@@ -102,7 +102,7 @@
   font-size: 16px;
   border-style: none;
   float: none;
-  color: #f5f5f5;
+  color: #e2e4e3;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -174,7 +174,7 @@ input[type="checkbox"] {
 .infoBtn {
   background: rgb(58,71,73);
   text-align: center;
-  color: #f5f5f5;
+  color: #e2e4e3;
   padding: 5px;
   border-radius: 10px;
   display: inline-block;

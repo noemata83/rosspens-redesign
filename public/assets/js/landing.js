@@ -2,8 +2,8 @@ var nav = document.querySelector('nav');
 var dropdowns = document.querySelectorAll('.dropdown-list');
 
 if (window.innerWidth >= 1050) {
-    nav.style.backgroundColor = "rgba(58,71,73, 0.8)";
-    dropdowns.forEach(dropdown => dropdown.style.backgroundColor = "rgba(58,71,73, 0.8)");
+    nav.style.backgroundColor = "rgba(51,71,73, 0.8)";
+    dropdowns.forEach(dropdown => dropdown.style.backgroundColor = "rgba(51,71,73, 0.8)");
 }
 
 function debounce(func, wait = 5, immediate = true) {
@@ -23,11 +23,11 @@ function debounce(func, wait = 5, immediate = true) {
 
 function setTransparency(e) {
     if (window.scrollY <= 500 && window.innerWidth >= 1050) {
-        nav.style.backgroundColor = `rgba(58,71,73,${0.8 + (0.2 * window.scrollY/500)} )`;
-        dropdowns.forEach(dropdown => dropdown.style.backgroundColor = `rgba(58,71,73,${0.8 + (0.2 * window.scrollY/500)})`);
+        nav.style.backgroundColor = `rgba(51,71,73,${0.8 + (0.2 * window.scrollY/500)} )`;
+        dropdowns.forEach(dropdown => dropdown.style.backgroundColor = `rgba(51,71,73,${0.8 + (0.2 * window.scrollY/500)})`);
     } else {
-        nav.style.backgroundColor = "rgb(58,71,73)";
-        dropdowns.forEach(dropdown => dropdown.style.backgroundColor = "rgb(58,71,73");
+        nav.style.backgroundColor = "rgb(51,71,73)";
+        dropdowns.forEach(dropdown => dropdown.style.backgroundColor = "rgb(51,71,73");
     }
 }
 
