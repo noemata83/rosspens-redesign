@@ -9,7 +9,8 @@ var express = require('express'),
     localStrategy = require('passport-local'),
     passport = require('passport'),
     methodOverride = require('method-override'),
-    fs = require('fs');
+    fs = require('fs'),
+    aws = require('aws-sdk');
 
 // USE ROUTES
 var penRoutes = require('./routes/pen');
@@ -24,6 +25,8 @@ app.use(express.static(__dirname + "/public/"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
+const S3_BUCKET = process.env.S3_BUCKET;
+aws.config.region = 'us-east-1';
 
 // PASSPORT CONFIG 
 var fileName = "./config/session-config.json";
@@ -51,6 +54,36 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
+
+// AWS Logic
+
+app.get('/sign-s3', (req, res) => {
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+        Bucket: S3_BUCKET,
+        Key: 'images/' + fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'public-read'
+    };
+    
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.end();
+        }
+        
+        const returnData = {
+            signedRequest: data,
+            url: `https://${S3_BUCKET}.s3.amazonaws.com/images/${fileName}`
+        };
+        
+        res.write(JSON.stringify(returnData));
+        res.end();
+    });
+});
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RossPens server has started.");

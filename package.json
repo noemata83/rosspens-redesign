@@ -4,6 +4,7 @@
   "description": "Rosspens.com: Your source for reliable, affordable vintage pens.",
   "main": "app.js",
   "dependencies": {
+    "aws-sdk": "^2.176.0",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.1",

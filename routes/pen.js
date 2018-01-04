@@ -26,11 +26,7 @@ router.get("/", function(req, res) {
 });
 
 router.post('/', isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('image'), function(req,res, next){
-    var images = [];
-    req.files.forEach(function(file){
-        var path = String(file.path).replace("public", "");
-        images.push(path);
-    });
+    console.log(req.body);
     var newPen = {
         inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,
@@ -38,7 +34,7 @@ router.post('/', isLoggedIn, multer({ storage: storage, dest: '/assets/images'})
         type: req.body.type,
         nib: req.body.nib,
         price: req.body.price,
-        images: images,
+        images: req.body.imageURLs.split(','),
         description: req.body.description,
     };
     Pen.create(newPen, function(err, newlyCreated){
@@ -106,17 +102,17 @@ router.put("/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'
         console.log(err);
         res.redirect('/');
     } else {
-        if (imagedeletes.length > 0) {
-            imagedeletes.reverse().forEach(function(rmindex) { // reverse the array first, to ensure that the right indexes are spliced!
-              fs.unlink("./public" + foundPen.images[rmindex], err => console.log(err));
-              foundPen.images.splice(rmindex, 1);
-            });
-        }
+        // if (imagedeletes.length > 0) {
+        //     imagedeletes.reverse().forEach(function(rmindex) { // reverse the array first, to ensure that the right indexes are spliced!
+        //       fs.unlink("./public" + foundPen.images[rmindex], err => console.log(err));
+        //       foundPen.images.splice(rmindex, 1);
+        //     });
+        // }
         var images = foundPen.images;
-        req.files.forEach(function(file){
-            var path = String(file.path).replace("public", "");
-            images.push(path);
-        });
+        // req.files.forEach(function(file){
+        //     var path = String(file.path).replace("public", "");
+        //     images.push(path);
+        // });
         var penUpdates = req.body.pen;
         penUpdates.images = images;
         Pen.update(foundPen, penUpdates, function(err, updatedPen){
