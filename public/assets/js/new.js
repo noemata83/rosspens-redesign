@@ -13,8 +13,6 @@ function submit(event) {
     Promise.all(signedRequests).then( () => {
         Promise.all(fileUploads).then( () => {
             document.getElementById('imageURLs').value = imageURLs;
-            console.log(imageURLs);
-            alert(document.getElementById(('imageURLs').value))
             document.querySelector('form').submit();
         });
     });
@@ -35,7 +33,6 @@ function uploadFile(file, signedRequest, url, options) {
     return axios.put(signedRequest, file, options)
     .then( response => {
         imageURLs.push(url);
-        console.log(imageURLs);
     })
     .catch( error => alert("There was an error uploading the file: " + error));
 }

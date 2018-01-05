@@ -51,7 +51,8 @@
     </div>
     <div class="form-group">
         <label for="itemimages">Add New Images</label>
-        <input class="form-control-file" type="file" name="newimages" id="itemimages" value="<%=pen.images%>" multiple>
+        <input class="form-control-file" type="file" name="imageUpload" id="itemimages" value="<%=pen.images%>" multiple>
+        <input type="hidden" id="imageURLs" name="newimages" value="">
     </div>
     <div class="form-group">
     <label for="itemdescription">Description</label>
@@ -63,7 +64,7 @@
 </form>
 </div>
 
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/assets/js/editform.js"></script>
 </div>
 <% include partials/footer %>

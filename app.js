@@ -4,12 +4,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     Pen = require("./models/pen"),
     User = require("./models/user"),
-    multer = require('multer'),
-    upload = multer({ dest: 'public/assets/images'}),
     localStrategy = require('passport-local'),
     passport = require('passport'),
     methodOverride = require('method-override'),
-    fs = require('fs'),
     aws = require('aws-sdk');
 
 // USE ROUTES

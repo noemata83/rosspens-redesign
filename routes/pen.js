@@ -1,19 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var Pen = require('../models/pen');
-var multer = require('multer');
-var upload = multer({ dest: 'public/assets/images'});
-var fs = require('fs');
+const express = require('express');
+const router = express.Router();
+const Pen = require('../models/pen');
+const multer = require('multer');
+const upload = multer();
+const fs = require('fs');
+const aws = require('aws-sdk');
 
-var storage = multer.diskStorage({
-destination: function (req, file, cb) {
- cb(null, './public/assets/images');
-    },
- filename: function (req, file, cb) {
-    filename = file.originalname;
-    cb(null, filename);
-  }
-});
+const s3 = new aws.S3();
+const S3_BUCKET = process.env.S3_BUCKET;
 
 router.get("/", function(req, res) {
     Pen.find({}, function(err, pens) {
@@ -25,8 +19,7 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post('/', isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('image'), function(req,res, next){
-    console.log(req.body);
+router.post('/', upload.array('image'), isLoggedIn, function(req,res, next){
     var newPen = {
         inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,
@@ -90,38 +83,46 @@ router.get("/:id/edit", isLoggedIn, function(req, res){
    }) 
 });
 
-router.put("/:id", isLoggedIn, multer({ storage: storage, dest: '/assets/images'}).array('newimages'), function(req, res) {
+router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
     // Retrieve the array of images to be removed from the pen record
-    var imagedeletes= [];
+    let imagedeletes= [];
     if (req.body.imagechanges) {
         imagedeletes = req.body.imagechanges.split(',').map(x => parseInt(x));
     }
     // Find the pen, delete the images at their paths and splice the entries from the images array.
     Pen.findById(req.params.id, function(err, foundPen) {
-    if (err) {
-        console.log(err);
-        res.redirect('/');
-    } else {
-        // if (imagedeletes.length > 0) {
-        //     imagedeletes.reverse().forEach(function(rmindex) { // reverse the array first, to ensure that the right indexes are spliced!
-        //       fs.unlink("./public" + foundPen.images[rmindex], err => console.log(err));
-        //       foundPen.images.splice(rmindex, 1);
-        //     });
-        // }
-        var images = foundPen.images;
-        // req.files.forEach(function(file){
-        //     var path = String(file.path).replace("public", "");
-        //     images.push(path);
-        // });
-        var penUpdates = req.body.pen;
-        penUpdates.images = images;
-        Pen.update(foundPen, penUpdates, function(err, updatedPen){
-            if (err) { console.log(err);}
-            else {
-                res.redirect('/pens/' + foundPen._id);
+        var images = [...foundPen.images];
+        if (err) {
+            console.log(err);
+            res.redirect('/');
+        } else {
+            if (imagedeletes.length > 0) {
+                imagedeletes.reverse().forEach(function(rmindex) { // reverse the array first, to ensure that the right indexes are spliced!
+                     let awspath = images[rmindex].replace('https://rosspens-assets.s3.amazonaws.com', '');
+                     let params = {
+                        Bucket: S3_BUCKET,
+                        Key: awspath
+                    };
+                    s3.deleteObject(params, (err, data) => {
+                        if (err) console.log(err);
+                        else console.log(data);
+                    });
+                    images.splice(rmindex, 1);
+                });
             }
-        });
-    }
+            if (req.body.newimages) {
+                req.body.newimages.split(',').forEach((imageURL) => images.push(imageURL));
+                console.log(images);
+            }
+            var penUpdates = req.body.pen;
+            penUpdates.images = [...images];
+            Pen.update(foundPen, penUpdates, function(err, updatedPen){
+                if (err) { console.log(err);}
+                else {
+                    res.redirect('/pens/' + foundPen._id);
+                }
+            });
+        }
     });
 });
 
@@ -131,22 +132,27 @@ router.delete("/:id", function(req, res) {
         if(err) {
             console.log(err);
         } else {
-            foundPen.images.forEach(function(filepath) {
-                fs.unlink("./public" + filepath, function(err) {
-                    if(err) {
-                        console.log(err)
-                    }});
+            foundPen.images.forEach(path => {
+                let awspath = path.replace('https://rosspens-assets.s3.amazonaws.com', '');
+                let params = {
+                    Bucket: S3_BUCKET,
+                    Key: awspath
+                };
+                s3.deleteObject(params, (err, data) => {
+                    if (err) console.log(err);
+                    else console.log(data);
                 });
-            }
-        });
+            });
+        }
+    });
     // Delete pen record
     Pen.findByIdAndRemove(req.params.id, function(err){
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
             res.redirect('/pens');
         }
-    })
+    });
 });
 
 router.get("/:maker/:type", function(req, res){
