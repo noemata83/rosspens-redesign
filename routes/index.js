@@ -1,10 +1,43 @@
-var express = require('express'),
-    passport = require('passport');
-var router = express.Router();
+const express = require('express'),
+      passport = require('passport'),
+      User = require('../models/user');
+    
+const router = express.Router();
+
+let checkAdmin = () => {
+    let isAdmin;
+    User.count({ "admin": true }, (err, count) => isAdmin = count);
+    console.log(isAdmin);
+    return isAdmin;
+}
 
 // Landing route
 router.get("/", function(req, res) {
    res.render("landing"); 
+});
+
+// Admin account creation
+
+router.get("/createadminuser", (req, res) => {
+    if (checkAdmin()) {
+        res.redirect('/admin/dashboard');
+    } else {
+        res.render('createadmin');
+    }
+});
+
+router.post("/createadminuser", (req, res) => {
+    if (checkAdmin()) {
+        res.redirect('/admin/dashboard');
+    } else {
+        let adminUser = new User({ username: req.body.username, admin: true});
+        User.register(adminUser, req.body.password, (err, user) => {
+            if (err) {
+                console.log(err);
+            }
+            passport.authenticate("local")(req, res, () => res.redirect("/admin/dashboard"));
+        });
+    }
 });
 
 // Admin signin page
