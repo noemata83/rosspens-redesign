@@ -28,7 +28,7 @@ router.post("/createadminuser", (req, res) => {
         }
         else {
             let adminUser = new User({ username: req.body.username, admin: true});
-            User.register(adminUser, req.body.password, (err, user) => {
+            User.register(adminUser, req.body.password, (err, newUser) => {
                 if (err) {
                     console.log(err);
                 }
