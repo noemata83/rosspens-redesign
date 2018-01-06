@@ -3,3 +3,5 @@ config/session-config.json
 
 # ignore images directory
 public/assets/images/
+
+npm-debug.log
