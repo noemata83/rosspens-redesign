@@ -107,6 +107,15 @@ nav a:hover{
     max-width: none;
     margin: 5px 0px;
   }
+  .itemImg {
+    height: auto;
+  }
+  .show-thumbnail {
+    max-height: none;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 
@@ -135,6 +144,14 @@ nav a:hover{
   }
   .item {
     max-width: 100%;
+  }
+  
+  .itemImg{
+    height: auto;
+  }
+  .show-thumbnail {
+    max-height: none;
+    width: 100%;
   }
   
   .pen-name {

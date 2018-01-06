@@ -11,16 +11,16 @@
       <div class="item">
           <div class="itemImg">
               <% if (pen.images.length > 0) { %>
-              <img class="thumbnail" src="<%=pen.images[0]%>" style="width:100%">
+              <img class="show-thumbnail" src="<%=pen.images[0]%>">
               <% } else { %>
-              <img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png" style="width:100%">
+              <img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png">
               <% } %>
-              </div>
-            <div class="caption">
+          </div>
+          <div class="caption">
                 <p><%= pen.title %></p>
                 <p>$<%=pen.price %></p>
                 <a href="/pens/<%=pen._id%>" class="btn infoBtn">More Info</a>
-             </div>
+          </div>
         </div>
     <% }); %>
     <% if(currentUser  && currentUser.username == 'ross') {%>

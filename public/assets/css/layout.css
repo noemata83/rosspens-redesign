@@ -110,7 +110,7 @@ nav a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-start;
   min-height: 300px;
 }
@@ -150,6 +150,15 @@ nav a {
 
 .itemImg {
   padding: 3px;
+  height: 80px;
+}
+
+.show-thumbnail {
+  max-height: 70px;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  border-radius: 5px;
 }
 
 .thumbnail {
@@ -160,7 +169,7 @@ nav a {
 .divider {
   display: block;
   margin: 0 auto;
-  width: 75%;
+  width: 60%;
 }
 /* Show Page Styles */
 

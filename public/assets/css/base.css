@@ -23,7 +23,7 @@ nav {
   justify-content: flex-start;
   width: 100vw;
   color: #e2e4e3;
-  z-index: 1;
+  z-index: 999;
   padding-bottom: 5px;
 }
 
