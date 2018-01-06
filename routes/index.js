@@ -4,10 +4,6 @@ const express = require('express'),
     
 const router = express.Router();
 
-let checkAdmin = () => {
-
-}
-
 // Landing route
 router.get("/", function(req, res) {
    res.render("landing"); 
@@ -26,16 +22,18 @@ router.get("/createadminuser", (req, res) => {
 });
 
 router.post("/createadminuser", (req, res) => {
-    if (checkAdmin()) {
-        res.redirect('/admin/dashboard');
-    } else {
-        let adminUser = new User({ username: req.body.username, admin: true});
-        User.register(adminUser, req.body.password, (err, user) => {
-            if (err) {
-                console.log(err);
-            }
-            passport.authenticate("local")(req, res, () => res.redirect("/admin/dashboard"));
-        });
+    User.find({"admin": true }, (err, user) => {
+        if (user.length !== 0) {
+            res.render('login');
+        }
+        else {
+            let adminUser = new User({ username: req.body.username, admin: true});
+            User.register(adminUser, req.body.password, (err, user) => {
+                if (err) {
+                    console.log(err);
+                }
+                passport.authenticate("local")(req, res, () => res.redirect("/admin/dashboard"));
+            });
     }
 });
 
