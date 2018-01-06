@@ -23,7 +23,7 @@ router.get("/createadminuser", (req, res) => {
 
 router.post("/createadminuser", (req, res) => {
     User.find({"admin": true }, (err, user) => {
-        if (user.length !== 0) {
+        if (err || user.length !== 0) {
             res.render('login');
         }
         else {
@@ -34,7 +34,8 @@ router.post("/createadminuser", (req, res) => {
                 }
                 passport.authenticate("local")(req, res, () => res.redirect("/admin/dashboard"));
             });
-    }
+        }
+    });
 });
 
 // Admin signin page
