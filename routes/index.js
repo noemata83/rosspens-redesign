@@ -5,10 +5,7 @@ const express = require('express'),
 const router = express.Router();
 
 let checkAdmin = () => {
-    let isAdmin;
-    User.count({ "admin": true }, (err, count) => isAdmin = count);
-    console.log(isAdmin);
-    return isAdmin;
+
 }
 
 // Landing route
@@ -19,11 +16,13 @@ router.get("/", function(req, res) {
 // Admin account creation
 
 router.get("/createadminuser", (req, res) => {
-    if (checkAdmin()) {
+    User.find({ "admin": true }, (err, user) => {
+       if (err || user.length === 0) {
+           res.render('createadmin');
+       } else {
         res.redirect('/admin/dashboard');
-    } else {
-        res.render('createadmin');
-    }
+        } 
+    });
 });
 
 router.post("/createadminuser", (req, res) => {
