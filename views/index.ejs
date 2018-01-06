@@ -3,7 +3,7 @@
   <% sort = sort.replace(/([A-Z])/g, ' $1').trim() %>
   <% sort = sort.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); %>
   <h1 class="sort"><%=sort%> Pens</h1>
-  <img src="/assets/images/divider.png" class="divider">
+  <img src="https://s3.amazonaws.com/rosspens-assets/images/divider.png" class="divider">
 
 <% if(pens[0]) { %>
 <div class="gallery">
@@ -13,7 +13,7 @@
               <% if (pen.images.length > 0) { %>
               <img class="thumbnail" src="<%=pen.images[0]%>" style="width:100%">
               <% } else { %>
-              <img class="img-responsive" src="/assets/images/filler.png" style="width:100%">
+              <img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png" style="width:100%">
               <% } %>
               </div>
             <div class="caption">
