@@ -9,7 +9,7 @@
             <% if (!currentUser) { %>
             <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.model%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="btn btn-primary">Inquire</a>
             <% } %>
-            <% if (currentUser && currentUser.username === "ross") { %>
+            <% if (currentUser && currentUser.admin === true) { %>
             <a href="/pens/<%=pen._id%>/edit" class="btn btn-warning inline-btn">EDIT</a>
             <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" class="inline-btn">
                 <button class="btn btn-danger">DELETE</button>
