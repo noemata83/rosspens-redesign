@@ -27,18 +27,18 @@ const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-1';
 
 // PASSPORT CONFIG 
-var fileName = "./config/session-config.json";
-var config;
+//var fileName = "./config/session-config.json";
+// var config;
 
-try {
-  config = require(fileName);
-}
-catch (err) {
-  config = {};
-  console.log("unable to read file '" + fileName + "': ", err);
-}
+// try {
+//   config = require(fileName);
+// }
+// catch (err) {
+//   config = {};
+//   console.log("unable to read file '" + fileName + "': ", err);
+// }
 
-app.use(require("express-session")(config));
+app.use(require("express-session")({ secret: process.env.SECRET, resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
