@@ -115,18 +115,24 @@ nav a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: baseline;
   min-height: 300px;
+}
+
+.caption {
+  text-align: center;
 }
 
 .item {
   flex-basis: 25%;
-  flex-grow: 1;
+  font-size: 20px;
   max-width: 33%;
-  margin: 5px;
-  padding: 10px;
-  /*border: 1px solid lightgray;*/
+  margin: 15px 5px;
+  padding: 20px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   border-radius: 5px;
   /*height: 200px;*/
 }

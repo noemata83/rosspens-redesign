@@ -11,9 +11,9 @@
       <div class="item">
           <div class="itemImg">
               <% if (pen.images.length > 0) { %>
-              <img class="show-thumbnail" src="<%=pen.images[0]%>">
+              <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="<%=pen.images[0]%>"></a>
               <% } else { %>
-              <img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png">
+              <a href="/pens/<%=pen._id%>"><img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
               <% } %>
           </div>
           <div class="caption">
