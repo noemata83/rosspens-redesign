@@ -1,6 +1,8 @@
 const express = require('express'),
       passport = require('passport'),
-      User = require('../models/user');
+      User = require('../models/user'),
+      Pen = require('../models/pen');
+
     
 const router = express.Router();
 
@@ -44,7 +46,17 @@ router.get("/admin", function(req,res){
 });
 
 router.get("/admin/dashboard", isLoggedIn, function(req, res){
-    res.render("dashboard");
+    res.render("admin/dashboard");
+});
+
+router.get("/admin/pens", isLoggedIn, (req, res) => {
+    Pen.find({}, function(err, pens) {
+        if (err){
+            res.send("There was an error.");
+        } else {
+            res.render("admin/index", { pens: pens});
+        }
+    });
 })
 
 // Admin login route

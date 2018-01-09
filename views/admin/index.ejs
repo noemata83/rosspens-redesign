@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<div class="main">
+    <h1 class="sort">Pen Database Administrator</h1>
+    <img src="https://s3.amazonaws.com/rosspens-assets/images/divider.png" class="divider">
+    <h2 class="adminNav"><a href="/pens/">View in Gallery</a></h2>
+    <table class="adminTable">
+        <tr>
+            <th>Inventory Number</th>
+            <th>Title</th>
+            <th>Maker</th>
+            <th>Type</th>
+            <th>Nib</th>
+            <th>Price</th>
+            <th>Date Added</th>
+            <th></th>
+        </tr>
+         <% pens.forEach((pen) => { %>
+             <tr>
+                 <td><%=pen.inventorynumber %></td>
+                 <td><%=pen.title%></td>
+                 <td><%= pen.maker%></td>
+                 <td><%=pen.type%></td>
+                 <td><%=pen.nib%></td>
+                 <td>$<%=pen.price%></td>
+                 <td><%=pen.dateAdded.toLocaleDateString("en-US")%></td>
+                 <td><a href=<%=`/pens/${pen._id}/edit`%>>Edit</a></td>
+            </tr>
+        <% }); %>
+    </table>
+    <h2 class="adminNav"><a href="/admin/dashboard">Return to Dashboard</a></h2>
+</div>
+<% include ../partials/footer %>
