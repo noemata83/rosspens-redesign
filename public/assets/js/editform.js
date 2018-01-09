@@ -1,13 +1,13 @@
 var makers = document.getElementById("formmaker");
 for (var i = 0; i < makers.options.length; i++) {
-    if (makers.options[i].value === "<%=pen.maker%>") {
-        makers.options[i].setAttribute("selected", "selected");
+    if (makers.options[i].value === pendata.maker) {
+        makers.options[i].setAttribute("selected", true);
     }
 }
 var types = document.getElementById("itemtype");
 for (var i = 0; i < types.options.length; i++) {
-    if (types.options[i].value === "<%=pen.type%>") {
-        types.options[i].setAttribute("selected", "selected");
+    if (types.options[i].value === pendata.type) {
+        types.options[i].setAttribute("selected", true);
     }
 }
 
