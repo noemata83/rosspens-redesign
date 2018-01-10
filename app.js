@@ -8,10 +8,14 @@ var express = require('express'),
     passport = require('passport'),
     methodOverride = require('method-override'),
     aws = require('aws-sdk');
+  //  favicon = require('serve-favicon'),
+    // path = require('path');
 
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // USE ROUTES
-var penRoutes = require('./routes/pen');
-var indexRoutes = require('./routes/index');
+const penRoutes = require('./routes/pen'),
+      indexRoutes = require('./routes/index'),
+      aboutRoutes = require('./routes/about');
 
 // APP CONFIG
 
@@ -20,6 +24,7 @@ mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
 //mongoose.connect("mongodb://ross:vacuumatic@ds245357.mlab.com:45357/rosspens", {useMongoClient: true});
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + "/public/"));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
@@ -45,17 +50,15 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Admin initialization
-User.create()
-
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     next();
 });
 
+
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
-
+app.use('/about', aboutRoutes);
 // AWS Logic
 
 app.get('/sign-s3', (req, res) => {
