@@ -12,7 +12,7 @@
   background-image: url('https://s3.amazonaws.com/rosspens-assets/images/landing.jpg');
   background-origin: content-box;
   background-size: cover;
-  background-position: to;
+  background-position: top;
 }
 
 /* Menu Button */
