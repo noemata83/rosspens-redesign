@@ -16,8 +16,8 @@
         </tr>
          <% pens.forEach((pen) => { %>
              <tr>
-                 <td><%=pen.inventorynumber %></td>
-                 <td><%=pen.title%></td>
+                 <td><a href=<%=`/pens/${pen._id}`%>><%=pen.inventorynumber%></a></td>
+                 <td><a href=<%=`/pens/${pen._id}`%>><%=pen.title%></a></td>
                  <td><%= pen.maker%></td>
                  <td><%=pen.type%></td>
                  <td><%=pen.nib%></td>
