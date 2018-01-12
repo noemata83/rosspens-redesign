@@ -55,9 +55,11 @@
           <a onclick="showExplore()" class="dropdown-btn">Explore</a>
             <div id="ExplorePens" class="dropdown-content">
               <ul class="dropdown-list">
-                <li><a href="/about/">About Ross</a></li>
-                <li><a href="/about/tpc">Triangle Pen Club</a></li>
-                <li><a href="/about/moore">Moore Pen History</a></li>
+                <% articles.forEach(article => { %>
+                <li><a href=<%=`/about/${encodeURI(article.title)}/`%>><%=article.title%></a></li>
+                <!--<li><a href="/about/tpc">Triangle Pen Club</a></li>-->
+                <!--<li><a href="/about/moore">Moore Pen History</a></li>-->
+                <% }); %>
               </ul>
             </div>
         </div>

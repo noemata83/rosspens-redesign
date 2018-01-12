@@ -1,47 +1,40 @@
-var express = require('express'),
+const express = require('express'),
     app = express(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     Pen = require("./models/pen"),
     User = require("./models/user"),
+    Article = require('./models/article'),
     localStrategy = require('passport-local'),
     passport = require('passport'),
     methodOverride = require('method-override'),
-    aws = require('aws-sdk');
-  //  favicon = require('serve-favicon'),
-    // path = require('path');
+    aws = require('aws-sdk'),
+    getTitles = require('./helpers/getTitles'),
+    expressSanitizer = require('express-sanitizer');
 
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
       indexRoutes = require('./routes/index'),
       aboutRoutes = require('./routes/about');
+
+
+var articleTitles = [];
 
 // APP CONFIG
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
 //mongoose.connect("mongodb://ross:vacuumatic@ds245357.mlab.com:45357/rosspens", {useMongoClient: true});
+
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
+app.use(expressSanitizer());
 
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-1';
-
-// PASSPORT CONFIG 
-//var fileName = "./config/session-config.json";
-// var config;
-
-// try {
-//   config = require(fileName);
-// }
-// catch (err) {
-//   config = {};
-//   console.log("unable to read file '" + fileName + "': ", err);
-// }
 
 app.use(require("express-session")({ secret: process.env.SECRET, resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
@@ -50,15 +43,23 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next) {
-    res.locals.currentUser = req.user;
-    next();
+getTitles().then( titles => {
+    articleTitles = [...titles];
 });
 
+
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.articles = articleTitles;
+    next();
+});
 
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
 app.use('/about', aboutRoutes);
+
+// seed_and_test();
+
 // AWS Logic
 
 app.get('/sign-s3', (req, res) => {
@@ -92,3 +93,11 @@ app.get('/sign-s3', (req, res) => {
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RossPens server has started.");
 });
+
+async function seed_and_test() {
+    await seedDB();
+    getTitles().then(titles => {
+        articleTitles = titles;
+        console.log("Inside seed_and_test", articleTitles);
+    })
+}
