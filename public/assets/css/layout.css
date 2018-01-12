@@ -235,4 +235,7 @@ nav a {
   width: 75%;
   margin: 25px auto;
   text-align: justify;
+  font-size: 21px;
+  line-height: 1.58;
+  box-sizing: border-box;
 }

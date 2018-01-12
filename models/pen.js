@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var penSchema = new mongoose.Schema({
+const penSchema = new mongoose.Schema({
    inventorynumber: String,
    maker: String,
    title: String,
