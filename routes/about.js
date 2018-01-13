@@ -25,7 +25,7 @@ router.post('/', isLoggedIn, (req, res) => {
             res.send("Something went wrong: ", err);
         } else {
             getTitles().then( titles => {
-                articleTitles = [...titles];
+                global.articleTitles = [...titles];
             });
             res.redirect('/about');
         }
@@ -61,9 +61,9 @@ router.put('/:title', isLoggedIn, (req, res) => {
              res.send("Something went wrong: ", err);
         } else {
             getTitles().then( titles => {
-                articleTitles = [...titles];
+                global.articleTitles = [...titles];
             });
-            res.redirect('/about/' + encodeURI(title));
+            res.redirect('/about/' + encodeURI(req.body.article.title));
         }
     });
 });
@@ -75,7 +75,7 @@ router.delete('/:title', isLoggedIn, (req, res) => {
             res.send("Something went wrong: ", err);
         } else {
             getTitles().then( titles => {
-                articleTitles = [...titles];
+                global.articleTitles = [...titles];
             });
             res.redirect('/');
         }

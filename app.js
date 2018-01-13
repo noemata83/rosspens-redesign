@@ -18,7 +18,7 @@ const penRoutes = require('./routes/pen'),
       aboutRoutes = require('./routes/about');
 
 
-var articleTitles = [];
+global.articleTitles = [];
 
 // APP CONFIG
 
@@ -44,20 +44,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 getTitles().then( titles => {
-    articleTitles = [...titles];
+    global.articleTitles = [...titles];
 });
-
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.articles = articleTitles;
+    console.log(res.locals.articles);
     next();
 });
 
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
 app.use('/about', aboutRoutes);
-
 // seed_and_test();
 
 // AWS Logic
