@@ -3,19 +3,22 @@ function submit(event) {
     const files = document.getElementById('itemimages').files;
     const file = files[0];
     let signedRequests = [];
+    let submitcontinue = true;
     if (file == null) {
-        alert("No images to be uploaded.");
+        submitcontinue = confirm("No images to be uploaded. Continue?");
     } else {
         for (let i = 0; i < files.length; i++) {
             signedRequests.push(getSignedRequest(files[i]));   
         }
     }
-    Promise.all(signedRequests).then( () => {
-        Promise.all(fileUploads).then( () => {
-            document.getElementById('imageURLs').value = imageURLs;
-            document.querySelector('form').submit();
+    if (submitcontinue) {
+        Promise.all(signedRequests).then( () => {
+            Promise.all(fileUploads).then( () => {
+                document.getElementById('imageURLs').value = imageURLs;
+                document.querySelector('form').submit();
+            });
         });
-    });
+    }
 }
 
 function getSignedRequest(file) {

@@ -138,10 +138,14 @@ router.delete("/:id", function(req, res) {
                     Bucket: S3_BUCKET,
                     Key: awspath
                 };
-                s3.deleteObject(params, (err, data) => {
-                    if (err) console.log(err);
-                    else console.log(data);
-                });
+                if (awspath === "") {
+                    return;
+                } else {
+                    s3.deleteObject(params, (err, data) => {
+                        if (err) console.log(err);
+                        else console.log(data);
+                    });
+                }
             });
         }
     });
