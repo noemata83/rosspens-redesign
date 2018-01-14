@@ -49,8 +49,7 @@ getTitles().then( titles => {
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
-    res.locals.articles = articleTitles;
-    console.log(res.locals.articles);
+    res.locals.articles = global.articleTitles;
     next();
 });
 
@@ -93,10 +92,9 @@ app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RossPens server has started.");
 });
 
-async function seed_and_test() {
-    await seedDB();
-    getTitles().then(titles => {
-        articleTitles = titles;
-        console.log("Inside seed_and_test", articleTitles);
-    })
-}
+// async function seed_and_test() {
+//     await seedDB();
+//     getTitles().then(titles => {
+//         articleTitles = titles;
+//     })
+// }

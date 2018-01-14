@@ -11,7 +11,7 @@
             <% } %>
             <% if (currentUser && currentUser.admin === true) { %>
             <a href="/pens/<%=pen._id%>/edit" class="btn btn-warning inline-btn">EDIT</a>
-            <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" class="inline-btn">
+            <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
                 <button class="btn btn-danger">DELETE</button>
             </form>
             <% } %>

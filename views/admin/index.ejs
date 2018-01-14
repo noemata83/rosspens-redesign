@@ -13,6 +13,7 @@
             <th>Price</th>
             <th>Date Added</th>
             <th></th>
+            <th></th>
         </tr>
          <% pens.forEach((pen) => { %>
              <tr>
@@ -23,8 +24,10 @@
                  <td><%=pen.nib%></td>
                  <td>$<%=pen.price%></td>
                  <td><%=pen.dateAdded.toLocaleDateString("en-US")%></td>
-                 <td><a href=<%=`/pens/${pen._id}/edit`%>>Edit</a></td>
-                 <td></td>
+                 <td><a class="btn inline-btn" href=<%=`/pens/${pen._id}/edit`%>>EDIT</a></td>
+                 <td><form action=<%=`/pens/${encodeURI(pen._id)}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
+                    <input class="btn inline-btn" type="submit" value="DELETE" />
+                  </form></td>
             </tr>
         <% }); %>
     </table>
