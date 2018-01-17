@@ -19,6 +19,7 @@ const penRoutes = require('./routes/pen'),
 
 
 global.articleTitles = [];
+global.penTypes = [];
 
 // APP CONFIG
 
@@ -46,6 +47,11 @@ passport.deserializeUser(User.deserializeUser());
 getTitles().then( titles => {
     global.articleTitles = [...titles];
 });
+
+// Pen.distinct('maker', (err, result) => {
+//     if (err) console.log(err);
+//     console.log(result);
+// });
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
@@ -86,6 +92,24 @@ app.get('/sign-s3', (req, res) => {
         res.write(JSON.stringify(returnData));
         res.end();
     });
+});
+
+app.get('/404', (req, res) => {
+    res.render('404', {url : "The page you were looking for"});
+})
+
+app.use(function(req, res, next) {
+    res.format({
+    html: function () {
+      res.render('404', { url: req.url })
+    },
+    json: function () {
+      res.json({ error: 'Not found' })
+    },
+    default: function () {
+      res.type('txt').send('Not found')
+    }
+  });
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {

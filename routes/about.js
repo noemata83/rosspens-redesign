@@ -38,7 +38,11 @@ router.get('/:title', (req, res) => {
         if (err) {
             res.send("Something went wrong. Please try your reques again. If the problem persists, contact the system administrator.");
         } else {
-            res.render("about/article", { article: article });    
+            if (!article) {
+                res.redirect('/404');
+            } else {
+                res.render("about/article", { article: article });
+            }
         }
     });
 });
