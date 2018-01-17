@@ -7,7 +7,7 @@ const express = require('express'),
 const router = express.Router();
 
 // Landing route
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
    res.render("landing"); 
 });
 
