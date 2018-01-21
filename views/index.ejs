@@ -17,15 +17,17 @@
               <% } %>
           </div>
           <div class="caption">
+              <div class="caption-text">
                 <p><%= pen.title %></p>
                 <p>$<%=pen.price %></p>
-                <a href="/pens/<%=pen._id%>" class="btn inline-btn">MORE INFO</a>
-                <% if (currentUser && currentUser.admin === true) { %>
-                  <a href="/pens/<%=pen._id%>/edit" class="btn inline-btn">EDIT</a>
-                  <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
-                    <button class="btn">DELETE</button>
-                  </form>
-                <% } %>
+              </div>
+              <a href="/pens/<%=pen._id%>" class="btn inline-btn">MORE INFO</a>
+              <% if (currentUser && currentUser.admin === true) { %>
+                <a href="/pens/<%=pen._id%>/edit" class="btn inline-btn">EDIT</a>
+                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
+                  <button class="btn">DELETE</button>
+                </form>
+              <% } %>
             </div>
         </div>
     <% }); %>

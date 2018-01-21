@@ -71,6 +71,9 @@ nav a:hover{
   .main {
     padding: 0;
   }
+  /*.header h2 {*/
+  /*  font-size: 32px;*/
+  /*}*/
   /*.menu-item {*/
   /*  font-size: 16px;*/
   /*}*/
@@ -123,6 +126,12 @@ nav a:hover{
     display: block;
     position: relative;
     /*padding-bottom: 10px;*/
+  }
+  .header h1 {
+    font-size: 6vh;
+  }
+  .header h2 {
+    font-size: 2.5vh;
   }
   .menu-item {
     display: block;

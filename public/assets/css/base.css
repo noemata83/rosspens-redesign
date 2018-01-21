@@ -23,7 +23,8 @@ nav {
   width: 100vw;
   color: #e2e4e3;
   z-index: 999;
-  padding-bottom: 5px;
+  padding: 0 10px 5px 10px;
+  box-sizing: border-box;
 }
 
 
