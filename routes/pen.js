@@ -99,15 +99,17 @@ router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
             if (imagedeletes.length > 0) {
                 imagedeletes.reverse().forEach(function(rmindex) { // reverse the array first, to ensure that the right indexes are spliced!
                      let awspath = images[rmindex].replace('https://rosspens-assets.s3.amazonaws.com', '');
-                     let params = {
-                        Bucket: S3_BUCKET,
-                        Key: awspath
-                    };
-                    s3.deleteObject(params, (err, data) => {
-                        if (err) console.log(err);
-                        else console.log(data);
-                    });
-                    images.splice(rmindex, 1);
+                     if (awspath !== '') {
+                        let params = {
+                            Bucket: S3_BUCKET,
+                            Key: awspath
+                        };
+                        s3.deleteObject(params, (err, data) => {
+                            if (err) console.log(err);
+                            else console.log(data);
+                        });
+                        images.splice(rmindex, 1);
+                     }
                 });
             }
             if (req.body.newimages) {
@@ -126,7 +128,7 @@ router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
     });
 });
 
-router.delete("/:id", function(req, res) {
+router.delete("/:id", isLoggedIn, function(req, res) {
     // Locate the pen record to be deleted and delete all of the images.
     Pen.findById(req.params.id, function(err, foundPen) {
         if(err) {
