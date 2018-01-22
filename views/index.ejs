@@ -10,10 +10,10 @@
     <% pens.forEach(function(pen){ %>
       <div class="item">
           <div class="itemImg">
-              <% if (pen.images.length > 0) { %>
-              <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="<%=pen.images[0]%>" alt="<%=pen.title%>"></a>
+              <% if (pen.images[0] !== "") { %>
+                <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="<%=pen.images[0]%>" alt="<%=pen.title%>"></a>
               <% } else { %>
-              <a href="/pens/<%=pen._id%>"><img class="img-responsive" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
+                <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
               <% } %>
           </div>
           <div class="caption">
