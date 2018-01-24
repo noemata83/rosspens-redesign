@@ -114,8 +114,21 @@ section:nth-child(odd) {
   text-align: center;
 }
 
+.restoration-info {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0 50px;
+}
+.address {
+  flex-basis: 250px;
+  flex-grow: 1;
+}
 
-
+.ups-address {
+  flex-basis: 250px;
+  flex-grow: 1;
+}
 
 .sort {
   text-align: center;
