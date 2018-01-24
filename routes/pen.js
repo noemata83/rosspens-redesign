@@ -3,7 +3,6 @@ const router = express.Router();
 const Pen = require('../models/pen');
 const multer = require('multer');
 const upload = multer();
-const fs = require('fs');
 const aws = require('aws-sdk');
 
 const s3 = new aws.S3();
