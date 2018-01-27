@@ -1,40 +1,64 @@
 .bgimage {
-  @include clearfix;
   position: relative;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 80%;
-  background-image: url('https://s3.amazonaws.com/rosspens-assets/images/landing.jpg');
+  min-height: 100vh;
+  background: url('https://s3.amazonaws.com/rosspens-assets/images/landing.jpg');
   background-origin: border-box;
   background-size: cover;
   background-position: top;
+  .layer {
+        background: rgba(0,0,0,0.15);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
 }
 
 .header {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    bottom: 3rem;
+    transform: translate(-50%, 0);
+    width: 85%;
+    text-align: center;
+    background: url;
     h1 {
-        font-family: 'Rochester', cursive;
-        line-height: 1.3;
-        font-size: 8rem;
-        margin: 0;
-    }
-    h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 4rem;
-        font-weight: 300;
-        margin: 0;
+        color: $text-light;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.9);
+        .title {
+            display: block;
+            font-family: 'Rochester', cursive;
+            line-height: 1.3;
+            font-size: 10rem;
+            font-weight: 300;
+            margin: 0;
+        }
+        .tagline {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 300;
+            margin: 0;
+        }
     }
 }
 
 .blurb {
-    padding: 0 20%;
+    margin-top: 5rem;
+    padding: 1rem 10%;
     text-align: justify;
     font-size: 2rem;
 }
 
 section {
-    &:nth-child(odd) {
+    padding: 1rem;
+    &:nth-child(even) {
         background-color: $color-secondary;
     }
 }
