@@ -20,10 +20,13 @@
     "passport-local-mongoose": "^4.2.1",
     "passport-mongoose": "0.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "compile:sass": "node-sass sass/main.scss public/assets/css/rosspens.css -w"
   },
   "author": "Tucker W. McKinney",
   "license": "ISC"

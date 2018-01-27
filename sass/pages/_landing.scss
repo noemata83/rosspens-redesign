@@ -1,0 +1,40 @@
+.bgimage {
+  @include clearfix;
+  position: relative;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 80%;
+  background-image: url('https://s3.amazonaws.com/rosspens-assets/images/landing.jpg');
+  background-origin: border-box;
+  background-size: cover;
+  background-position: top;
+}
+
+.header {
+    h1 {
+        font-family: 'Rochester', cursive;
+        line-height: 1.3;
+        font-size: 8rem;
+        margin: 0;
+    }
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 4rem;
+        font-weight: 300;
+        margin: 0;
+    }
+}
+
+.blurb {
+    padding: 0 20%;
+    text-align: justify;
+    font-size: 2rem;
+}
+
+section {
+    &:nth-child(odd) {
+        background-color: $color-secondary;
+    }
+}

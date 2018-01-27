@@ -15,9 +15,8 @@
                  <td><a href=<%=`/about/${encodeURI(article.title)}`%>><%=article.longTitle%></a></td>
                  <td><%=article.dateAdded.toLocaleDateString("en-US")%></td>
                  <td><a class="btn inline-btn" href=<%=`/about/${encodeURI(article.title)}/edit`%>>EDIT</a></td>
-                 <td><form action=<%=`/about/${encodeURI(article.title)}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
-                    <input class="btn inline-btn" type="submit" value="DELETE" />
-                  </form>
+                 <td>
+                 
                   </td>
             </tr>
         <% }); %>
