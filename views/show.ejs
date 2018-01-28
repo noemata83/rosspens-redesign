@@ -1,31 +1,29 @@
 <% include partials/header %>
 
 <div class="main">
-    <div class="container">
-        <div class="show-sidebar">
-            <h1 class="pen-name"><%= pen.title %></h1>
-            <p><%= pen.description %></p>
-            <p>$<%= pen.price %></p>
-            <% if (!currentUser) { %>
-            <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="btn btn-primary">Inquire</a>
-            <% } %>
-            <% if (currentUser && currentUser.admin === true) { %>
-            <a href="/pens/<%=pen._id%>/edit" class="btn btn-warning inline-btn">EDIT</a>
-            <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
-                <button class="btn btn-danger">DELETE</button>
-            </form>
-            <% } %>
-        </div>
-        <div class="show-main">
-            <div class="gallery">
+    <div class="pen">
+        <div class="pen__main">
+            <div class="pen__gallery">
             <% pen.images.forEach(function(image){ %>
-                <div class="item-lg">
+                <div class="item--large">
                     <img class="thumbnail" src="<%=image %>">            
                 </div>
             <% }); %>
             </div>
         </div>
-    </div>
+        <div class="pen__sidebar">
+            <h1 class="pen__title"><%= pen.title %></h1>
+            <p><%= pen.description %><br/>$<%=pen.price %></p>
+            <% if (!currentUser) { %>
+            <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="button button--primary">Inquire</a>
+            <% } %>
+            <% if (currentUser && currentUser.admin === true) { %>
+            <a href="/pens/<%=pen._id%>/edit" class="button button--warning button-inline">EDIT</a>
+            <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
+                <button class="button button--danger">DELETE</button>
+            </form>
+            <% } %>
+        </div>
     </div>
 </div>
 

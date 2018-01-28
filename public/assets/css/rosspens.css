@@ -26,7 +26,7 @@ li {
 body {
   font-family: 'Montserrat', sans-serif; }
 
-.btn {
+.button {
   font-size: 1.6rem;
   width: auto;
   border: none;
@@ -34,6 +34,19 @@ body {
   color: #e2e4e3;
   padding: 1rem;
   border-radius: 1rem; }
+  .button:hover {
+    color: #c3be9b; }
+  .button--inline {
+    display: inline; }
+  .button__info {
+    background: #3a4749;
+    text-align: center;
+    color: #e2e4e3;
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100px;
+    transition: 0.3s; }
 
 form {
   width: 100%; }
@@ -49,12 +62,10 @@ form {
 
 .caption {
   line-height: 1.5; }
-
-.caption p {
-  margin: 0; }
-
-.caption-text {
-  margin: .5rem 0 1.5rem 0; }
+  .caption__text {
+    margin: .5rem 0 1.5rem 0; }
+  .caption p {
+    margin: 0; }
 
 .item {
   flex-basis: 25%;
@@ -66,6 +77,15 @@ form {
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   /*height: 200px;*/ }
+  .item__image {
+    padding: .3rem;
+    height: 8rem; }
+  .item--large {
+    flex-basis: 40%;
+    flex-grow: 1;
+    max-width: 50%;
+    margin: 5px;
+    border-radius: 5px; }
 
 .item-lg {
   flex-basis: 40%;
@@ -86,10 +106,6 @@ form {
   display: block;
   position: relative;
   min-height: auto; }
-
-.itemImg {
-  padding: .3rem;
-  height: 8rem; }
 
 .show-thumbnail {
   max-height: 7rem;
@@ -248,11 +264,6 @@ nav {
   width: 65%;
   max-width: 950px; }
 
-.article-title {
-  font-size: 40px;
-  text-align: center;
-  margin: 1.25em auto; }
-
 .article {
   width: 60%;
   max-width: 1000px;
@@ -261,6 +272,10 @@ nav {
   font-size: 22px;
   line-height: 1.58;
   box-sizing: border-box; }
+  .article-title {
+    font-size: 40px;
+    text-align: center;
+    margin: 1.25em auto; }
 
 .bgimage {
   position: relative;
@@ -317,3 +332,24 @@ section {
   padding: 1rem; }
   section:nth-child(even) {
     background-color: #779395; }
+
+.pen {
+  width: 100%;
+  height: 100%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center; }
+  .pen__sidebar {
+    flex-basis: 70%; }
+    .pen__sidebar p {
+      font-size: 2rem;
+      line-height: 1.7;
+      margin: 2rem 0; }
+  .pen__main {
+    flex-basis: 30%;
+    margin: 0 2rem; }
+  .pen__gallery {
+    height: 100%; }
+    .pen__gallery .item--large {
+      width: 100%;
+      float: right; }

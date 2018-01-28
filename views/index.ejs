@@ -9,7 +9,7 @@
 <div class="gallery">
     <% pens.forEach(function(pen){ %>
       <div class="item">
-          <div class="itemImg">
+          <div class="item__image">
               <% if (pen.images.length === 0 || pen.images[0] === "") { %>
                 <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
               <% } else { %>
@@ -17,14 +17,14 @@
               <% } %>
           </div>
           <div class="caption">
-              <div class="caption-text">
+              <div class="caption__text">
                 <p><%= pen.title %></p>
                 <p>$<%=pen.price %></p>
               </div>
-              <a href="/pens/<%=pen._id%>" class="btn inline-btn">MORE INFO</a>
+              <a href="/pens/<%=pen._id%>" class="button button--inline">MORE INFO</a>
               <% if (currentUser && currentUser.admin === true) { %>
-                <a href="/pens/<%=pen._id%>/edit" class="btn inline-btn">EDIT</a>
-                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
+                <a href="/pens/<%=pen._id%>/edit" class="button button--inline">EDIT</a>
+                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="button--inline">
                   <button class="btn">DELETE</button>
                 </form>
               <% } %>
@@ -33,7 +33,7 @@
     <% }); %>
     <% if(currentUser && currentUser.admin === true) {%>
       <div class="item">
-        <div class="itemImg">
+        <div class="item__image">
             <a class="btn btn-primary plus" href="/pens/new">+</a>
         </div>
       </div>

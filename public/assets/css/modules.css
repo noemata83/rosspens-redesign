@@ -167,11 +167,11 @@ input[type="checkbox"] {
   width: 100%;
   font-size: 3em;
 }
-.inline-btn {
+.button--inline {
   display: inline;
 }
 
-.infoBtn {
+.button__info {
   background: rgb(58,71,73);
   text-align: center;
   color: #e2e4e3;

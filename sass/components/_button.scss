@@ -1,4 +1,4 @@
-.btn {
+.button {
   font-size: 1.6rem;
   width: auto;
   border: none;
@@ -6,4 +6,20 @@
   color: $text-light;
   padding: 1rem;
   border-radius: 1rem;
+  &:hover {
+    color: $text-highlight;
+  }
+  &--inline {
+    display: inline;
+  }
+  &__info {
+  background: rgb(58,71,73);
+  text-align: center;
+  color: #e2e4e3;
+  padding: 5px;
+  border-radius: 10px;
+  display: inline-block;
+  width: 100px;
+  transition: 0.3s;
+  }
 }
