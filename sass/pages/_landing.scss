@@ -25,7 +25,7 @@
     top: auto;
     bottom: 3rem;
     transform: translate(-50%, 0);
-    width: 85%;
+    width: 80%;
     text-align: center;
     background: url;
     h1 {
@@ -50,15 +50,79 @@
 }
 
 .blurb {
-    margin-top: 5rem;
-    padding: 1rem 10%;
     text-align: justify;
     font-size: 2rem;
+    font-weight: 400;
 }
 
 section {
-    padding: 1rem;
-    &:nth-child(even) {
+    width: 100%;
+    padding: 3rem;
+    &:nth-child(odd) {
         background-color: $color-secondary;
+        color: #eee;
+    }
+}
+
+.news {
+    @include clearfix;
+    max-width: $grid-width;
+    margin: 0 auto;
+    [class^="news__"] {
+        float: left;
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+    
+    &__1-of-6 {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        height: 100px;
+    }
+    &__left-column {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+    }
+    
+    &__center-column {
+        width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
+    }
+    
+    &__right-column {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+    }
+    
+    &__portrait {
+        width: 100%;
+        height: auto;
+    }
+    
+    .blog {
+        &__header {
+            @include clearfix;
+            margin: 1.5rem 0;
+            display: block;
+            position: relative;
+        }
+        &__title {
+            display: inline;
+            vertical-align: baseline;
+            font-size: 3rem;
+        }
+        &__date {
+            vertical-align: baseline;
+            font-size: 1.6rem;
+            display: inline;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        &__content {
+            font-size: 1.6rem;
+            text-align: justify;
+            line-height: 1.7;
+            p {
+                margin: 1rem 0;
+            }
+        }
     }
 }

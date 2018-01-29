@@ -25,7 +25,7 @@
               <% if (currentUser && currentUser.admin === true) { %>
                 <a href="/pens/<%=pen._id%>/edit" class="button button--inline">EDIT</a>
                 <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="button--inline">
-                  <button class="btn">DELETE</button>
+                  <button class="button">DELETE</button>
                 </form>
               <% } %>
             </div>
@@ -34,7 +34,7 @@
     <% if(currentUser && currentUser.admin === true) {%>
       <div class="item">
         <div class="item__image">
-            <a class="btn btn-primary plus" href="/pens/new">+</a>
+            <a class="button button--primary plus" href="/pens/new">+</a>
         </div>
       </div>
     </div>
@@ -47,8 +47,8 @@
 <% if(currentUser  && currentUser.admin === true) {%>
     <div class="gallery">
       <div class="item">
-        <div class="itemImg">
-            <a class="btn btn-primary plus" href="/pens/new">+</a>
+        <div class="item__image">
+            <a class="button button--primary plus" href="/pens/new">+</a>
         </div>
       </div>
     </div>
