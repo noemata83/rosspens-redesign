@@ -7,7 +7,7 @@
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
-        @media screen and (max-width: $break-small) {
+        @media screen and (max-width: $break-large) {
             // float:none;
             width: 100%;
         };
@@ -28,14 +28,14 @@
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
         position: relative;
         min-height: .1rem;
-        @media screen and (max-width: $break-small) {
+        @media screen and (max-width: $break-large) {
             order: 2;
         }
     }
     
     &__center-column {
         width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
-        @media screen and (max-width: $break-small) {
+        @media screen and (max-width: $break-large) {
             order: 1;
         }
     }
@@ -44,11 +44,11 @@
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
         position: relative;
         min-height: .1rem;
-        @media screen and (max-width: $break-small) {
+        @media screen and (max-width: $break-large) {
              order: 3;   
         }
     }
-    @media screen and (max-width: $break-small) {
+    @media screen and (max-width: $break-large) {
         display: flex;
         flex-direction: column;
     };
