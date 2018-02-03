@@ -15,7 +15,8 @@ const express = require('express'),
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
       indexRoutes = require('./routes/index'),
-      aboutRoutes = require('./routes/about');
+      aboutRoutes = require('./routes/about'),
+      messageRoutes = require('./routes/message');
 
 
 global.articleTitles = [];
@@ -62,6 +63,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
 app.use('/about', aboutRoutes);
+app.use('/admin/message', messageRoutes);
 // seed_and_test();
 
 // AWS Logic

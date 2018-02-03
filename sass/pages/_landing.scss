@@ -59,9 +59,13 @@ section {
     width: 100%;
     padding: 3rem;
     &:nth-child(odd) {
-        background-color: $color-secondary;
-        color: $black;
+        background-color: $color-tertiary;
+        color: $text-light;
     }
+}
+
+.ribbon {
+    padding: .5rem;
 }
 
 .news {
@@ -77,20 +81,23 @@ section {
     
     &__1-of-6 {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
-        height: 100px;
+        height: 10rem;
     }
     &__left-column {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
         position: relative;
-        min-height: 300px;
+        min-height: .1rem;
     }
     
     &__center-column {
         width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
+        padding: 1rem;
     }
     
     &__right-column {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        position: relative;
+        min-height: .1rem;
     }
     
     &__portrait {
@@ -105,30 +112,59 @@ section {
     .blog {
         &__header {
             @include clearfix;
-            margin: 1.5rem 0;
+            margin: 0 0 1.5rem 0;
             display: block;
             position: relative;
         }
         &__title {
-            display: inline;
+            display: block;
             vertical-align: baseline;
-            font-size: 4rem;
-            font-weight: 300;
+            &--text {
+                font-size: 4rem;
+                font-weight: 300;
+            }
         }
         &__date {
             vertical-align: baseline;
             font-size: 2rem;
-            display: inline;
-            position: absolute;
-            right: 0;
-            bottom: 0;
+            display:block;
+            text-align: right;
         }
         &__content {
-            font-size: 1.6rem;
+            font-size: 2rem;
             text-align: justify;
             line-height: 1.7;
             p {
                 margin: 1rem 0;
+            }
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .new-pens {
+        width: 100%;
+        background-color: $color-secondary;
+        &__header {
+            display: block;
+            background: $color-tertiary;
+            border-radius: 2px;
+            text-align: center;
+            color: $text-light;
+            font-size: 1.8rem;
+            padding: 5px;
+        }
+        
+        &__display {
+            padding: .5rem .3rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+            &--thumbnail {
+                display: block;
+                width: 80%;
+                margin: .5rem auto;
+            }
+            &--title {
+                font-size: 1.6rem;
             }
         }
     }

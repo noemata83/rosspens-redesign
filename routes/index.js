@@ -1,14 +1,30 @@
 const express = require('express'),
       passport = require('passport'),
       User = require('../models/user'),
-      Pen = require('../models/pen');
+      Message = require('../models/message'),
+      Pen = require('../models/pen'),
+      isLoggedIn = require('../helpers/isLoggedIn');
 
     
 const router = express.Router();
 
 // Landing route
 router.get("/", (req, res) => {
-   res.render("landing"); 
+    Message.find({}).sort('-dateAdded').limit(1).exec((err, message) => {
+        if (err) {
+            res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
+        } else {
+            Pen.find().sort('-dateAdded').limit(3).exec((err, pens) => {
+                if (err) {
+                    res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
+                } else {
+                    res.render('landing', {message: message[0], pens: pens });
+                }
+            })
+                    
+        }
+    })
+    
 });
 
 // Admin account creation
@@ -69,12 +85,5 @@ router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
 });
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/admin');
-}
 
 module.exports = router;

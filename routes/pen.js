@@ -4,6 +4,7 @@ const Pen = require('../models/pen');
 const multer = require('multer');
 const upload = multer();
 const aws = require('aws-sdk');
+const isLoggedIn = require('../helpers/isLoggedIn');
 
 const s3 = new aws.S3();
 const S3_BUCKET = process.env.S3_BUCKET;
@@ -170,12 +171,5 @@ router.get("/:maker/:type", function(req, res){
         }
     }); 
 });
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/admin');
-}
 
 module.exports = router;
