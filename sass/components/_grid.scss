@@ -7,6 +7,10 @@
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
+        @media screen and (max-width: $break-small) {
+            // float:none;
+            width: 100%;
+        };
     }
     
     &__1-of-6 {
@@ -17,19 +21,35 @@
     &__2-of-6 {
         width: calc((2 * (100% - 5 * #{$gutter-horizontal}) / 6) + #{$gutter-horizontal});
     }
+    &__4-of-6 {
+        width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
+    }
     &__left-column {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
         position: relative;
         min-height: .1rem;
+        @media screen and (max-width: $break-small) {
+            order: 2;
+        }
     }
     
     &__center-column {
         width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
+        @media screen and (max-width: $break-small) {
+            order: 1;
+        }
     }
     
     &__right-column {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
         position: relative;
         min-height: .1rem;
+        @media screen and (max-width: $break-small) {
+             order: 3;   
+        }
     }
+    @media screen and (max-width: $break-small) {
+        display: flex;
+        flex-direction: column;
+    };
 }

@@ -1,6 +1,6 @@
  footer {
      font-size: 1.6rem;
-     padding: 2rem 2rem .5rem 2rem;
+     padding: 2rem 0 .5rem 0;
      position: relative;
      width: 100%;
      background-color: $color-tertiary;
@@ -10,6 +10,7 @@
       color: $text-light;
      }
      .copyright {
+      margin-top: 2rem;
       font-size: 1.2rem;
       text-align: right;
      }
@@ -22,9 +23,6 @@
       }
       &__header {
        padding: 1rem;
-      }
-      &__address {
-       
       }
      }
  }
