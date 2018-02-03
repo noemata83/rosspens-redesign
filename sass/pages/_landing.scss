@@ -60,13 +60,13 @@ section {
     padding: 3rem;
     &:nth-child(odd) {
         background-color: $color-secondary;
-        color: #eee;
+        color: $black;
     }
 }
 
 .news {
     @include clearfix;
-    max-width: $grid-width;
+   /* max-width: $grid-width; */
     margin: 0 auto;
     [class^="news__"] {
         float: left;
@@ -81,6 +81,8 @@ section {
     }
     &__left-column {
         width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        position: relative;
+        min-height: 300px;
     }
     
     &__center-column {
@@ -92,7 +94,11 @@ section {
     }
     
     &__portrait {
-        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
         height: auto;
     }
     
@@ -106,11 +112,12 @@ section {
         &__title {
             display: inline;
             vertical-align: baseline;
-            font-size: 3rem;
+            font-size: 4rem;
+            font-weight: 300;
         }
         &__date {
             vertical-align: baseline;
-            font-size: 1.6rem;
+            font-size: 2rem;
             display: inline;
             position: absolute;
             right: 0;

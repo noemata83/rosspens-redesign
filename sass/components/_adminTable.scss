@@ -1,0 +1,21 @@
+.adminTable {
+  margin: auto;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  width: 100%;
+  box-sizing: border-box;
+  th, td {
+      padding: 15px;
+      border: 1px solid gray;
+      border-collapse: collapse;
+  }
+    
+  td {
+      text-align: center;
+  }
+  
+  tr:nth-child(odd) {
+      background: lightgray;
+  }
+  
+}

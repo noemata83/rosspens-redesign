@@ -37,9 +37,9 @@
     <input class="form-control" type="text" name="pen[price]" id="itemprice" value="<%=pen.price%>">
     </div>
     <div class="form-group">
-        <div class="edit-gallery">
+        <div class="gallery__edit">
         <% pen.images.forEach(function(image) { %>
-            <div class="edit-item">
+            <div class="gallery__edit-item">
             <label class="image-checkbox">
             <input type="checkbox" name="image<%=pen.images.indexOf(image)%>" value="" />
             <% if (image !== "") { %>
