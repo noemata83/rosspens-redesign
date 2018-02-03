@@ -1,7 +1,30 @@
  footer {
-     padding: 2rem;
+     font-size: 1.6rem;
+     padding: 2rem 2rem .5rem 2rem;
      position: relative;
      width: 100%;
      background-color: $color-tertiary;
      color: $text-light;
+     a:link,
+     a:visited {
+      color: $text-light;
+     }
+     .copyright {
+      font-size: 1.2rem;
+      text-align: right;
+     }
+     .contact {
+      &__icon {
+       display: inline-block;
+       text-align: right;
+       width: 2rem;
+       margin: 0 1rem 0 0;
+      }
+      &__header {
+       padding: 1rem;
+      }
+      &__address {
+       
+      }
+     }
  }

@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
         if (err) {
             res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
         } else {
-            Pen.find().sort('-dateAdded').limit(3).exec((err, pens) => {
+            Pen.find().sort('-dateAdded').limit(5).exec((err, pens) => {
                 if (err) {
                     res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
                 } else {

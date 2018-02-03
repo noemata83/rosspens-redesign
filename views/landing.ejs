@@ -28,49 +28,76 @@
 <section class="ribbon"> 
 </section>
 <section>
-  <div class="news">
-    <div class="news__left-column">
+  <div class="grid">
+    <div class="grid__left-column">
+       <div class="new-pens">
+        <h2 class="new-pens__header">Latest Additions</h2>
+        <div class="new-pens__display">
+            <% pens.forEach(pen => { %>
+              <div class="new-pens__display--item">
+                <a href="/pens/<%=pen._id%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
+                <a class="new-pens__display--title" href="/pens/<%=pen._id%>"><%=pen.title%></a>
+              </div>
+            <% });%>
+              <div class="new-pens__display--item">
+                <a class="new-pens__display--title" href="/pens/whatsnew">See More...</a>
+              </div>
+        </div>
+      </div>
     </div>
-    <div class="news__center-column">
+    <div class="grid__center-column">
       <div class="blog__header">
         <div class="blog__title">
           <h2 class="blog__title--text"><%=message.title%></h2>
         </div>
-       
       </div>
-
-    </div>
-    <div class="news__right-column">
-    </div>
-  </div>
-  <div class="news">
-    <div class="news__left-column">
-      <div class="new-pens">
-        <h2 class="new-pens__header">Latest Additions</h2>  
-        <% pens.forEach(pen => { %>
-          <div class="new-pens__display">
-            <a href="/pens/<%=pen._id%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
-            <a class="new-pens__display--title" href="/pens/<%=pen._id%>"><%=pen.title%></a>
-          </div>
-        <% });%>
-          <div class="new-pens__display">
-            <a class="new-pens__display--title" href="/pens/whatsnew">See More...</a>
-          </div>
-      </div>
-    </div>
-    <div class="news__center-column">
-       <div class="blog__content">
+      <div class="blog__content">
         <%-message.content%>
-        </div>
-        <p class="blog__date"><%=message.dateAdded.toDateString()%></p>
+      </div>
+      <p class="blog__date">- Ross McKinney<br><%=message.dateAdded.toDateString()%></p>
     </div>
-    <div class="news__right-column">
-       <img class="news__portrait" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" />
+    <div class="grid__right-column">
+       <div class="portrait">
+         <img class="portrait__photo" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" />
+       </div>
+       <div class="right-content">
+         Some other content goes here.
+       </div>
     </div>
+
   </div>
+</div>
 
 </section>
-
+<footer>
+  <div class="contact__header">
+  <h2><i class="fas fa-address-card"></i> Contact:</h2>
+  </div>
+  <div class="grid">
+    <div class="grid__1-of-6">
+      <p><span class="contact__icon"><i class="fas fa-mobile"></i></span>919.308.0504</p>
+      <p><a href="mailto:ross@rosspens.com"><span class="contact__icon"><i class="fas fa-envelope"></i></span>ross@rosspens.com</a></p>
+      </div>
+    <div class="grid__2-of-6"> 
+      <div class="contact__address">
+        <p>Please mail any pens or payments to:</p>
+        <p>Ross McKinney, Jr.</p>
+        <p>2523 Charlock Court</p>
+        <p>Chapel Hill, NC 27514-9609</p>
+      </div>
+    </div>
+    <div class="grid__2-of-6">
+      <div class="contact__address">
+        <p>UPS/Fedex Address</p>
+        <p>Ross McKinney, Jr.</p>
+        <p>2523 Charlock Court</p>
+        <p>Chapel Hill, NC 27514-9609</p>
+      </div>  
+    </div>
+    <div class="grid__1-of-6"><a href="#">RossPens Site Policies</a></div>
+  </div>
+  <p class="copyright">Websited designed by Tucker McKinney, 2018.</p>
+</footer>
 
 
 <script src="assets/js/landing.js"></script>

@@ -57,7 +57,7 @@
 
 section {
     width: 100%;
-    padding: 3rem;
+    padding: 3rem 0;
     &:nth-child(odd) {
         background-color: $color-tertiary;
         color: $text-light;
@@ -68,48 +68,18 @@ section {
     padding: .5rem;
 }
 
-.news {
-    @include clearfix;
-   /* max-width: $grid-width; */
+.portrait {
+    display: block;
     margin: 0 auto;
-    [class^="news__"] {
-        float: left;
-        &:not(:last-child) {
-            margin-right: $gutter-horizontal;
-        }
+    width: 75%;
+    height: auto;
+    &__photo {
+        width: 100%;
     }
-    
-    &__1-of-6 {
-        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
-        height: 10rem;
-    }
-    &__left-column {
-        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
-        position: relative;
-        min-height: .1rem;
-    }
-    
-    &__center-column {
-        width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
-        padding: 1rem;
-    }
-    
-    &__right-column {
-        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
-        position: relative;
-        min-height: .1rem;
-    }
-    
-    &__portrait {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 75%;
-        height: auto;
-    }
-    
-    .blog {
+}
+
+
+.blog {
         &__header {
             @include clearfix;
             margin: 0 0 1.5rem 0;
@@ -126,6 +96,7 @@ section {
         }
         &__date {
             vertical-align: baseline;
+            line-height: 1.7;
             font-size: 2rem;
             display:block;
             text-align: right;
@@ -140,8 +111,14 @@ section {
             margin-bottom: 2rem;
         }
     }
-    
-    .new-pens {
+
+.right-content {
+    margin: 3rem 0;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.new-pens {
         width: 100%;
         background-color: $color-secondary;
         &__header {
@@ -155,17 +132,26 @@ section {
         }
         
         &__display {
-            padding: .5rem .3rem;
-            margin: 2rem 0;
-            border-radius: 5px;
+            font-size: 1.6rem;
+            padding: 1rem;
+            width: 100%;
+            &--item {
+                padding: .5rem .3rem;
+                margin: 2rem 0;
+                border-radius: 5px;
+            }
             &--thumbnail {
                 display: block;
-                width: 80%;
-                margin: .5rem auto;
+                width: 100%;
+                margin: 1rem 0;
             }
             &--title {
                 font-size: 1.6rem;
-            }
+                &:link,
+                &:visited {
+                    color: $text-dark;
+                    }
+                }
         }
+        
     }
-}

@@ -5,12 +5,16 @@ const       express     =   require('express'),
             router      =   express.Router();
             
 router.get('/', isLoggedIn, (req, res) => {
-    res.render('admin/newmessage');
+    Message.findOne({}, {}, { sort: { 'dateAdded' : -1 } }, function(err, message) {
+        res.render('admin/newmessage', { message: message });
+    });
 });
 
-router.post('/', isLoggedIn, (req,res) => {
+router.put('/', isLoggedIn, (req,res) => {
     req.body.message.content = req.sanitize(req.body.message.content);
-    Message.create(req.body.message, (err) => {
+    const id = req.body.message.id;
+    console.log(id);
+    Message.findByIdAndUpdate(id, req.body.message, (err) => {
         if (err) {
             res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
         } else {

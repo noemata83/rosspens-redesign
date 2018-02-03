@@ -1,0 +1,35 @@
+.grid {
+    @include clearfix;
+   /* max-width: $grid-width; */
+    [class^="grid__"] {
+        float: left;
+        padding: 1rem;
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+    
+    &__1-of-6 {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        min-height: .1rem;
+    }
+    
+    &__2-of-6 {
+        width: calc((2 * (100% - 5 * #{$gutter-horizontal}) / 6) + #{$gutter-horizontal});
+    }
+    &__left-column {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        position: relative;
+        min-height: .1rem;
+    }
+    
+    &__center-column {
+        width: calc(4 * ((100% - 5 * #{$gutter-horizontal}) / 6) + 3 * #{$gutter-horizontal});;
+    }
+    
+    &__right-column {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6);
+        position: relative;
+        min-height: .1rem;
+    }
+}
