@@ -20,8 +20,8 @@ function currentSlide(n) {
 function showSlides(n) {
     let i;
     const slides = document.getElementsByClassName('modal__slide');
-    console.dir(slides);
     const dots = document.getElementsByClassName('modal__demo');
+    const captionText = document.getElementById("caption");
     if (n > slides.length) { slideIndex = 1; }
     if (n < 1 ) { slideIndex = slides.length; }
     for (let i = 0; i < slides.length; i++) {
@@ -32,4 +32,5 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " modal__demo--active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
 }

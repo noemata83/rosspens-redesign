@@ -75,7 +75,7 @@ section {
     height: auto;
     &__photo {
         width: 100%;
-        @media screen and (max-width: $break-large) {
+        @include respond(tab-port) {
             display: block;
             width: 50%;
             margin: 0 auto;
@@ -126,6 +126,10 @@ section {
 .new-pens {
         width: 100%;
         background-color: $color-secondary;
+        
+        @include respond(tab-port) {
+            margin-bottom: 2rem;
+        }
         &__header {
             display: block;
             background: $color-tertiary;
@@ -157,7 +161,7 @@ section {
                     color: $text-dark;
                     }
             }
-            @media screen and (max-width: $break-large) {
+            @include respond(tab-port) {
                 width: 75%;
                 margin: 0 auto;
             }
