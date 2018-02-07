@@ -4,9 +4,9 @@
     <div class="pen">
         <div class="pen__main">
             <div class="pen__gallery">
-            <% pen.images.forEach(function(image){ %>
+            <% pen.images.forEach(function(image, index){ %>
                 <div class="item--large">
-                    <img class="thumbnail" src="<%=image %>">            
+                    <img class="thumbnail pen__thumbnail" onclick="openModal(); currentSlide(<%=index%>)" src="<%=image %>">            
                 </div>
             <% }); %>
             </div>
@@ -25,6 +25,32 @@
             <% } %>
         </div>
     </div>
+    <div class="modal" id="penModal">
+        <span class="modal__close cursor" onClick="closeModal()">&times;</span>
+        <div class="modal__content">
+             <% pen.images.forEach(function(image, index){ %>
+                 <div class="modal__slide">
+                    <div class="modal__slide--numbertext">
+                        <%=index + 1 %> / <%=pen.images.length %>
+                    </div>
+                    <img src="<%=image%>" class="modal__image">
+                </div>
+            <% }); %>
+            <a class="modal__prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="modal__next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="modal__caption-container">
+                <p id="caption"></p>
+            </div>
+            <% pen.images.forEach(function(image, index) { %>
+                <div class="modal__column">
+                    <img class="modal__demo" src="<%=image%>" onclick="currentSlide(<%=index+1%>)" alt="<%=pen.title%>">
+                </div>
+            <% }); %>
+        </div>
+    </div>
 </div>
+
+<script src="../assets/js/modal.js"></script>
+
 
 <% include partials/footer %>

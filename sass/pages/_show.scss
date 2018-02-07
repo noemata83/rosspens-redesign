@@ -27,4 +27,14 @@
           float: right;
       }
   }
+  &__thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    transition: all .3s;
+    
+    &:hover {
+      box-shadow: 0 .4rem .8rem 0 rgba($black, .2), 0 .6rem 2rem 0 rgba($black, .19);  
+    }
+  }
 }
