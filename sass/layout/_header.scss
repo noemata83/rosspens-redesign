@@ -18,6 +18,58 @@ nav {
             cursor: pointer;
         }
     }
+    .menu-button {
+      height: 3.6rem;
+      width: 4rem;
+      display: none;
+      border: 1px solid #f5f5f5;
+      border-radius: 5px;
+      position: relative;
+      text-align: center;
+      @include respond(tab-port) {
+        vertical-align: text-bottom;
+        margin: 0px 10px;
+        display: inline-block;
+      }
+    }
+    
+    .menu-bar {
+        margin-top: 1.7rem;
+        position: relative;
+        &,
+        &:before,
+        &:after {
+            width: 3rem;
+            height: 2px;
+            background-color: $text-light;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+        
+        &::before { top: -.8rem; }
+        &::after {top: .8rem; }
+    }
+    
+    .change .menu-bar::before{
+        top: 0;
+        transform: rotate(135deg);
+    }
+    
+    .change .menu-bar {
+      background-color: transparent;
+    }
+    
+    .change .menu-bar::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
 }
 
 .brand {
@@ -27,28 +79,14 @@ nav {
   margin: 0px 4rem 0px 1rem;
 }
 
-#menu-button {
-  display: none;
-  border: 1px solid #f5f5f5;
-  border-radius: 5px;
-  padding: 1px;
-  
-}
+
 
 #collapsible {
   flex-basis: 75%;
   flex-grow: 1;
   display: flex;
   justify-content: space-around;
-}
-
-.menu-bar1, .menu-bar2, .menu-bar3 {
-    width: 3.5rem;
-    height: 0.5rem;
-    background-color: $text-light;
-    margin: 0.3rem;
-    transition: 0.4s all;
-    border-radius: 1rem;
+  transition: all .3s;
 }
 
 .menu-item {
@@ -129,24 +167,4 @@ nav {
   z-index: 1;
   transform: translateY(9px);
   transition-delay: 0s, 0s, 0.3s;
-}
-
-
-/* Menu Button Animations */
-
-/* Rotate first bar */
-.change .menu-bar1 {
-    -webkit-transform: rotate(-45deg) translate(-6px, 6px) ;
-    transform: rotate(-45deg) translate(-6px, 6px) ;
-}
-
-/* Fade out the second bar */
-.change .menu-bar2 {
-    opacity: 0;
-}
-
-/* Rotate last bar */
-.change .menu-bar3 {
-    -webkit-transform: rotate(45deg) translate(-6px, -8px) ;
-    transform: rotate(45deg) translate(-6px, -8px) ;
 }

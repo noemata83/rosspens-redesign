@@ -2,7 +2,7 @@
 
 <div class="main">
     <div class="pen">
-        <div class="pen__main">
+        <div class="pen__sidebar">
             <div class="pen__gallery">
             <% pen.images.forEach(function(image, index){ %>
                 <div class="item--large">
@@ -11,18 +11,20 @@
             <% }); %>
             </div>
         </div>
-        <div class="pen__sidebar">
-            <h1 class="pen__title"><%= pen.title %></h1>
-            <p><%= pen.description %><br/>$<%=pen.price %></p>
-            <% if (!currentUser) { %>
-            <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="button button--primary">Inquire</a>
-            <% } %>
-            <% if (currentUser && currentUser.admin === true) { %>
-            <a href="/pens/<%=pen._id%>/edit" class="button button--warning button-inline">EDIT</a>
-            <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
-                <button class="button button--danger">DELETE</button>
-            </form>
-            <% } %>
+        <div class="pen__main">
+            <div class="pen__info">
+                <h1 class="pen__title"><%= pen.title %></h1>
+                <p><%= pen.description %><br/>$<%=pen.price %></p>
+                <% if (!currentUser) { %>
+                <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="button button--primary">Inquire</a>
+                <% } %>
+                <% if (currentUser && currentUser.admin === true) { %>
+                <a href="/pens/<%=pen._id%>/edit" class="button button--warning button-inline">EDIT</a>
+                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
+                    <button class="button button--danger">DELETE</button>
+                </form>
+                <% } %>
+            </div>
         </div>
     </div>
     <div class="modal" id="penModal">

@@ -7,18 +7,34 @@
   &__title {
       
   }
-  &__sidebar {
+  &__main {
     flex-basis: 70%;
+    position: relative;
     p {
         font-size: 2rem;
         line-height: 1.7;
         margin: 2rem 0;
     }
+    @include respond(tab-port) {
+      margin: 2rem;
+    }
   }
-  &__main {
+  &__info {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    @include respond(tab-port) {
+      position: relative;
+      transform: translateY(0);
+    }
+  }
+  &__sidebar {
       flex-basis: 30%;
       margin: 0 2rem;
-
+      @include respond(tab-port) {
+        margin-bottom: 3rem;
+      }
   }
   &__gallery {
       height: 100%;
@@ -36,5 +52,9 @@
     &:hover {
       box-shadow: 0 .4rem .8rem 0 rgba($black, .2), 0 .6rem 2rem 0 rgba($black, .19);  
     }
+  }
+  
+  @include respond(tab-port) {
+    flex-direction: column;
   }
 }

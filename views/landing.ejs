@@ -46,16 +46,18 @@
       </div>
     </div>
     <div class="grid__center-column">
-      <div class="blog__header">
-        <div class="blog__title">
-          <h2 class="blog__title--text"><%=message.title%></h2>
+      <div class="blog">
+        <div class="blog__header">
+          <div class="blog__title">
+            <h2 class="blog__title--text"><%=message.title%></h2>
+          </div>
         </div>
+        <div class="blog__content">
+          <%-message.content%>
+        </div>
+        <p class="blog__date">- Ross McKinney<br><%=message.dateAdded.toDateString()%></p>
       </div>
-      <div class="blog__content">
-        <%-message.content%>
-      </div>
-      <p class="blog__date">- Ross McKinney<br><%=message.dateAdded.toDateString()%></p>
-    </div>
+    </div>    
     <div class="grid__right-column">
        <div class="portrait">
          <img class="portrait__photo" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" />
@@ -71,22 +73,24 @@
 </section>
 <footer>
   <div class="grid">
-    <div class="grid__1-of-6"></div>
-    <div class="grid__4-of-6">
+    <div class="grid__1-of-5"></div>
+    <div class="grid__1-of-5">
         <div class="contact__header">
           <h2><i class="fas fa-address-card"></i> Contact:</h2>
         </div>
     </div>
-    <div class="grid__1-of-6"></div>
+    <div class="grid__1-of-5"></div>
+    <div class="grid__1-of-5"></div>
+    <div class="grid__1-of-5"></div>
   </div>
   </div>
   <div class="grid">
-    <div class="grid__1-of-6"></div>
-    <div class="grid__2-of-6"> 
+    <div class="grid__1-of-5"></div>
+    <div class="grid__1-of-5"> 
       <p><span class="contact__icon"><i class="fas fa-mobile"></i></span>919.308.0504</p>
       <p><a href="mailto:ross@rosspens.com"><span class="contact__icon"><i class="fas fa-envelope"></i></span>ross@rosspens.com</a></p>
     </div>
-    <div class="grid__2-of-6">
+    <div class="grid__2-of-5">
        <div class="contact__address">
         <p>Please mail any pens or payments to:</p>
         <p>Ross McKinney, Jr.</p>
@@ -94,7 +98,8 @@
         <p>Chapel Hill, NC 27514-9609</p>
       </div>
     </div>
-    <div class="grid__1-of-6"></div>
+    <div class="grid__1-of-5"></div>
+    <div class="grid__1-of-5"></div>
   </div>
   <p class="copyright">Websited designed by Tucker McKinney, 2018.</p>
 </footer>
