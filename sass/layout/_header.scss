@@ -73,9 +73,7 @@ nav {
     }
     
     .grid {
-      background-color: inherit;
       [class^="grid__"] {
-        background-color: inherit;
         float: left;
         padding: 0rem;
         height: 100%;
@@ -90,7 +88,6 @@ nav {
       }
     }
     #collapsible {
-      background-color: inherit;
       height: 5rem;
       display: flex;
       justify-content: space-around;
@@ -114,26 +111,23 @@ nav {
       margin: 0px 4rem 0px 1rem;
     }
     .menu-item {
-      background-color: inherit;
       color: $text-light;
       display: inline-block;
       font-size: 2.5rem;
       margin-top: 2rem;
     }
+    
 }
 
 .dropdown {
-  background-color: inherit;
   display: inline-block;
   position:relative;
   &__btn {
     display: inline;
     border: none;
-    background: none;
   }
   
   &__content {
-    background-color: inherit;
     box-sizing: border-box;
     display: none;
     flex-direction: column;
@@ -164,6 +158,7 @@ nav {
   }
   
   &__list {
+    background: $color-primary;
     width: 40rem;
     /*display: flex;*/
     /*flex-direction: column;*/
@@ -194,14 +189,10 @@ nav {
     }
   }
 }
-
-
-
-
-.show {
-  display: block;
-  opacity: 1;
-  z-index: 1;
-  transform: translateY(6px);
-  transition-delay: 0s, 0s, 0.3s;
-}
+  .show {
+    display: block;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(6px);
+    transition-delay: 0s, 0s, 0.3s;
+  }

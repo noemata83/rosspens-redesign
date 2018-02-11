@@ -448,21 +448,17 @@ nav {
   nav .change .menu-bar::after {
     top: 0;
     transform: rotate(-135deg); }
-  nav .grid {
-    background-color: inherit; }
-    nav .grid [class^="grid__"] {
-      background-color: inherit;
-      float: left;
-      padding: 0rem;
-      height: 100%; }
-      nav .grid [class^="grid__"]:not(:last-child) {
-        margin-right: 1.5rem; }
-      @media (max-width: 75em) {
-        nav .grid [class^="grid__"] {
-          width: 100%;
-          padding: 0; } }
+  nav .grid [class^="grid__"] {
+    float: left;
+    padding: 0rem;
+    height: 100%; }
+    nav .grid [class^="grid__"]:not(:last-child) {
+      margin-right: 1.5rem; }
+    @media (max-width: 75em) {
+      nav .grid [class^="grid__"] {
+        width: 100%;
+        padding: 0; } }
   nav #collapsible {
-    background-color: inherit;
     height: 5rem;
     display: flex;
     justify-content: space-around;
@@ -481,22 +477,18 @@ nav {
     font-size: 4rem;
     margin: 0px 4rem 0px 1rem; }
   nav .menu-item {
-    background-color: inherit;
     color: #e2e4e3;
     display: inline-block;
     font-size: 2.5rem;
     margin-top: 2rem; }
 
 .dropdown {
-  background-color: inherit;
   display: inline-block;
   position: relative; }
   .dropdown__btn {
     display: inline;
-    border: none;
-    background: none; }
+    border: none; }
   .dropdown__content {
-    background-color: inherit;
     box-sizing: border-box;
     display: none;
     flex-direction: column;
@@ -523,6 +515,7 @@ nav {
         position: relative;
         width: 100%; } }
   .dropdown__list {
+    background: #334749;
     width: 40rem;
     /*display: flex;*/
     /*flex-direction: column;*/ }
