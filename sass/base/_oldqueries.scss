@@ -1,44 +1,20 @@
 @media all and (max-width: 991px) {
-  nav {
-    position: relative;
-    display: block;
-  }
-  .main {
-    padding: 0;
-  }
   /*.header h2 {*/
   /*  font-size: 32px;*/
   /*}*/
   /*.menu-item {*/
   /*  font-size: 16px;*/
   /*}*/
-  #menu-button {
-    vertical-align: text-bottom;
-    margin: 0px 10px;
-    display: inline-block;
-  }
-  #collapsible {
-    display: none;
-  }
-  #collapsible.expanded, #collapsible.expanded a {
-    display: block;
-  }
+  // #collapsible.expanded, #collapsible.expanded a {
+  //   display: block;
+  // }
   .menu-item {
     margin: 3px 3px;
-  }
- .dropdown-content {
-    position: relative;
-    width: 100%;
-  }
-  .dropdown-list {
-    width: 100%;
   }
   /*.dropdown-content li a {*/
   /*  font-size: 14px;*/
   /*}*/
-  .dropdown-columns {
-    display: flex;
-  }
+
   .item {
     flex-basis: 40%;
     max-width: none;

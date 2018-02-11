@@ -47,6 +47,15 @@
     &__4-of-5 {
         width: calc((4 * (100% - 4 * #{$gutter-horizontal}) / 5) + 3 * #{$gutter-horizontal});
     }
+    
+    &__1-of-6 {
+        width: calc((100% - 5 * #{$gutter-horizontal}) / 6 );
+    }
+    &__5-of-6 {
+        width: calc((5 *(100% - 5 * #{$gutter-horizontal}) / 6) + 4 * #{$gutter-horizontal});
+    }
+  
+      
   
   
     &__left-column {

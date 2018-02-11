@@ -12,54 +12,67 @@
   </head>
   <body>
     <nav>
-      <div id="menu-button" class="menu-button" onclick="expandMenu(this)">
-        <div class="menu-bar"></div>
-      </div>
-      <div class="brand">
-        <a href="/">Rosspens</a>
-      </div>
-      <div id="collapsible">
-        <div class="menu-item">
-          <a href="/pens/whatsnew">What's New</a>
+      <div class="grid">
+        <div class="grid__1-of-6">
+          <div id="menu-button" class="menu-button" onclick="expandMenu(this)">
+            <div class="menu-bar"></div>
+          </div>          
+          <div class="brand">
+            <a href="/">Rosspens</a>
+          </div>
         </div>
-        <div class="menu-item dropdown">
-           <a class="dropdown-btn" onclick="showBrowse()">Vintage Pens</a>
-            <div id="BrowsePens" class="dropdown-content">
-              <div class="dropdown-list">
-                <div class="dropdown-columns">
-                  <div class="dropdown-sub-list">
-                    <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
-                    <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
-                    <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
-                    <li><a href="/pens/Parker/vintage">Parker</a></li>
-                    <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
-                  </div>
-                  <div class="dropdown-sub-list">
-                    <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
-                    <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
-                    <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
-                    <li><a href="/pens/Waterman/vintage">Waterman</a></li>
-                    <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
+        <div id="collapsible" class="grid__5-of-6">
+          <div class="grid__1-of-4">
+            <div class="menu-item">
+              <a href="/pens/whatsnew">What's New</a>
+            </div>
+          </div>
+          <div class="grid__1-of-4">
+            <div class="menu-item dropdown">
+               <a class="dropdown__btn" onclick="showBrowse()">Vintage Pens</a>
+                <div id="BrowsePens" class="dropdown__content">
+                  <div class="dropdown__list">
+                    <div class="dropdown__columns">
+                      <div class="dropdown__sub-list">
+                        <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
+                        <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
+                        <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
+                        <li><a href="/pens/Parker/vintage">Parker</a></li>
+                        <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
+                      </div>
+                      <div class="dropdown__sub-list">
+                        <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
+                        <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
+                        <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
+                        <li><a href="/pens/Waterman/vintage">Waterman</a></li>
+                        <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
           </div>
-        </div>
-        <div class="menu-item">
-          <a href="/pens/type/modern">Modern Pens</a>
-        </div>
-        <div class="menu-item dropdown">
-          <a onclick="showExplore()" class="dropdown-btn">Explore</a>
-            <div id="ExplorePens" class="dropdown-content">
-              <ul class="dropdown-list">
-                <% articles.forEach(article => { %>
-                <li><a href=<%=`/about/${encodeURI(article.title)}/`%>><%=article.title%></a></li>
-                <!--<li><a href="/about/tpc">Triangle Pen Club</a></li>-->
-                <!--<li><a href="/about/moore">Moore Pen History</a></li>-->
-                <% }); %>
-              </ul>
+          <div class="grid__1-of-4">
+            <div class="menu-item">
+              <a href="/pens/type/modern">Modern Pens</a>
             </div>
-        </div>
+          </div>
+          <div class="grid__1-of-4">
+            <div class="menu-item dropdown">
+              <a onclick="showExplore()" class="dropdown__btn">Explore</a>
+              <div id="ExplorePens" class="dropdown__content">
+                <ul class="dropdown__list">
+                  <% articles.forEach(article => { %>
+                  <li><a href=<%=`/about/${encodeURI(article.title)}/`%>><%=article.title%></a></li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="grid__1-of-6">
+            &nbsp;
+          </div>
+        <!--</div>-->
       </div>
-</nav>
+    </nav>
 
