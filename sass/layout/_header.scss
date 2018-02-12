@@ -133,9 +133,9 @@ nav {
   
   &__content {
     box-sizing: border-box;
-    display: none;
     flex-direction: column;
     opacity: 0;
+    visibility: hidden;
     position: absolute;
     top: 100%;
     left: -1rem;
@@ -196,6 +196,7 @@ nav {
   .show {
     display: block;
     opacity: 1;
+    visibility: visible;
     z-index: 1;
     transform: translateY(6px);
     transition-delay: 0s, 0s, 0.3s;
