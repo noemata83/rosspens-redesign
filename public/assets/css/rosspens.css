@@ -396,10 +396,9 @@ input[type="checkbox"] {
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: #334749;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   width: 100%;
   color: #e2e4e3;
   z-index: 1000;
@@ -506,6 +505,9 @@ nav {
     transform: translateY(-2.1em);
     z-index: 1;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s; }
+    @media (max-width: 56.25em) {
+      .dropdown__content {
+        display: none; } }
     .dropdown__content a {
       font-size: 1.6rem;
       border-style: none;
@@ -557,7 +559,7 @@ nav {
   padding: 8rem 0px 0px 0px;
   margin: 0px 0px;
   position: relative; }
-  @media (max-width: 75em) {
+  @media (max-width: 56.25em) {
     .main {
       padding: 0; } }
 

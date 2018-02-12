@@ -1,9 +1,8 @@
 nav {
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: $color-primary;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
     width: 100%;
     color: $text-light;
     z-index:1000;
@@ -136,6 +135,9 @@ nav {
     flex-direction: column;
     opacity: 0;
     visibility: hidden;
+    @include respond(tab-port) {
+      display: none;
+    }
     position: absolute;
     top: 100%;
     left: -1rem;
