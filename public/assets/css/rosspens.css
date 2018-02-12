@@ -404,7 +404,7 @@ nav {
   color: #e2e4e3;
   z-index: 1000;
   padding: 0 1rem .5rem 1rem; }
-  @media (max-width: 75em) {
+  @media (max-width: 56.25em) {
     nav {
       position: relative;
       display: block; } }
@@ -421,7 +421,7 @@ nav {
     border-radius: 5px;
     position: relative;
     text-align: center; }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       nav .menu-button {
         vertical-align: text-bottom;
         margin: 0px 10px;
@@ -457,7 +457,7 @@ nav {
     height: 100%; }
     nav .grid [class^="grid__"]:not(:last-child) {
       margin-right: 1.5rem; }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       nav .grid [class^="grid__"] {
         width: 100%;
         padding: 0; } }
@@ -466,7 +466,7 @@ nav {
     display: flex;
     justify-content: space-around;
     transition: all .3s; }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       nav #collapsible {
         height: auto;
         display: none; } }
@@ -488,6 +488,9 @@ nav {
 .dropdown {
   display: inline-block;
   position: relative; }
+  @media (max-width: 56.25em) {
+    .dropdown {
+      width: 100%; } }
   .dropdown__btn {
     display: inline;
     border: none; }
@@ -513,22 +516,22 @@ nav {
       text-align: left; }
       .dropdown__content a:hover {
         color: #C5B799; }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       .dropdown__content {
         position: relative;
         width: 100%; } }
   .dropdown__list {
-    background-color: #334749;
+    background: #334749;
     width: 40rem;
     /*display: flex;*/
     /*flex-direction: column;*/ }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       .dropdown__list {
         width: 100%; } }
   .dropdown__sub-list {
     flex-basis: 50%;
     width: 20rem; }
-    @media (max-width: 75em) {
+    @media (max-width: 56.25em) {
       .dropdown__sub-list a {
         display: block; } }
     @media (max-width: 56.25em) {
@@ -550,10 +553,10 @@ nav {
   transition-delay: 0s, 0s, 0.3s; }
 
 .main {
-  padding: 80px 0px 0px 0px;
+  padding: 8rem 0px 0px 0px;
   margin: 0px 0px;
   position: relative; }
-  @media (max-width: 56.25em) {
+  @media (max-width: 75em) {
     .main {
       padding: 0; } }
 

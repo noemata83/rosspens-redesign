@@ -1,8 +1,8 @@
 .main {
-  padding: 80px 0px 0px 0px;
+  padding: 8rem 0px 0px 0px;
   margin: 0px 0px;
   position: relative;
-  @include respond(tab-port) {
+  @include respond(tab-land) {
     padding: 0;
   }
 }
