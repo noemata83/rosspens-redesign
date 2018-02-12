@@ -1,5 +1,5 @@
 var nav = document.querySelector('nav');
-var dropdowns = document.querySelectorAll('.dropdown-list');
+var dropdowns = document.querySelectorAll('.dropdown__list');
 
 if (window.innerWidth >= 1050) {
     nav.style.backgroundColor = "rgba(51,71,73, 0.8)";

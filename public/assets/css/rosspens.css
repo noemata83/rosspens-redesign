@@ -57,7 +57,10 @@ a {
   text-decoration: none; }
 
 li {
-  list-style-type: none; }
+  list-style: none;
+  list-style-type: none;
+  list-style-position: outside;
+  overflow: hidden; }
 
 body {
   font-family: 'Montserrat', sans-serif; }
@@ -515,7 +518,7 @@ nav {
         position: relative;
         width: 100%; } }
   .dropdown__list {
-    background: #334749;
+    background-color: #334749;
     width: 40rem;
     /*display: flex;*/
     /*flex-direction: column;*/ }
