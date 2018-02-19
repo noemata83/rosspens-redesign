@@ -1,0 +1,31 @@
+.image-menu {
+    font-size: 1.6rem;
+    position: absolute;
+    top: 0;
+    height: 78vh;
+    &__display {
+        overflow: auto;
+    }
+    
+    &__form {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+       
+        &--input {
+        visibility: hidden;
+        height: 0;
+        }     
+    }
+    
+    &__thumbnail {
+        width: 50%;
+    }
+   
+}
+
+.show-form {
+            visibility: visible;
+            height: auto;
+            margin: 1rem 0;
+        }

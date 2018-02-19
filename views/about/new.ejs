@@ -1,22 +1,49 @@
 <% include ../partials/header %>
 
 <div class="main">
-    <h1>Add a New Info Page</h1>
-     <form action="/about" method="POST">
-        <div class="form-group">
-            <label for="articletitle">Display Title (shown in navigation bar): </label>
-            <input class="form-control" id="articletitle" type="text" name="article[title]" placeholder="(Short) Title">
+    <div class="grid">
+        <div class="grid__2-of-3">
+            <h1>Add a New Info Page</h1>
+             <form action="/about" method="POST">
+                <div class="form-group">
+                    <label for="articletitle">Display Title (shown in navigation bar): </label>
+                    <input class="form-control" id="articletitle" type="text" name="article[title]" placeholder="(Short) Title">
+                </div>
+                <div class="form-group">
+                    <label for="articlefulltitle">Full Title (shown on article page): </label>
+                    <input class="form-control" type="text" name="article[longTitle]" id="articlefulltitle" placeholder="Complete Title">
+                </div>
+                <div class="form-group">
+                    <label for="articlecontent">Article Content (HTML markup allowed; no Javascript!): </label>
+                    <textarea class="form-control" style="height: 250px" name="article[content]" id="articlecontent"></textarea>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
         </div>
-        <div class="form-group">
-            <label for="articlefulltitle">Full Title (shown on article page): </label>
-            <input class="form-control" type="text" name="article[longTitle]" id="articlefulltitle" placeholder="Complete Title">
+        <div class="grid__1-of-3" style="position: relative;">
+            <div class="image-menu">
+                <div class="image-menu__display">
+                    <h3 class="image-menu__instructions">Click an image below to copy the HTML snippet to the clipboard:</h3>  
+                </div>
+                <div class="image-menu__form">
+                    <div class="image-menu__form--toggle">
+                        <button class="button" onClick="fileInputToggle()">Add Images</button>
+                    </div>
+                    <div class="image-menu__form--input">
+                        <form id="articleImageUpload" action="/about/images" method="POST" enctype="multipart/form-data">
+                            <input type="file" id="articleImages" />
+                            <input type="hidden" id="imageURLs" name="imageURLs" value="" />
+                            <input type="submit" value="Upload Images" class="button" />
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="articlecontent">Article Content (HTML markup allowed; no Javascript!): </label>
-            <textarea class="form-control" style="height: 250px" name="article[content]" id="articlecontent"></textarea>
-        </div>
-        <input class="btn btn-primary" type="submit" value="Submit">
-    </form>
+    </div>
+    
 </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/assets/js/article.js"></script>
 
 <% include ../partials/footer %>

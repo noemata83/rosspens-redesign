@@ -223,12 +223,13 @@ input[type="checkbox"] {
   border-radius: 10px; }
 
 .adminTable {
-  margin: auto;
+  margin: 3rem auto;
   border: 1px solid gray;
   border-collapse: collapse;
   width: 100%;
   box-sizing: border-box; }
   .adminTable th, .adminTable td {
+    font-size: 1.6rem;
     padding: 15px;
     border: 1px solid gray;
     border-collapse: collapse; }
@@ -236,6 +237,13 @@ input[type="checkbox"] {
     text-align: center; }
   .adminTable tr:nth-child(odd) {
     background: lightgray; }
+
+.adminNav {
+  font-size: 2.5rem;
+  font-weight: normal;
+  display: block;
+  text-align: center;
+  margin: 2rem auto; }
 
 .adminDash {
   font-size: 2.5rem;
@@ -393,6 +401,28 @@ input[type="checkbox"] {
       opacity: 1; }
     .modal__demo:hover {
       opacity: 1; }
+
+.image-menu {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0;
+  height: 78vh; }
+  .image-menu__display {
+    overflow: auto; }
+  .image-menu__form {
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .image-menu__form--input {
+      visibility: hidden;
+      height: 0; }
+  .image-menu__thumbnail {
+    width: 50%; }
+
+.show-form {
+  visibility: visible;
+  height: auto;
+  margin: 1rem 0; }
 
 nav {
   position: fixed;

@@ -24,9 +24,9 @@
                  <td><%=pen.nib%></td>
                  <td>$<%=pen.price%></td>
                  <td><%=pen.dateAdded.toLocaleDateString("en-US")%></td>
-                 <td><a class="btn inline-btn" href=<%=`/pens/${pen._id}/edit`%>>EDIT</a></td>
+                 <td><a class="button button--inline" href=<%=`/pens/${pen._id}/edit`%>>EDIT</a></td>
                  <td><form action=<%=`/pens/${encodeURI(pen._id)}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
-                    <input class="btn inline-btn" type="submit" value="DELETE" />
+                    <input class="button button--inline" type="submit" value="DELETE" />
                   </form></td>
             </tr>
         <% }); %>

@@ -14,9 +14,10 @@
                  <td><a href=<%=`/about/${encodeURI(article.title)}`%>><%=article.title%></a></td>
                  <td><a href=<%=`/about/${encodeURI(article.title)}`%>><%=article.longTitle%></a></td>
                  <td><%=article.dateAdded.toLocaleDateString("en-US")%></td>
-                 <td><a class="btn inline-btn" href=<%=`/about/${encodeURI(article.title)}/edit`%>>EDIT</a></td>
+                 <td><a class="button button--inline" href=<%=`/about/${encodeURI(article.title)}/edit`%>>EDIT</a></td>
                  <td>
-                 
+                     <form action=<%=`/pens/${encodeURI(article.title)}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
+                    <input class="button button--inline" type="submit" value="DELETE" /></form>
                   </td>
             </tr>
         <% }); %>

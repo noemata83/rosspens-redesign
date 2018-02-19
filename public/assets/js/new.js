@@ -1,3 +1,7 @@
+var imageURLs = [];
+var fileUploads = [];
+document.querySelector('form').addEventListener("submit", submit);
+
 function submit(event) {
     event.preventDefault();
     const files = document.getElementById('itemimages').files;
@@ -39,7 +43,3 @@ function uploadFile(file, signedRequest, url, options) {
     })
     .catch( error => alert("There was an error uploading the file: " + error));
 }
-
-var imageURLs = [];
-var fileUploads = [];
-document.querySelector('form').addEventListener("submit", submit);

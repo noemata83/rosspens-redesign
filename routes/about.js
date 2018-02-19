@@ -3,7 +3,10 @@ const express = require('express'),
       Article = require('../models/article'),
       router = express.Router(),
       getTitles = require('../helpers/getTitles'),
-      isLoggedIn = require('../helpers/isLoggedIn');
+      isLoggedIn = require('../helpers/isLoggedIn'),
+      Figure = require('../models/figure');
+const multer = require('multer');
+const upload = multer();
       
 router.get('/', isLoggedIn, (req, res) => {
     Article.find({}, (err, articles) => {
@@ -32,6 +35,34 @@ router.post('/', isLoggedIn, (req, res) => {
         }
     });
 });
+
+router.get('/images', isLoggedIn, (req,res) => {
+    Figure.find({}, (err, images) => {
+        if (err) {
+            res.send("Something went wrong: ", err);
+        } else {
+            res.json(images);
+        }
+    });
+});
+
+router.post('/images', upload.array('image'), isLoggedIn, (req, res) => {
+    Figure.create({ URL: req.body.imageURLs}, (err) => {
+                if(err) {
+                    res.send("Something went wrong: ", err);
+                } else {
+                    res.redirect('/about/new');
+                }
+            });
+    });
+
+    // Figure.create(req.body.image, (err, image) => {
+    //     if (err) {
+    //         res.send("Something went wrong: ", err);
+    //     } else {
+    //         res.end();
+    //     }
+    // });
 
 router.get('/:title', (req, res) => {
     const title = decodeURI(req.params.title);
