@@ -2,15 +2,18 @@
     font-size: 1.6rem;
     position: absolute;
     top: 0;
-    height: 78vh;
+    min-height: 78vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
     &__display {
         overflow: auto;
+        flex-basis: 85%;
+        flex-grow: 1;
     }
     
     &__form {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        flex-basis: 15%;
        
         &--input {
         visibility: hidden;
@@ -20,6 +23,9 @@
     
     &__thumbnail {
         width: 50%;
+        display: block;
+        object-fit: contain;
+        margin: 1rem auto;
     }
    
 }
