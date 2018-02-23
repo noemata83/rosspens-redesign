@@ -419,6 +419,23 @@ input[type="checkbox"] {
     .image-menu__form--input {
       visibility: hidden;
       height: 0; }
+  .image-menu__container {
+    position: relative; }
+    .image-menu__container--tooltip {
+      visibility: hidden;
+      width: 12rem;
+      background-color: yellow;
+      color: black;
+      text-align: center;
+      padding: .5rem 0;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 50%; }
+    .image-menu__container:hover .image-menu__container--tooltip {
+      visibility: visible; }
   .image-menu__thumbnail {
     width: 50%;
     display: block;

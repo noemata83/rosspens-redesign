@@ -55,11 +55,20 @@ function getAndDisplayImages() {
     axios.get('/about/images')
         .then(res => {
             res.data.forEach(image => {
-                console.log(image.URL);
+                console.log(image);
+                let imageContainer = document.createElement('div');
+                document.querySelector('.image-menu__display').appendChild(imageContainer);
+                imageContainer.classList.add('image-menu__container');
+                
+                let imageTooltip = document.createElement('span');
+                imageTooltip.textContent = "Click to copy snippet";
+                imageContainer.appendChild(imageTooltip);
+                imageTooltip.classList.add('image-menu__container--tooltip');
+                
                 let imageNode = document.createElement('img');
                 imageNode.setAttribute('src', image.URL);
                 imageNode.addEventListener('click', copyImage);
-                document.querySelector('.image-menu__display').appendChild(imageNode);
+                imageContainer.appendChild(imageNode);
                 imageNode.classList.add('image-menu__thumbnail')
 
             });
@@ -74,7 +83,9 @@ function copyImage(e) {
 <img class="article__img" src="${e.target.src}" />\n
 <figcaption class="article__figure--caption">ENTER CAPTION HERE</figcaption>\n
 </figure>`;
-    console.log(snippet);
+    let toolTip = e.target.previousSibling;
+    toolTip.innerText = "Copied!";
+    setTimeout(() => { toolTip.innerText = "Click to copy snippet"}, 5000);
     copyToClipboard(snippet);
 }
 
