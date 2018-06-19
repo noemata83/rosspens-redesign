@@ -114,7 +114,6 @@ router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
             }
             if (req.body.newimages) {
                 req.body.newimages.split(',').forEach((imageURL) => images.push(imageURL));
-                console.log(images);
             }
             var penUpdates = req.body.pen;
             penUpdates.images = [...images];

@@ -703,7 +703,7 @@ footer {
 
 section {
   width: 100%;
-  padding: 3rem 0; }
+  padding: 7rem; }
   section:nth-child(odd) {
     background-color: #252c34;
     color: #e2e4e3; }
@@ -711,11 +711,17 @@ section {
 .ribbon {
   padding: .5rem; }
 
+.card {
+  width: 92%;
+  max-width: 30rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: .3s; }
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+
 .portrait {
-  display: block;
-  margin: 0 auto;
-  width: 75%;
-  height: auto; }
+  display: flex;
+  justify-content: center; }
   .portrait__photo {
     width: 100%; }
     @media (max-width: 56.25em) {
@@ -723,6 +729,10 @@ section {
         display: block;
         width: 50%;
         margin: 0 auto; } }
+  .portrait__text {
+    padding: 1.6rem;
+    font-size: 1.4rem;
+    font-style: italic; }
 
 @media (max-width: 56.25em) {
   .blog {
@@ -782,12 +792,15 @@ section {
   .new-pens__display {
     font-size: 1.6rem;
     padding: 2rem;
-    width: 100%; }
+    width: 100%;
+    display: grid;
+    grid-gap: 2rem 3rem;
+    grid-template-columns: auto auto; }
     .new-pens__display--item {
+      display: flex;
+      flex-direction: column;
       padding: .5rem .3rem;
       border-radius: 5px; }
-      .new-pens__display--item:not(:first-child) {
-        margin: 2rem 0; }
     .new-pens__display--thumbnail {
       display: block;
       width: 100%;
