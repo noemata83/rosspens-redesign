@@ -46,7 +46,7 @@
     </div>
 <% } else { %>
 <div class="article">
-<p>No <%=sort%> pens currently in stock. Please check back later!</p>
+<p class="article__body">No <%=sort%> pens currently in stock. Please check back later!</p>
 <% if(currentUser  && currentUser.admin === true) {%>
     <div class="gallery">
       <div class="item">

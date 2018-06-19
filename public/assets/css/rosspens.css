@@ -154,12 +154,16 @@ input[type="checkbox"] {
 
 .gallery {
   margin: 3rem 5rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: top;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 4rem;
   min-height: 30rem; }
+  @media (max-width: 75em) {
+    .gallery {
+      grid-template-columns: 50% 50%; } }
+  @media (max-width: 56.25em) {
+    .gallery {
+      grid-template-columns: auto; } }
   .gallery__edit {
     margin: 30px 50px;
     display: flex;
@@ -190,12 +194,16 @@ input[type="checkbox"] {
 .item {
   flex-basis: 30%;
   font-size: 2rem;
-  max-width: 33%;
+  background-color: #FFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: .3s;
   margin: 2.5rem 0.5rem;
   padding: 1rem;
   box-sizing: border-box;
   border: 1px solid #e5e5e5;
   border-radius: 10px; }
+  .item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
   .item__image {
     padding: .3rem;
     min-height: 8rem; }
@@ -662,6 +670,9 @@ footer {
   background-origin: border-box;
   background-size: cover;
   background-position: top; }
+  @media (max-width: 56.25em) {
+    .bgimage {
+      min-height: 93vh; } }
   .bgimage .layer {
     background: rgba(0, 0, 0, 0.15);
     position: absolute;
@@ -714,6 +725,7 @@ section {
 .card {
   width: 92%;
   max-width: 30rem;
+  background: #FFF;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: .3s; }
   .card:hover {
@@ -724,50 +736,48 @@ section {
   justify-content: center; }
   .portrait__photo {
     width: 100%; }
-    @media (max-width: 56.25em) {
-      .portrait__photo {
-        display: block;
-        width: 50%;
-        margin: 0 auto; } }
   .portrait__text {
-    padding: 1.6rem;
-    font-size: 1.4rem;
-    font-style: italic; }
+    padding: 2rem;
+    font-size: 1.4rem; }
+    .portrait__text__header {
+      display: block;
+      margin-bottom: 1.8rem;
+      font-size: 1.8rem;
+      font-weight: bold; }
 
-@media (max-width: 56.25em) {
-  .blog {
-    padding: 2rem; } }
-
-.blog__header {
-  margin: 0 0 1.5rem 0;
-  display: block;
-  position: relative; }
-  .blog__header::after {
-    content: "";
-    clear: both;
-    display: table; }
-
-.blog__title {
-  display: block;
-  vertical-align: baseline; }
-  .blog__title--text {
-    font-size: 4rem;
-    font-weight: 300; }
-
-.blog__date {
-  vertical-align: baseline;
-  line-height: 1.7;
-  font-size: 2rem;
-  display: block;
-  text-align: right; }
-
-.blog__content {
-  font-size: 2rem;
-  text-align: justify;
-  line-height: 1.7;
-  margin-bottom: 2rem; }
-  .blog__content p {
-    margin: 1rem 0; }
+.blog {
+  padding: 0 15rem; }
+  @media (max-width: 56.25em) {
+    .blog {
+      padding: 2rem; } }
+  .blog__header {
+    margin: 0 0 1.5rem 0;
+    display: block;
+    position: relative; }
+    .blog__header::after {
+      content: "";
+      clear: both;
+      display: table; }
+  .blog__title {
+    display: block;
+    vertical-align: baseline; }
+    .blog__title--text {
+      font-size: 4.8rem;
+      font-weight: 300;
+      margin-bottom: 5rem; }
+  .blog__date {
+    vertical-align: baseline;
+    line-height: 1.7;
+    font-size: 2.4em;
+    display: block;
+    text-align: right; }
+  .blog__content {
+    font-size: 2.4rem;
+    text-align: justify;
+    line-height: 1.7;
+    margin-bottom: 2rem; }
+    .blog__content p {
+      margin: 1rem 0; }
 
 .right-content {
   margin: 3rem 0;
@@ -786,9 +796,9 @@ section {
     border-radius: 2px;
     text-align: center;
     color: #e2e4e3;
-    font-size: 2.5rem;
+    font-size: 4.8rem;
     font-weight: 30;
-    padding: 1rem; }
+    padding-bottom: 3rem; }
   .new-pens__display {
     font-size: 1.6rem;
     padding: 2rem;
@@ -811,7 +821,8 @@ section {
         color: #000; }
     @media (max-width: 56.25em) {
       .new-pens__display {
-        width: 75%;
+        width: 100%;
+        grid-template-columns: auto;
         margin: 0 auto; } }
 
 .pen {
@@ -924,7 +935,6 @@ section {
     height: auto; }
   .show-thumbnail {
     max-height: none;
-    width: auto;
     display: block;
     margin: 0 auto; } }
 
