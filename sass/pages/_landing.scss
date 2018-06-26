@@ -172,6 +172,7 @@ section {
         &__display {
             font-size: 1.6rem;
             padding: 2rem;
+            background-color: $color-tertiary;
             width: 100%;
             display: grid;
             grid-gap: 2rem 3rem;
@@ -179,8 +180,15 @@ section {
             &--item {
                 display: flex;
                 flex-direction: column;
-                padding: .5rem .3rem;
-                border-radius: 5px;
+                padding: 1rem 2rem;
+                // border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+                border: 1px solid $light-gray;
+                background: $color-secondary;
+                transition: all .3s;
+                &:hover {
+                    transform: scale(1.05) translateY(-1rem);
+                }
             }
             &--thumbnail {
                 display: block;
@@ -188,7 +196,8 @@ section {
                 margin: 1rem 0;
             }
             &--title {
-                font-size: 1.6rem;
+                font-size: 2rem;
+                font-weight: 300;
                 &:link,
                 &:visited {
                     color: $text-dark;
@@ -198,6 +207,16 @@ section {
                 width: 100%;
                 grid-template-columns: auto;
                 margin: 0 auto;
+            }
+        }
+        
+        &__link {
+            &:link, &:visited {
+                color: $text-light;
+                font-size: 2.8rem;
+            }
+            &:hover {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.8);
             }
         }
         
