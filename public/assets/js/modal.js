@@ -1,8 +1,18 @@
+function navigateByArrow (event) {
+    if (event.key === 'ArrowRight') {
+        plusSlides(1);
+    } else if (event.key === 'ArrowLeft') {
+        plusSlides(-1);
+    }
+}
+
 function openModal() {
     document.getElementById('penModal').style.display="inline-block";
+    document.addEventListener('keydown', navigateByArrow);
 }
 
 function closeModal() {
+    document.removeEventListener('keydown', navigateByArrow);
     document.getElementById('penModal').style.display="none";
 }
 
@@ -18,7 +28,6 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-    let i;
     const slides = document.getElementsByClassName('modal__slide');
     const dots = document.getElementsByClassName('modal__demo');
     const captionText = document.getElementById("caption");
