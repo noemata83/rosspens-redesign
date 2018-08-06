@@ -5,6 +5,7 @@ const multer = require('multer');
 const upload = multer();
 const aws = require('aws-sdk');
 const isLoggedIn = require('../helpers/isLoggedIn');
+const slugify = require('slugify');
 
 const s3 = new aws.S3();
 const S3_BUCKET = process.env.S3_BUCKET;
@@ -24,6 +25,7 @@ router.post('/', upload.array('image'), isLoggedIn, function(req,res, next){
         inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,
         title: req.body.title,
+        slug: slugify(req.body.title).toLowerCase(),
         type: req.body.type,
         nib: req.body.nib,
         price: req.body.price,
@@ -63,18 +65,30 @@ router.get("/type/:type", function(req, res){
    }) 
 });
 
-router.get("/:id", function(req, res) {
-    Pen.findById(req.params.id, function(err, foundPen) {
-       if (err) {
-           res.redirect("/");
-       } else {
-           res.render("show", { pen : foundPen});
-       }
+router.get("/:slug", (req,res) => {
+    Pen.findOne({ slug: req.params.slug}, function(err, foundPen) {
+        if (err) {
+            res.redirect("/");
+        } else {
+            res.render("show", { pen: foundPen });
+        }
     });
 });
 
-router.get("/:id/edit", isLoggedIn, function(req, res){
-   Pen.findById(req.params.id, function(err, foundPen){
+// router.get("/:id", function(req, res) {
+//     Pen.findById(req.params.id, function(err, foundPen) {
+//       if (err) {
+//           res.redirect("/");
+//       } else {
+//           res.render("show", { pen : foundPen});
+//       }
+//     });
+// });
+
+
+
+router.get("/:slug/edit", isLoggedIn, function(req, res){
+   Pen.findOne({slug: req.params.slug}, function(err, foundPen){
        if (err) {
            res.redirect('/');
        } else {
@@ -83,14 +97,14 @@ router.get("/:id/edit", isLoggedIn, function(req, res){
    }) 
 });
 
-router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
+router.put("/:slug", upload.array('imageUpload'), isLoggedIn, function(req, res) {
     // Retrieve the array of images to be removed from the pen record
     let imagedeletes= [];
     if (req.body.imagechanges) {
         imagedeletes = req.body.imagechanges.split(',').map(x => parseInt(x));
     }
     // Find the pen, delete the images at their paths and splice the entries from the images array.
-    Pen.findById(req.params.id, function(err, foundPen) {
+    Pen.findOne({slug: req.params.slug}, function(err, foundPen) {
         var images = [...foundPen.images];
         if (err) {
             console.log(err);
@@ -120,16 +134,16 @@ router.put("/:id", upload.array('imageUpload'), isLoggedIn, function(req, res) {
             Pen.update(foundPen, penUpdates, function(err, updatedPen){
                 if (err) { console.log(err);}
                 else {
-                    res.redirect('/pens/' + foundPen._id);
+                    res.redirect('/pens/' + foundPen.slug);
                 }
             });
         }
     });
 });
 
-router.delete("/:id", isLoggedIn, function(req, res) {
+router.delete("/:slug", isLoggedIn, function(req, res) {
     // Locate the pen record to be deleted and delete all of the images.
-    Pen.findById(req.params.id, function(err, foundPen) {
+    Pen.findOne({slug: req.params.slug}, function(err, foundPen) {
         if(err) {
             console.log(err);
         } else {
@@ -151,7 +165,7 @@ router.delete("/:id", isLoggedIn, function(req, res) {
         }
     });
     // Delete pen record
-    Pen.findByIdAndRemove(req.params.id, function(err){
+    Pen.findOneAndRemove({ slug: req.params.slug}, function(err){
         if (err) {
             console.log(err);
         } else {

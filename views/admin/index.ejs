@@ -17,15 +17,15 @@
         </tr>
          <% pens.forEach((pen) => { %>
              <tr>
-                 <td><a href=<%=`/pens/${pen._id}`%>><%=pen.inventorynumber%></a></td>
-                 <td><a href=<%=`/pens/${pen._id}`%>><%=pen.title%></a></td>
+                 <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.inventorynumber%></a></td>
+                 <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.title%></a></td>
                  <td><%= pen.maker%></td>
                  <td><%=pen.type%></td>
                  <td><%=pen.nib%></td>
                  <td>$<%=pen.price%></td>
                  <td><%=pen.dateAdded.toLocaleDateString("en-US")%></td>
-                 <td><a class="button button--inline" href=<%=`/pens/${pen._id}/edit`%>>EDIT</a></td>
-                 <td><form action=<%=`/pens/${encodeURI(pen._id)}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
+                 <td><a class="button button--inline" href=<%=`/pens/${pen.slug}/edit`%>>EDIT</a></td>
+                 <td><form action=<%=`/pens/${pen.slug}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
                     <input class="button button--inline" type="submit" value="DELETE" />
                   </form></td>
             </tr>

@@ -5,6 +5,11 @@ const penSchema = new mongoose.Schema({
    maker: String,
    title: String,
    type: String,
+   slug: {
+      type: String,
+      unique: true,
+      required: true,
+   },
    nib: String,
    price: Number,
    images: [String],
