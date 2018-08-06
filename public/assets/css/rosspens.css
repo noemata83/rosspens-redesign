@@ -130,7 +130,7 @@ form {
   margin-bottom: 0;
   outline: 0;
   z-index: 1; }
-  .image-checkbox .fa {
+  .image-checkbox .fas {
     position: relative;
     color: #ed1f1c;
     background-color: #fff;
@@ -141,7 +141,7 @@ form {
     border-color: #ed1f1c;
     opacity: 0.40;
     filter: alpha(opacity=40); }
-    .image-checkbox-checked .fa {
+    .image-checkbox-checked .fas {
       position: absolute;
       display: block !important;
       z-index: 1; }
@@ -149,7 +149,7 @@ form {
 input[type="checkbox"] {
   display: none; }
 
-.fa.fa-remove.hidden {
+.fas.fa-times.hidden {
   display: none; }
 
 .gallery {
