@@ -1,7 +1,3 @@
-# ignore config
-config/session-config.json
-
-# ignore images directory
-public/assets/images/
+node_modules
 
 npm-debug.log
