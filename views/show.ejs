@@ -19,8 +19,8 @@
                 <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="button button--primary">Inquire</a>
                 <% } %>
                 <% if (currentUser && currentUser.admin === true) { %>
-                <a href="/pens/<%=pen._id%>/edit" class="button button--warning button-inline">EDIT</a>
-                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
+                <a href="/pens/<%=pen.slug%>/edit" class="button button--warning button-inline">EDIT</a>
+                <form action ="/pens/<%=pen.slug%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
                     <button class="button button--danger">DELETE</button>
                 </form>
                 <% } %>

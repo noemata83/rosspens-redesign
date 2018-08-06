@@ -30,7 +30,7 @@
         <div class="new-pens__display">
             <% pens.forEach(pen => { %>
               <div class="new-pens__display--item">
-                <a href="/pens/<%=pen._id%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
+                <a href="/pens/<%=pen.slug%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
                 <a class="new-pens__display--title" href="/pens/<%=pen._id%>"><%=pen.title%></a>
               </div>
             <% });%>

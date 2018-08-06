@@ -14,9 +14,9 @@
       <div class="item">
           <div class="item__image">
               <% if (pen.images.length === 0 || pen.images[0] === "") { %>
-                <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
+                <a href="/pens/<%=pen.slug%>"><img class="show-thumbnail" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png"></a>
               <% } else { %>
-                <a href="/pens/<%=pen._id%>"><img class="show-thumbnail" src="<%=pen.images[0]%>" alt="<%=pen.title%>"></a>
+                <a href="/pens/<%=pen.slug%>"><img class="show-thumbnail" src="<%=pen.images[0]%>" alt="<%=pen.title%>"></a>
               <% } %>
           </div>
           <div class="caption">
@@ -24,10 +24,10 @@
                 <p><%= pen.title %></p>
                 <p>$<%=pen.price %></p>
               </div>
-              <a href="/pens/<%=pen._id%>" class="button button--inline">MORE INFO</a>
+              <a href="/pens/<%=pen.slug%>" class="button button--inline">MORE INFO</a>
               <% if (currentUser && currentUser.admin === true) { %>
-                <a href="/pens/<%=pen._id%>/edit" class="button button--inline">EDIT</a>
-                <form action ="/pens/<%=pen._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="button--inline">
+                <a href="/pens/<%=pen.slug%>/edit" class="button button--inline">EDIT</a>
+                <form action ="/pens/<%=pen.slug%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="button--inline">
                   <button class="button">DELETE</button>
                 </form>
               <% } %>

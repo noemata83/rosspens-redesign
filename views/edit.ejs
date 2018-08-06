@@ -2,7 +2,7 @@
 
 <div class="main">
     <h1>Edit <%=pen.inventorynumber%>: <%=pen.title%></h1>
-<form action="/pens/<%=pen._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+<form action="/pens/<%=pen.slug%>?_method=PUT" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="inventorynumber">Inventory Number</label>
         <input class="form-control" type="text" name="pen[inventorynumber]" id="inventorynumber" value="<%=pen.inventorynumber%>">
@@ -47,7 +47,7 @@
             <% } else { %>
               <img class="thumbnail" src="https://s3.amazonaws.com/rosspens-assets/images/filler.png" />
             <% } %>
-              <i class="fa fa-remove hidden"></i>            
+              <i class="fas fa-times hidden"></i>            
                </label>
         </div>
         <% }); %>
