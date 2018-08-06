@@ -3,6 +3,8 @@ function navigateByArrow (event) {
         plusSlides(1);
     } else if (event.key === 'ArrowLeft') {
         plusSlides(-1);
+    } else if (event.key === 'Escape') {
+        closeModal();
     }
 }
 

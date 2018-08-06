@@ -26,7 +26,6 @@ global.penTypes = [];
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
-//mongoose.connect("mongodb://ross:vacuumatic@ds245357.mlab.com:45357/rosspens", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + "/public/"));
