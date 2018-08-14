@@ -262,6 +262,23 @@ input[type="checkbox"] {
   text-decoration: none;
   color: black; }
 
+.admin-bar {
+  color: #E4E6ED;
+  font-size: 1.6rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  position: fixed;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; }
+  .admin-bar a,
+  .admin-bar a:link,
+  .admin-bar a:visited {
+    color: #5D7678; }
+
 .grid {
   /* max-width: $grid-width; */ }
   .grid::after {
@@ -618,7 +635,7 @@ nav {
   transition-delay: 0s, 0s, 0.3s; }
 
 .main {
-  padding: 8rem 0px 0px 0px;
+  padding: 8rem 0px 3rem 0px;
   margin: 0px 0px;
   position: relative; }
   @media (max-width: 56.25em) {

@@ -1,4 +1,10 @@
 
 <!--footer start from here-->
+    <% if (currentUser && currentUser.admin === true) { %>
+      <div class="admin-bar" id="admin-bar">
+        <p>Logged in as <%=currentUser.username%>. <a href="/admin/dashboard">Click here</a> to visit the admin dashboard.</p>
+        <p><a href="/logout">Logout <%=currentUser.username %></a></p>
+      </d i>
+    <% } %>  
 <script src="/assets/js/nav.js"></script>
 </body></html>

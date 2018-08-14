@@ -23,3 +23,10 @@ window.onclick = function(event) {
     }
   }
 }
+
+const url = window.location.pathname;
+const admPath = RegExp('\/admin\/');
+if (admPath.test(url)) {
+  const admBar = document.getElementById('admin-bar');
+  admBar.style = "display: none;";
+}
