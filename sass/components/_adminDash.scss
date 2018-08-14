@@ -24,4 +24,8 @@
     a:visited {
         color: $color-primary-lighten;
     }
+    @include respond(tab-port) {
+        font-size: 1.2rem;
+        flex-direction: column;
+    }
 }

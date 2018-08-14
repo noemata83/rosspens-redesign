@@ -278,6 +278,10 @@ input[type="checkbox"] {
   .admin-bar a:link,
   .admin-bar a:visited {
     color: #5D7678; }
+  @media (max-width: 56.25em) {
+    .admin-bar {
+      font-size: 1.2rem;
+      flex-direction: column; } }
 
 .grid {
   /* max-width: $grid-width; */ }
