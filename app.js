@@ -10,7 +10,9 @@ const express = require('express'),
     methodOverride = require('method-override'),
     aws = require('aws-sdk'),
     getTitles = require('./helpers/getTitles'),
-    expressSanitizer = require('express-sanitizer');
+    expressSanitizer = require('express-sanitizer'),
+    session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
@@ -27,6 +29,20 @@ global.penTypes = [];
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
 
+const store = new MongoDBStore({
+    uri: process.env.DATABASEURL,
+    collection: 'rosspens-sessions'
+});
+
+store.on('connected', () => {
+    store.client;
+});
+
+store.on('error', error => {
+    assert.ifError(error);
+    assert.ok(false);
+  });
+
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -37,7 +53,15 @@ app.use(expressSanitizer());
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-1';
 
-app.use(require("express-session")({ secret: process.env.SECRET, resave: false, saveUninitialized: false}));
+app.use(require("express-session")({ 
+    secret: process.env.SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
