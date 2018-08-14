@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-      <title>RossPens.com: Your source for reliable, affordable vintage pens</title>
-
+    <% if (locals.pen) { %>
+      <title><%=pen.title%> </title>
+      <meta name="description" content="<%=`${pen.title} with a ${pen.nib.toLowerCase()} nib available today for $${pen.price}. Click to learn more about this unique writing instrument!`%>" >
+    <% } else if (locals.sort) { %>
+      <% sort = sort.replace(/([A-Z])/g, ' $1').trim() %>
+      <% sort = sort.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); %> 
+      <title><%=sort%> Pens</title>
+      <meta name="description" content="<%=`Explore our inventory of ${sort} pens and find a unique, vintage writing instrument today!`%>" >
+    <% } else if (locals.article) { %>
+      <title><%=article.longTitle%></title>
+    <% } else { %>
+      <title>RossPens.com | Your source for reliable, affordable vintage pens</title>
+      <meta name="description" content="Browse our collection of fully restored, collectible vintage fountain pens and rediscover the joy of writing with character.">
+    <% } %>
     <link rel="stylesheet" href="/assets/css/rosspens.css">
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
