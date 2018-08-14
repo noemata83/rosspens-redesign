@@ -26,8 +26,8 @@
     "node-sass": "^4.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "preinstall": "npm install pm2 -g",
+    "start": "pm2-runtime app.js -i max",
     "compile:sass": "node-sass sass/main.scss public/assets/css/rosspens.css -w"
   },
   "author": "Tucker W. McKinney",

@@ -70,6 +70,9 @@ router.get("/:slug", (req,res) => {
         if (err) {
             res.redirect("/");
         } else {
+            if (!foundPen) {
+                res.redirect('/404');
+            }
             res.render("show", { pen: foundPen });
         }
     });
