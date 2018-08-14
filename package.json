@@ -26,8 +26,7 @@
     "node-sass": "^4.7.2"
   },
   "scripts": {
-    "preinstall": "npm install pm2 -g",
-    "start": "pm2-runtime app.js -i max",
+    "start": "node app.js",
     "compile:sass": "node-sass sass/main.scss public/assets/css/rosspens.css -w"
   },
   "author": "Tucker W. McKinney",
