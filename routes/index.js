@@ -10,11 +10,11 @@ const router = express.Router();
 
 // Landing route
 router.get("/", (req, res) => {
-    Message.find({}).sort('-dateAdded').limit(1).exec((err, message) => {
+    Message.find().sort('-dateAdded').limit(1).exec((err, message) => {
         if (err) {
             res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
         } else {
-            Pen.find().sort('-dateAdded').limit(4).exec((err, pens) => {
+            Pen.find({ sold: false }).sort('-dateAdded').limit(4).exec((err, pens) => {
                 if (err) {
                     res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
                 } else {
@@ -66,13 +66,22 @@ router.get("/admin/dashboard", isLoggedIn, function(req, res){
 });
 
 router.get("/admin/pens", isLoggedIn, (req, res) => {
-    Pen.find({}, function(err, pens) {
+    Pen.find({ sold: false }, function(err, pens) {
         if (err){
             res.send("There was an error.");
         } else {
-            res.render("admin/index", { pens: pens});
+            res.render("admin/index", { pens: pens, archive: false });
         }
     });
+});
+
+router.get("/admin/pens/archive", isLoggedIn, async (req, res) => {
+    try {
+        const pens = await Pen.find({ sold: true });
+        res.render("admin/index", { pens: pens, archive: true });
+    } catch(err) {
+        res.send("There was an error.");
+    }
 })
 
 // Admin login route

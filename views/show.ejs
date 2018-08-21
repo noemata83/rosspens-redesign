@@ -14,11 +14,19 @@
         <div class="pen__main">
             <div class="pen__info">
                 <h1 class="pen__title"><%= pen.title %></h1>
-                <p><%= pen.description %><br/>$<%=pen.price %></p>
-                <% if (!currentUser) { %>
+                <h2 style="font-size: 1.6rem">Nib: <%= pen.nib %></h2>
+                <% if (pen.sold) { %> <h3 style="font-size: 2rem; color: red;">SOLD</h3><% } %>                    
+                <p><%= pen.description %><br/>
+                    $<%=pen.price %></p>
+                <% if (!currentUser && !pen.sold) { %>
                 <a href="mailto:ross@rosspens.com?subject=Inquiry about <%=pen.title%>&body=I would like to know more about the <%=pen.title%> currently listed on your website." class="button button--primary">Inquire</a>
                 <% } %>
                 <% if (currentUser && currentUser.admin === true) { %>
+                    <% if (!pen.sold) { %>
+                        <form action=<%=`/pens/${pen.slug}/sold?_method=PUT`%> method="POST"> <input class="button button--inline" type="submit" value="Mark as Sold" /></form>
+                    <% } else { %>
+                        <form action=<%=`/pens/${pen.slug}/activate?_method=PUT`%> method="POST"> <input class="button button--inline" type="submit" value="Activate Pen" /></form>
+                    <% } %>
                 <a href="/pens/<%=pen.slug%>/edit" class="button button--warning button-inline">EDIT</a>
                 <form action ="/pens/<%=pen.slug%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-btn">
                     <button class="button button--danger">DELETE</button>

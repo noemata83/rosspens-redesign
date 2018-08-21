@@ -14,6 +14,10 @@ const penSchema = new mongoose.Schema({
    price: Number,
    images: [String],
    description: String,
+   sold: {
+     type: Boolean,
+     default: false,
+   },
    dateAdded: ({type: Date, default: Date.now })
 });
 

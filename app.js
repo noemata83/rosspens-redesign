@@ -169,10 +169,10 @@ app.listen(process.env.PORT || 5000, process.env.IP, function() {
     console.log("RossPens server has started.");
 });
 
-const used = process.memoryUsage();
-for (let key in used) {
-    console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
-}
+// const used = process.memoryUsage();
+// for (let key in used) {
+//     console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
+// }
 // async function seed_and_test() {
 //     await seedDB();
 //     getTitles().then(titles => {

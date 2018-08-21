@@ -11,7 +11,7 @@ const s3 = new aws.S3();
 const S3_BUCKET = process.env.S3_BUCKET;
 
 router.get("/", function(req, res) {
-    Pen.find({}, function(err, pens) {
+    Pen.find({ sold: false }, function(err, pens) {
         if (err){
             res.send("There was an error.");
         } else {
@@ -46,7 +46,7 @@ router.get("/new", isLoggedIn, function(req,res){
 });
 
 router.get('/whatsnew', function(req,res){
-    Pen.find({}).sort("-dateAdded").limit(10).exec(function(err, pens){
+    Pen.find({ sold: false }).sort("-dateAdded").limit(10).exec(function(err, pens){
         if (err) {
             res.send("There was an error.");
         } else {
@@ -56,7 +56,7 @@ router.get('/whatsnew', function(req,res){
 })
 
 router.get("/type/:type", function(req, res){
-   Pen.find({type: req.params.type}, function(err, pens){
+   Pen.find({type: req.params.type, sold: false }, function(err, pens){
        if (err) {
            res.render("index", { pens: []});
        } else {
@@ -144,6 +144,20 @@ router.put("/:slug", upload.array('imageUpload'), isLoggedIn, function(req, res)
     });
 });
 
+router.put("/:slug/sold", isLoggedIn, async (req,res) => {
+    const foundPen = await Pen.findOne({ slug: req.params.slug });
+    foundPen.sold = true;
+    foundPen.save();
+    res.redirect('back');
+});
+
+router.put("/:slug/activate", isLoggedIn, async (req,res) => {
+    const foundPen = await Pen.findOne({ slug: req.params.slug });
+    foundPen.sold = false;
+    foundPen.save();
+    res.redirect('back');
+});
+
 router.delete("/:slug", isLoggedIn, function(req, res) {
     // Locate the pen record to be deleted and delete all of the images.
     Pen.findOne({slug: req.params.slug}, function(err, foundPen) {
@@ -178,7 +192,7 @@ router.delete("/:slug", isLoggedIn, function(req, res) {
 });
 
 router.get("/:maker/:type", function(req, res){
-   Pen.find({maker: req.params.maker, type: req.params.type}, function(err, pens) {
+   Pen.find({maker: req.params.maker, type: req.params.type, sold: false }, function(err, pens) {
         if (err) {
             res.render("index", { pens: [] });
         }

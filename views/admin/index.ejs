@@ -1,36 +1,61 @@
 <% include ../partials/header %>
-<div class="main">
-    <h1 class="sort">Pen Database Administrator</h1>
-    <img src="https://s3.amazonaws.com/rosspens-assets/images/divider.png" class="divider">
-    <h2 class="adminNav"><a href="/pens/">View in Gallery</a></h2>
-    <table class="adminTable">
-        <tr>
-            <th>Inventory Number</th>
-            <th>Title</th>
-            <th>Maker</th>
-            <th>Type</th>
-            <th>Nib</th>
-            <th>Price</th>
-            <th>Date Added</th>
-            <th></th>
-            <th></th>
-        </tr>
-         <% pens.forEach((pen) => { %>
-             <tr>
-                 <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.inventorynumber%></a></td>
-                 <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.title%></a></td>
-                 <td><%= pen.maker%></td>
-                 <td><%=pen.type%></td>
-                 <td><%=pen.nib%></td>
-                 <td>$<%=pen.price%></td>
-                 <td><%=pen.dateAdded.toLocaleDateString("en-US")%></td>
-                 <td><a class="button button--inline" href=<%=`/pens/${pen.slug}/edit`%>>EDIT</a></td>
-                 <td><form action=<%=`/pens/${pen.slug}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
-                    <input class="button button--inline" type="submit" value="DELETE" />
-                  </form></td>
+    <div class="main">
+        <h1 class="sort">Pen Database Administrator</h1>
+        <img src="https://s3.amazonaws.com/rosspens-assets/images/divider.png" class="divider">
+        <h2 class="adminNav"><a href="/pens/">View in Gallery</a></h2>
+        <% if (!archive) { %>
+            <h2 class="adminNav"><a href="/admin/pens/archive">View Archive</a></h2>
+        <% } else { %>
+            <h2 class="adminNav"><a href="/admin/pens">View Active Pens</a></h2>
+        <% } %>
+        <table class="adminTable">
+            <tr>
+                <th>Inventory Number</th>
+                <th>Title</th>
+                <th>Maker</th>
+                <th>Type</th>
+                <th>Nib</th>
+                <th>Price</th>
+                <th>Date Added</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        <% }); %>
-    </table>
-    <h2 class="adminNav"><a href="/admin/dashboard">Return to Dashboard</a></h2>
-</div>
-<% include ../partials/footer %>
+            <% pens.forEach((pen) => { %>
+                <tr>
+                    <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.inventorynumber%></a></td>
+                    <td><a href=<%=`/pens/${pen.slug}`%>><%=pen.title%></a></td>
+                    <td>
+                        <%= pen.maker%>
+                    </td>
+                    <td>
+                        <%=pen.type%>
+                    </td>
+                    <td>
+                        <%=pen.nib%>
+                    </td>
+                    <td>$
+                        <%=pen.price%>
+                    </td>
+                    <td>
+                        <%=pen.dateAdded.toLocaleDateString("en-US")%>
+                    </td>
+                    <td><a class="button button--inline" href=<%=`/pens/${pen.slug}/edit`%>>EDIT</a></td>
+                    <td>
+                        <% if (!archive) { %>
+                            <form action=<%=`/pens/${pen.slug}/sold?_method=PUT`%> method="POST"> <input class="button button--inline" type="submit" value="Mark as Sold" /></form>
+                        <% } else { %>
+                            <form action=<%=`/pens/${pen.slug}/activate?_method=PUT`%> method="POST"> <input class="button button--inline" type="submit" value="Activate Pen" /></form>
+                        <% } %>
+                    </td>
+                    <td>
+                        <form action=<%=`/pens/${pen.slug}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
+                            <input class="button button--inline" type="submit" value="DELETE" />
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+        <h2 class="adminNav"><a href="/admin/dashboard">Return to Dashboard</a></h2>
+    </div>
+    <% include ../partials/footer %>
