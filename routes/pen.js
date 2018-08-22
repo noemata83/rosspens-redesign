@@ -191,7 +191,7 @@ router.delete("/:slug", isLoggedIn, function(req, res) {
     });
 });
 
-router.get("/:maker/:type", function(req, res){
+router.get("/:maker/:type", function(req, res) {
    Pen.find({maker: req.params.maker, type: req.params.type, sold: false }, function(err, pens) {
         if (err) {
             res.render("index", { pens: [] });
