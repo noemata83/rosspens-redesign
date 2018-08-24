@@ -17,6 +17,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
       indexRoutes = require('./routes/index'),
+      makerRoutes = require('./routes/maker'),
       aboutRoutes = require('./routes/about'),
       messageRoutes = require('./routes/message');
 
@@ -85,6 +86,7 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
+app.use('/makers', makerRoutes);
 app.use('/about', aboutRoutes);
 app.use('/admin/message', messageRoutes);
 // seed_and_test();

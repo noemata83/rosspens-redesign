@@ -1,6 +1,9 @@
-const Pen = require('../models/pen');
-const Maker = require('..models/maker');
-const slugify = require('slugify');
+const Pen = require("../models/pen");
+const Maker = require("..models/maker");
+const slugify = require("slugify");
+
+const s3 = new aws.S3();
+const S3_BUCKET = process.env.S3_BUCKET;
 
 const createPen = async (req, res) => {
   try {
@@ -14,27 +17,182 @@ const createPen = async (req, res) => {
       type: req.body.type,
       nib: req.body.nib,
       price: req.body.price,
-      images: req.body.imageURLs.split(','),
+      images: req.body.imageURLs.split(",")
     };
     const newPen = await Pen.create(penToCreate);
     res.redirect(`/pens/${newPen.maker}/${newPen.type}`);
-  } catch(err) {
+  } catch (err) {
     res.send(`There was an error: ${err}`);
   }
-}
+};
 
 const findPenByMakerAndType = async (req, res) => {
   try {
     const maker = await Maker.findOne({ slug: req.params.maker });
-    const pens = await Pen.find({ maker: maker._id, type: req.params.type, sold: false });
+    const pens = await Pen.find({
+      maker: maker._id,
+      type: req.params.type,
+      sold: false
+    });
     res.render("index", { pens, sort: maker.name, banner: maker.bannerImage });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.render("index", { pens: [] });
   }
-}
+};
+
+const listPens = async (req, res) => {
+  Pen.find({ sold: false }, function(err, pens) {
+    if (err) {
+      res.send("There was an error.");
+    } else {
+      res.render("index", { pens: pens, sort: "All" });
+    }
+  });
+};
+
+const listPensOfType = async (req, res) => {
+  Pen.find({ type: req.params.type, sold: false }, function(err, pens) {
+    if (err) {
+      res.render("index", { pens: [] });
+    } else {
+      res.render("index", { pens: pens, sort: req.params.type });
+    }
+  });
+};
+
+const fetchOnePen = (req, res) => {
+  Pen.findOne({ slug: req.params.slug }, function(err, foundPen) {
+    if (err) {
+      res.redirect("/");
+    } else {
+      if (!foundPen) {
+        res.redirect("/404");
+      }
+      res.render("show", { pen: foundPen });
+    }
+  });
+};
+
+const editPen = async (req, res) => {
+  Pen.findOne({ slug: req.params.slug }, function(err, foundPen) {
+    if (err) {
+      res.redirect("/");
+    } else {
+      res.render("edit", { pen: foundPen });
+    }
+  });
+};
+
+const updatePen = async (req, res) => {
+  // Retrieve the array of images to be removed from the pen record
+  let imagedeletes = [];
+  if (req.body.imagechanges) {
+    imagedeletes = req.body.imagechanges.split(",").map(x => parseInt(x));
+  }
+  // Find the pen, delete the images at their paths and splice the entries from the images array.
+  Pen.findOne({ slug: req.params.slug }, function(err, foundPen) {
+    var images = [...foundPen.images];
+    if (err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      if (imagedeletes.length > 0) {
+        imagedeletes.reverse().forEach(function(rmindex) {
+          // reverse the array first, to ensure that the right indexes are spliced!
+          let awspath = images[rmindex].replace(
+            "https://rosspens-assets.s3.amazonaws.com",
+            ""
+          );
+          if (awspath !== "") {
+            let params = {
+              Bucket: S3_BUCKET,
+              Key: awspath
+            };
+            s3.deleteObject(params, (err, data) => {
+              if (err) console.log(err);
+              else console.log(data);
+            });
+            images.splice(rmindex, 1);
+          }
+        });
+      }
+      if (req.body.newimages) {
+        req.body.newimages
+          .split(",")
+          .forEach(imageURL => images.push(imageURL));
+      }
+      var penUpdates = req.body.pen;
+      penUpdates.images = [...images];
+      Pen.update(foundPen, penUpdates, function(err, updatedPen) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/pens/" + foundPen.slug);
+        }
+      });
+    }
+  });
+};
+
+const markPenAsSold = async (req, res) => {
+  const foundPen = await Pen.findOne({ slug: req.params.slug });
+  foundPen.sold = true;
+  foundPen.save();
+  res.redirect("back");
+};
+
+const reactivatePen = async (req, res) => {
+  const foundPen = await Pen.findOne({ slug: req.params.slug });
+  foundPen.sold = false;
+  foundPen.save();
+  res.redirect("back");
+};
+
+const deletePen = async (req, res) => {
+  Pen.findOne({ slug: req.params.slug }, function(err, foundPen) {
+    if (err) {
+      console.log(err);
+    } else {
+      foundPen.images.forEach(path => {
+        let awspath = path.replace(
+          "https://rosspens-assets.s3.amazonaws.com",
+          ""
+        );
+        let params = {
+          Bucket: S3_BUCKET,
+          Key: awspath
+        };
+        if (awspath === "") {
+          return;
+        } else {
+          s3.deleteObject(params, (err, data) => {
+            if (err) console.log(err);
+            else console.log(data);
+          });
+        }
+      });
+    }
+  });
+  // Delete pen record
+  Pen.findOneAndRemove({ slug: req.params.slug }, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/pens");
+    }
+  });
+};
 
 module.exports = {
+  listPens,
   createPen,
-  findPenByMakerAndType
-}
+  editPen,
+  updatePen,
+  fetchOnePen,
+  findPenByMakerAndType,
+  listPensOfType,
+  markPenAsSold,
+  reactivatePen,
+  deletePen
+};

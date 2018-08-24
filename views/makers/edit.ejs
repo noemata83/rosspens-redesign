@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+  <div class="main">
+    <% if (maker) { %>
+      <h1>Edit
+        <%=maker.name%>
+      </h1>
+      <form action="/makers/
+      <%=maker.slug%>
+      ?_method=PUT" method="POST" enctype="multipart/form-data">
+    <% } else { %>
+      <h1>New Maker</h1>
+      <form action="/makers/" method="POST" enctype="multipart/form-data">
+    <% } %>
+    <div class="form-group">
+      <label for="form-title">Name of Maker</label>
+      <input class="form-control" type="text" name="name" id="form-title" 
+      value="<%= maker ? maker.title : '' %>" >
+    </div>
+    <div class="form-group">
+      <% if (maker) { %>
+        <label for="banner_image">Change Banner Image?</label>
+        <img src="<%=maker.bannerImage%>" class="form_bannerImage" alt="Banner image for <%=maker.name%>" />
+        <input class="form-control-file" type="file" name="imageUpload" id="banner_image" value="<%=maker.bannerImage%>">
+        <input type="hidden" id="imageURL" name="imageURL" value="">
+      <% } else { %>
+        <label for="banner_image">Add Banner Image</label>
+        <input class="form-control-file" type="file" name="imageUpload" id="banner_image" value="">
+        <input type="hidden" id="imageURL" name="imageURL" value="">
+      <% } %>
+    </div>
+    <input class="button" type="submit" value="Submit">
+  </form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/assets/js/maker.js"></script>
+</div>
+<% include ../partials/footer %>

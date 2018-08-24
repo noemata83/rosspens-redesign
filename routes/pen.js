@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post('/', upload.array('image'), isLoggedIn, function(req,res, next){
+router.post('/', upload.array('image'), isLoggedIn, function(req,res){
     var newPen = {
         inventorynumber: req.body.inventorynumber,
         maker: req.body.maker,

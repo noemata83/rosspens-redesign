@@ -1,8 +1,15 @@
 const Maker = require('../models/maker');
 const slugify = require('slugify');
 
+const newMaker = async (req, res) => {
+  res.render("makers/edit", { maker: null });
+}
+
 const createMaker = async (req, res) => {
-  const newMaker = req.body;
+  const newMaker = {
+    name: req.body.name,
+    bannerImage: req.body.imageURL,
+  }
   newMaker.slug = slugify(req.body.name);
   try {
     const createdMaker = await Maker.create(newMaker);
@@ -30,4 +37,11 @@ const deleteMaker = async (req, res) => {
   } catch(err) {
     res.send(`There was an error: ${err}`);
   }
+}
+
+module.exports = {
+  newMaker,
+  createMaker,
+  updateMaker,
+  deleteMaker
 }
