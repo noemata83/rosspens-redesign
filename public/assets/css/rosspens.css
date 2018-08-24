@@ -551,6 +551,42 @@ input[type="checkbox"] {
   height: auto;
   margin: 1rem 0; }
 
+.banner {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translate(-50%, 0);
+  z-index: 5; }
+  .banner__text {
+    color: #e2e4e3;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+    display: block;
+    font-family: 'Rochester', cursive;
+    line-height: 1.3;
+    font-size: 8rem;
+    font-weight: 300;
+    margin: 0; }
+  .banner__image {
+    position: relative;
+    width: 100vw;
+    height: 35vh;
+    background-position: center top;
+    background-size: cover;
+    margin-bottom: 2rem; }
+    @media (max-width: 56.25em) {
+      .banner__image {
+        height: 20vh; } }
+    @media (min-width: 112.5em) {
+      .banner__image {
+        height: 40vh; } }
+  .banner__layer {
+    background: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%; }
+
 nav {
   position: fixed;
   top: 0;
@@ -719,6 +755,12 @@ nav {
   @media (max-width: 56.25em) {
     .main {
       padding: 0 0 5rem 0; } }
+
+#mainGallery {
+  padding-top: 2rem; }
+  @media (max-width: 56.25em) {
+    #mainGallery {
+      padding-top: 0rem; } }
 
 .sort {
   text-align: center;

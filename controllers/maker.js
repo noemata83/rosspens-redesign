@@ -10,7 +10,7 @@ const createMaker = async (req, res) => {
     name: req.body.name,
     bannerImage: req.body.imageURL,
   }
-  newMaker.slug = slugify(req.body.name);
+  newMaker.slug = slugify(req.body.name).toLowerCase();
   try {
     const createdMaker = await Maker.create(newMaker);
     res.redirect(`/pens/${createdMaker.slug}`);
@@ -21,7 +21,7 @@ const createMaker = async (req, res) => {
 
 const updateMaker = async (req, res) => {
   const updates = req.body;
-  updates.slug = slugify(req.body.name);
+  updates.slug = slugify(req.body.name).toLowerCase();
   try {
     const updatedMaker = await Maker.findOneAndUpdate({ slug: req.body.slug }, updates, { new: true });
     res.redirect(`/pens/${updatedMaker.slug}`);

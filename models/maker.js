@@ -9,7 +9,10 @@ const makerSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  bannerImage: String,
+  bannerImage: {
+    type: String,
+    default: 'https://rosspens-assets.s3.amazonaws.com/images/default_header.png'
+  }
 });
 
 module.exports = mongoose.model('Maker', makerSchema);

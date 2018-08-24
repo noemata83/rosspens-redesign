@@ -8,17 +8,10 @@
     </div>
     <div class="form-group">
         <label for="formmaker">Maker</label>
-    <select class="form-control" name="maker" id="formmaker" placeholder="Maker">
-        <option value="ConwayStewart">Conway Stewart</option>
-        <option value="Esterbrook">Esterbrook</option>
-        <option value="Montblanc">Montblanc</option>
-        <option value="Parker">Parker</option>
-        <option value="Pelikan">Pelikan</option>
-        <option value="Sheaffer">Sheaffer</option>
-        <option value="SwanOnoto">Swan - Onoto</option>
-        <option value="WahlEversharp">Wahl - Eversharp</option>
-        <option value="Waterman">Waterman</option>
-        <option value="Other">Other Makers</option>
+    <select class="form-control" name="maker" id="formmaker">
+        <% makers.forEach(maker => { %>
+        <option value="<%=maker.slug%>"><%=maker.name%></option>
+        <% }) %>
     </select>
     </div>
     <div class="form-group">
