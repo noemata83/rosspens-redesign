@@ -3,6 +3,7 @@ const express = require('express'),
       User = require('../models/user'),
       Message = require('../models/message'),
       Pen = require('../models/pen'),
+      Maker = require('../models/maker'),
       isLoggedIn = require('../helpers/isLoggedIn');
 
     
@@ -81,6 +82,15 @@ router.get("/admin/pens/archive", isLoggedIn, async (req, res) => {
         res.render("admin/index", { pens: pens, archive: true });
     } catch(err) {
         res.send("There was an error.");
+    }
+});
+
+router.get('/admin/makers', isLoggedIn, async (req, res) => {
+    try {
+        const makers = await Maker.find({});
+        res.render("makers/index", { makers });
+    } catch(err) {
+        res.send(`There was an error: ${err}`);
     }
 })
 

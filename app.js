@@ -11,7 +11,8 @@ const express = require('express'),
     aws = require('aws-sdk'),
     getTitles = require('./helpers/getTitles'),
     expressSanitizer = require('express-sanitizer'),
-    session = require('express-session');
+    session = require('express-session'),
+    buildMenu = require('./helpers/buildMenu');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 // USE ROUTES
@@ -78,9 +79,10 @@ getTitles().then( titles => {
 //     console.log(result);
 // });
 
-app.use(function(req, res, next) {
+app.use(async function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.articles = global.articleTitles;
+    res.locals.menuData = await buildMenu();
     next();
 });
 

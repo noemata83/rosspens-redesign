@@ -65,7 +65,7 @@ const listNewPens = async (req, res) => {
   try {
     const newPens = await Pen.find({ sold: false })
       .sort("-dateAdded")
-      .limit(10)
+      .limit(9)
       .exec();
     res.render("index", { pens: newPens, sort: "New", banner: DEFAULT_BANNER });
   } catch (err) {
@@ -99,7 +99,6 @@ const fetchOnePen = (req, res) => {
 const editPen = async (req, res) => {
   try {
     const foundPen = await Pen.findOne({ slug: req.params.slug }).populate('maker').exec();
-    console.log(foundPen);
     const makers = await Maker.find({});
     res.render("edit", { pen: foundPen, makers });
   } catch (err) {

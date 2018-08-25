@@ -13,10 +13,15 @@ const createMaker = async (req, res) => {
   newMaker.slug = slugify(req.body.name).toLowerCase();
   try {
     const createdMaker = await Maker.create(newMaker);
-    res.redirect(`/pens/${createdMaker.slug}`);
+    res.redirect('/admin/makers');
   } catch(err) {
     res.send(`There was an error: ${err}`);
   }
+}
+
+const editMaker = async (req, res) => {
+  const maker = await Maker.findOne({ slug: req.params.slug });
+  res.render("makers/edit", { maker });
 }
 
 const updateMaker = async (req, res) => {
@@ -32,7 +37,8 @@ const updateMaker = async (req, res) => {
 
 const deleteMaker = async (req, res) => {
   try {
-    await Maker.findOneAndRemove({ slug: req.body.slug });
+    console.log(req.params.slug);
+    await Maker.findOneAndRemove({ slug: req.params.slug });
     res.redirect('back');
   } catch(err) {
     res.send(`There was an error: ${err}`);
@@ -43,5 +49,6 @@ module.exports = {
   newMaker,
   createMaker,
   updateMaker,
-  deleteMaker
+  deleteMaker,
+  editMaker
 }

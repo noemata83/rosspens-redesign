@@ -44,20 +44,13 @@
                 <div id="BrowsePens" class="dropdown__content">
                   <div class="dropdown__list">
                     <div class="dropdown__columns">
+                    <% menuData.map(column => { %>
                       <div class="dropdown__sub-list">
-                        <li><a href="/pens/ConwayStewart/vintage">Conway Stewart</a></li>
-                        <li><a href="/pens/Esterbrook/vintage">Esterbrook</a></li>
-                        <li><a href="/pens/Montblanc/vintage">Montblanc</a></li>
-                        <li><a href="/pens/Parker/vintage">Parker</a></li>
-                        <li><a href="/pens/Pelikan/vintage">Pelikan</a></li>
+                        <% column.map(maker => { %>
+                          <li><a href="<%=`/pens/${maker.slug}/vintage`%>"><%=maker.name%></a></li>
+                        <% }) %>
                       </div>
-                      <div class="dropdown__sub-list">
-                        <li><a href="/pens/Sheaffer/vintage">Sheaffer</a></li>
-                        <li><a href="/pens/SwanOnoto/vintage">Swan - Onoto</a></li>
-                        <li><a href="/pens/WahlEversharp/vintage">Wahl-Eversharp</a></li>
-                        <li><a href="/pens/Waterman/vintage">Waterman</a></li>
-                        <li><a href="/pens/Other/vintage">Other Vintage Pens</a></li>
-                      </div>
+                    <% }) %>
                     </div>
                   </div>
                 </div>

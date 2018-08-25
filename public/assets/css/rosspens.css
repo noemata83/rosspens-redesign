@@ -751,7 +751,9 @@ nav {
 .main {
   padding: 8rem 0px 3rem 0px;
   margin: 0px 0px;
-  position: relative; }
+  position: relative;
+  max-width: 100vw;
+  overflow-x: hidden; }
   @media (max-width: 56.25em) {
     .main {
       padding: 0 0 5rem 0; } }
