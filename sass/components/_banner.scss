@@ -1,5 +1,7 @@
 .banner {
   position: absolute;
+  width: 100%;
+  text-align: center;
   left: 50%;
   bottom: 1.5rem;
   transform: translate(-50%, 0);
@@ -14,6 +16,9 @@
     font-size: 8rem;
     font-weight: 300;
     margin: 0;
+    @include respond(phone) {
+      font-size: 6rem;
+    }
   }
 
   &__image {

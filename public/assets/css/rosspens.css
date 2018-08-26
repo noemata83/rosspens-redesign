@@ -553,6 +553,8 @@ input[type="checkbox"] {
 
 .banner {
   position: absolute;
+  width: 100%;
+  text-align: center;
   left: 50%;
   bottom: 1.5rem;
   transform: translate(-50%, 0);
@@ -566,6 +568,9 @@ input[type="checkbox"] {
     font-size: 8rem;
     font-weight: 300;
     margin: 0; }
+    @media (max-width: 37.5em) {
+      .banner__text {
+        font-size: 6rem; } }
   .banner__image {
     position: relative;
     width: 100vw;
