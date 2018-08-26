@@ -1,6 +1,6 @@
 var makers = document.getElementById("formmaker");
 for (var i = 0; i < makers.options.length; i++) {
-    if (makers.options[i].value === pendata.maker) {
+    if (makers.options[i].value === pendata.maker.slug) {
         makers.options[i].setAttribute("selected", true);
     }
 }

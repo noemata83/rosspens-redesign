@@ -11,12 +11,14 @@ const express = require('express'),
     aws = require('aws-sdk'),
     getTitles = require('./helpers/getTitles'),
     expressSanitizer = require('express-sanitizer'),
-    session = require('express-session');
+    session = require('express-session'),
+    buildMenu = require('./helpers/buildMenu');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
       indexRoutes = require('./routes/index'),
+      makerRoutes = require('./routes/maker'),
       aboutRoutes = require('./routes/about'),
       messageRoutes = require('./routes/message');
 
@@ -77,14 +79,16 @@ getTitles().then( titles => {
 //     console.log(result);
 // });
 
-app.use(function(req, res, next) {
+app.use(async function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.articles = global.articleTitles;
+    res.locals.menuData = await buildMenu();
     next();
 });
 
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
+app.use('/makers', makerRoutes);
 app.use('/about', aboutRoutes);
 app.use('/admin/message', messageRoutes);
 // seed_and_test();

@@ -2,9 +2,18 @@
   padding: 8rem 0px 3rem 0px;
   margin: 0px 0px;
   position: relative;
+  max-width: 100vw;
+  overflow-x: hidden;
   @include respond(tab-port) {
     padding: 0 0 5rem 0;
   }
+}
+
+#mainGallery {
+  padding-top: 2rem;
+  @include respond(tab-port) {
+    padding-top: 0rem;
+  } 
 }
 
 .sort {
