@@ -6,7 +6,7 @@
             <div class="pen__gallery">
             <% pen.images.forEach(function(image, index){ %>
                 <div class="item--large">
-                    <img class="thumbnail pen__thumbnail" onclick="openModal(); currentSlide(<%=index + 1%>)" src="<%=image %>">            
+                    <img class="thumbnail pen__thumbnail" onclick="openModal(); currentSlide(<%=index + 1%>)" src="<%=image %>" alt="<%= pen.title%>">            
                 </div>
             <% }); %>
             </div>
