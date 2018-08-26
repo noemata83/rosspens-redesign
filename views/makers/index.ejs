@@ -7,13 +7,15 @@
     <% makers.map(maker => { %>
     <li style="font-size: 2.8rem; display: flex; justify-content: space-around;"><a href="<%=`/makers/${maker.slug}/edit`%>"><%=maker.name%></a>
       <span style="margin-left: auto; display: inline;">
+      <% if (maker.slug !== 'other') { %>
       <form style="display: inline; width: unset;" action=<%=`/makers/${maker.slug}?_method=DELETE`%> onsubmit="return confirm('Are you sure?')" method="POST">
         <button class="button button--inline" type="submit" style="padding-left: 2rem; padding-right: 2rem"><i class="fas fa-trash-alt"></i></button>
       </form>
+      <% } %>
       </span>
     </li>
     <% }) %>
-    <li style="font-size: 2.8rem"><a href="/makers/new">Add New Manufacturer</a></li>
+    <li style="font-size: 2.8rem; padding-top: 2rem; "><a href="/makers/new">Add New Manufacturer</a></li>
   </ul>
   </div>
   <h2 class="adminNav"><a href="/admin/dashboard">Return to Dashboard</a></h2>

@@ -4,7 +4,8 @@ const express = require('express'),
       Message = require('../models/message'),
       Pen = require('../models/pen'),
       Maker = require('../models/maker'),
-      isLoggedIn = require('../helpers/isLoggedIn');
+      isLoggedIn = require('../helpers/isLoggedIn'),
+      sortMakers = require('../helpers/sortMakers');
 
     
 const router = express.Router();
@@ -66,19 +67,19 @@ router.get("/admin/dashboard", isLoggedIn, function(req, res){
     res.render("admin/dashboard");
 });
 
-router.get("/admin/pens", isLoggedIn, (req, res) => {
-    Pen.find({ sold: false }, function(err, pens) {
-        if (err){
-            res.send("There was an error.");
-        } else {
-            res.render("admin/index", { pens: pens, archive: false });
-        }
-    });
+router.get("/admin/pens", isLoggedIn, async (req, res) => {
+    try {
+        const pens = await Pen.find({ sold: false }).populate('maker').exec();
+        res.render("admin/index", { pens: pens, archive: false });
+    } catch(err) {
+        res.send(`There was an error: ${err}`);
+    }
+    
 });
 
 router.get("/admin/pens/archive", isLoggedIn, async (req, res) => {
     try {
-        const pens = await Pen.find({ sold: true });
+        const pens = await Pen.find({ sold: true }).populate('maker').exec();
         res.render("admin/index", { pens: pens, archive: true });
     } catch(err) {
         res.send("There was an error.");
@@ -88,7 +89,7 @@ router.get("/admin/pens/archive", isLoggedIn, async (req, res) => {
 router.get('/admin/makers', isLoggedIn, async (req, res) => {
     try {
         const makers = await Maker.find({});
-        res.render("makers/index", { makers });
+        res.render("makers/index", { makers: sortMakers(makers) });
     } catch(err) {
         res.send(`There was an error: ${err}`);
     }

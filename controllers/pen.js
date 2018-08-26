@@ -2,6 +2,7 @@ const Pen = require("../models/pen");
 const Maker = require("../models/maker");
 const slugify = require("slugify");
 const aws = require("aws-sdk");
+const sortMakers = require('../helpers/sortMakers');
 
 const s3 = new aws.S3();
 const S3_BUCKET = process.env.S3_BUCKET;
@@ -11,12 +12,11 @@ const DEFAULT_BANNER =
 
 const newPen = async (req, res) => {
   const makers = await Maker.find({});
-  res.render("new", { makers });
+  res.render("new", { makers: sortMakers(makers) });
 };
 
 const createPen = async (req, res) => {
   try {
-    console.log("Maker field is = ", req.body.maker);
     const maker = await Maker.findOne({ slug: req.body.maker });
     const penToCreate = {
       inventoryNumber: req.body.inventoryNumber,
@@ -100,7 +100,7 @@ const editPen = async (req, res) => {
   try {
     const foundPen = await Pen.findOne({ slug: req.params.slug }).populate('maker').exec();
     const makers = await Maker.find({});
-    res.render("edit", { pen: foundPen, makers });
+    res.render("edit", { pen: foundPen, makers: sortMakers(makers) });
   } catch (err) {
     console.log(err);
     res.redirect("/");
