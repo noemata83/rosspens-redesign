@@ -1,6 +1,9 @@
 {
   "name": "rosspens",
   "version": "0.0.1",
+  "engines": {
+    "npm": "5.7.1'"
+  },
   "description": "Rosspens.com: Your source for reliable, affordable vintage pens.",
   "main": "app.js",
   "dependencies": {
