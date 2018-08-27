@@ -3,8 +3,8 @@ const Pen   = require('../models/pen');
 const sortMenu = require('./sortMakers');
 
 module.exports = async () => {
-  const makers = await Maker.find({}).cache({});
-  const makerChildren = makers.map(maker => Pen.find({ maker: maker._id, sold: false, type: 'vintage' }).cache({}));
+  const makers = await Maker.find({}).cache({ key: 'rosspens' });
+  const makerChildren = makers.map(maker => Pen.find({ maker: maker._id, sold: false, type: 'vintage' }).cache({ key: 'rosspens' }));
   const results = await Promise.all(makerChildren);
   const filteredMakers = makers.filter((_, index) => results[index].length > 0);
   const sortedMenu = sortMenu(filteredMakers);

@@ -11,13 +11,13 @@ const DEFAULT_BANNER =
   "https://rosspens-assets.s3.amazonaws.com/images/default_header.png";
 
 const newPen = async (req, res) => {
-  const makers = await Maker.find({}).cache({});
+  const makers = await Maker.find({}).cache({ key: 'rosspens' });
   res.render("new", { makers: sortMakers(makers) });
 };
 
 const createPen = async (req, res) => {
   try {
-    const maker = await Maker.findOne({ slug: req.body.maker }).cache({});
+    const maker = await Maker.findOne({ slug: req.body.maker }).cache({ key: 'rosspens' });
     const penToCreate = {
       inventoryNumber: req.body.inventoryNumber,
       title: req.body.title,
@@ -38,12 +38,12 @@ const createPen = async (req, res) => {
 
 const findPenByMakerAndType = async (req, res) => {
   try {
-    const maker = await Maker.findOne({ slug: req.params.maker }).cache({});
+    const maker = await Maker.findOne({ slug: req.params.maker }).cache({ key: 'rosspens' });
     const pens = await Pen.find({
       maker: maker._id,
       type: req.params.type,
       sold: false
-    }).cache({});
+    }).cache({ key: 'rosspens' });
     res.render("index", { pens, sort: maker.name, banner: maker.bannerImage });
   } catch (err) {
     console.log(err);
@@ -53,7 +53,7 @@ const findPenByMakerAndType = async (req, res) => {
 
 const listPens = async (req, res) => {
   try {
-    const pens = await Pen.find({ sold: false }).cache({});
+    const pens = await Pen.find({ sold: false }).cache({ key: 'rosspens' });
     res.render("index", { pens: pens, sort: "All", banner: DEFAULT_BANNER });
   } catch(err) {
       res.send(`There was an error: ${err}`);
@@ -65,7 +65,7 @@ const listNewPens = async (req, res) => {
     const newPens = await Pen.find({ sold: false })
       .sort("-dateAdded")
       .limit(9)
-      .cache({})
+      .cache({ key: 'rosspens' })
       .exec();
     res.render("index", { pens: newPens, sort: "New", banner: DEFAULT_BANNER });
   } catch (err) {
@@ -75,7 +75,7 @@ const listNewPens = async (req, res) => {
 
 const listPensOfType = async (req, res) => {
   try {
-    const pens = await Pen.find({ type: req.params.type, sold: false }).cache({});
+    const pens = await Pen.find({ type: req.params.type, sold: false }).cache({ key: 'rosspens' });
     res.render("index", { pens: pens, sort: req.params.type, banner: DEFAULT_BANNER });
   } catch(err) {
     res.redirect("/404");      
@@ -84,7 +84,7 @@ const listPensOfType = async (req, res) => {
 
 const fetchOnePen = async (req, res) => {
   try {
-    const foundPen = await Pen.findOne({ slug: req.params.slug }).cache({});
+    const foundPen = await Pen.findOne({ slug: req.params.slug }).cache({ key: 'rosspens' });
     if (!foundPen) {
       res.redirect("/404");
     } else {
@@ -98,7 +98,7 @@ const fetchOnePen = async (req, res) => {
 const editPen = async (req, res) => {
   try {
     const foundPen = await Pen.findOne({ slug: req.params.slug }).populate('maker').exec();
-    const makers = await Maker.find({}).cache({});
+    const makers = await Maker.find({}).cache({ key: 'rosspens' });
     res.render("edit", { pen: foundPen, makers: sortMakers(makers) });
   } catch (err) {
     console.log(err);
@@ -114,7 +114,7 @@ const updatePen = async (req, res) => {
   }
   // Find the pen, delete the images at their paths and splice the entries from the images array.
   try {
-    const foundPen = await Pen.findOne({ slug: req.params.slug }).cache({});
+    const foundPen = await Pen.findOne({ slug: req.params.slug }).cache({ key: 'rosspens' });
     var images = [...foundPen.images];
     if (imagedeletes.length > 0) {
       imagedeletes.reverse().forEach(function(rmindex) {
@@ -140,7 +140,7 @@ const updatePen = async (req, res) => {
       req.body.newimages.split(",").forEach(imageURL => images.push(imageURL));
     }
     const penUpdates = req.body.pen;
-    const maker = await Maker.findOne({ slug: req.body.pen.maker }).cache({});
+    const maker = await Maker.findOne({ slug: req.body.pen.maker }).cache({ key: 'rosspens' });
     penUpdates.images = [...images];
     penUpdates.maker = maker._id;
     await Pen.update(foundPen, penUpdates, { new: true });
