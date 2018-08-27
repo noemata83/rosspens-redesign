@@ -39,7 +39,7 @@ mongoose.Query.prototype.exec = async function() {
   console.log("hashKey: ", this.hashKey);
   console.log("key", key);
   console.log("value", JSON.stringify(result).replace(/"/g, "'"));
-  client.hset(this.hashKey, key, JSON.stringify(result).replace(/"/g, "'"), 'EX', 10000);
+  client.hset(this.hashKey, key, JSON.stringify(result).replace(/"/g, "'"));
   return result;
 }
 
