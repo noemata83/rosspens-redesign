@@ -20,26 +20,23 @@ mongoose.Query.prototype.exec = async function() {
 
   const key = JSON.stringify(Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name,
-  })).replace(/"/g, "'");
+  }));
 
   // check redis to see if we have a value for the key created
 
   const cachedValue = await client.hget(this.hashKey, key);
 
   if (cachedValue) {
-    const doc = JSON.parse(cachedValue.replace(/'/g, '"'));
+    const doc = JSON.parse(cachedValue);
     return Array.isArray(doc) 
       ? doc.map(record => new this.model(record))
-      : new this.model(JSON.parse(cachedValue.replace(/'/g, '"')));
+      : new this.model(JSON.parse(cachedValue));
   }
 
   // if not, execute the query as normal, return and save the result in redis.
   
   const result = await exec.apply(this, arguments);
-  console.log("hashKey: ", this.hashKey);
-  console.log("key", key);
-  console.log("value", JSON.stringify(result).replace(/"/g, "'"));
-  client.hset(this.hashKey, key, JSON.stringify(result).replace(/"/g, "'"), 'EX', 10000);
+  client.hset(this.hashKey, key, JSON.stringify(result));
   return result;
 }
 
