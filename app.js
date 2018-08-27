@@ -2,9 +2,7 @@ const express = require('express'),
     app = express(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    Pen = require("./models/pen"),
     User = require("./models/user"),
-    Article = require('./models/article'),
     localStrategy = require('passport-local'),
     passport = require('passport'),
     methodOverride = require('method-override'),
@@ -12,8 +10,11 @@ const express = require('express'),
     getTitles = require('./helpers/getTitles'),
     expressSanitizer = require('express-sanitizer'),
     session = require('express-session'),
-    buildMenu = require('./helpers/buildMenu');
+    buildMenu = require('./helpers/buildMenu'),
+    keys = require('./config/keys');
 const MongoDBStore = require('connect-mongodb-session')(session);
+
+require('./services/cache');
 
 // USE ROUTES
 const penRoutes = require('./routes/pen'),
@@ -24,15 +25,14 @@ const penRoutes = require('./routes/pen'),
 
 
 global.articleTitles = [];
-global.penTypes = [];
 
 // APP CONFIG
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
+mongoose.connect(keys.DATABASEURL, { useMongoClient: true });
 
 const store = new MongoDBStore({
-    uri: process.env.DATABASEURL,
+    uri: keys.DATABASEURL,
     collection: 'rosspens-sessions'
 });
 
@@ -52,11 +52,11 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
-const S3_BUCKET = process.env.S3_BUCKET;
+const S3_BUCKET = keys.S3_BUCKET;
 aws.config.region = 'us-east-1';
 
 app.use(require("express-session")({ 
-    secret: process.env.SECRET,
+    secret: keys.SECRET,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7
     },

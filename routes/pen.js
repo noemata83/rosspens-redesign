@@ -5,7 +5,7 @@ const multer = require('multer');
 const upload = multer();
 const aws = require('aws-sdk');
 const isLoggedIn = require('../helpers/isLoggedIn');
-const slugify = require('slugify');
+const cleanCache = require('../helpers/cleanCache');
 const { 
     newPen,
     createPen,
@@ -26,28 +26,7 @@ const S3_BUCKET = process.env.S3_BUCKET;
 
 router.get("/", listPens);
 
-router.post('/', upload.array('image'), isLoggedIn, createPen
-//     function(req,res){
-//     var newPen = {
-//         inventorynumber: req.body.inventorynumber,
-//         maker: req.body.maker,
-//         title: req.body.title,
-//         slug: slugify(req.body.title).toLowerCase(),
-//         type: req.body.type,
-//         nib: req.body.nib,
-//         price: req.body.price,
-//         images: req.body.imageURLs.split(','),
-//         description: req.body.description,
-//     };
-//     Pen.create(newPen, function(err, newlyCreated){
-//         if (err){
-//             console.log(err);
-//         } else {
-//             res.redirect('/pens/' + req.body.maker + "/" + req.body.type);
-//         }
-//     });
-// }
-);
+router.post('/', upload.array('image'), isLoggedIn, cleanCache, createPen);
 
 router.get("/new", isLoggedIn, newPen);
 
@@ -69,13 +48,13 @@ router.get("/:slug", fetchOnePen);
 
 router.get("/:slug/edit", isLoggedIn, editPen);
 
-router.put("/:slug", upload.array('imageUpload'), isLoggedIn, updatePen);
+router.put("/:slug", upload.array('imageUpload'), isLoggedIn, cleanCache, updatePen);
 
-router.put("/:slug/sold", isLoggedIn, markPenAsSold);
+router.put("/:slug/sold", isLoggedIn, cleanCache, markPenAsSold);
 
-router.put("/:slug/activate", isLoggedIn, reactivatePen);
+router.put("/:slug/activate", isLoggedIn, cleanCache, reactivatePen);
 
-router.delete("/:slug", isLoggedIn, deletePen);
+router.delete("/:slug", isLoggedIn, cleanCache, deletePen);
 
 /*
 

@@ -22,7 +22,7 @@ const createMaker = async (req, res) => {
 }
 
 const editMaker = async (req, res) => {
-  const maker = await Maker.findOne({ slug: req.params.slug });
+  const maker = await Maker.findOne({ slug: req.params.slug }).cache({});
   res.render("makers/edit", { maker });
 }
 
