@@ -13,6 +13,7 @@ router.get('/', isLoggedIn, (req, res) => {
 router.put('/', isLoggedIn, (req,res) => {
     req.body.message.content = req.sanitize(req.body.message.content);
     const id = req.body.message.id;
+    req.body.message.dateAdded = new Date(Date.now());
     Message.findByIdAndUpdate(id, req.body.message, (err) => {
         if (err) {
             res.send("Something went wrong. Please try your request again. If the problem persists, contact the system administrator.");
