@@ -86,6 +86,10 @@ app.use(async function(req, res, next) {
     next();
 });
 
+app.use('/robots.txt', function (req, res, next) {
+    res.type('text/plain')
+    res.send("User-agent: *\nDisallow: /admin/");
+});
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);
 app.use('/makers', makerRoutes);
