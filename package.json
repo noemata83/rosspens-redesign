@@ -38,9 +38,10 @@
   "scripts": {
     "preinstall": "npm install pm2 -g",
     "start": "pm2-runtime app.js -i -1",
+    "dev": "nodemon app.js",
     "watch:sass": "node-sass sass/main.scss public/assets/css/rosspens.css -w",
     "compile:sass": "node-sass sass/main.scss public/assets/css/rosspens.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/assets/css/rosspens.css -o public/assets/css/rosspens.prefix.css",
+    "prefix:css": "postcss -b 'last 2 versions' public/assets/css/rosspens.css -o public/assets/css/rosspens.prefix.css",
     "compress:css": "node-sass public/assets/css/rosspens.prefix.css public/assets/css/rosspens.css --output-style compressed",
     "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },

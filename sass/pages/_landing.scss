@@ -11,6 +11,7 @@
   background-position: top;
   @include respond(tab-port) {
       min-height: 93vh;
+      min-height: 60vh;
   }
   .layer {
         background: rgba(0,0,0,0.15);
@@ -65,6 +66,9 @@ section {
     &:nth-child(odd) {
         background-color: $color-tertiary;
         color: $text-light;
+    }
+    @include respond(phone) {
+        padding: 3rem 1rem;
     }
 }
 
