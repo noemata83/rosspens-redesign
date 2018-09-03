@@ -88,7 +88,7 @@ app.use(async function(req, res, next) {
 
 app.use('/robots.txt', function (req, res, next) {
     res.type('text/plain')
-    res.send("User-agent: *\nDisallow: /admin/");
+    res.send("User-agent: *\nDisallow: /admin");
 });
 app.use('/', indexRoutes);
 app.use('/pens', penRoutes);

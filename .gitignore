@@ -1,6 +1,6 @@
 node_modules
 migrate
-sass
+sass/*
 rosspens.prefix.css
 
 npm-debug.log

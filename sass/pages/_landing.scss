@@ -74,6 +74,7 @@ section {
 
 .ribbon {
     padding: .5rem;
+    background-color: $color-tertiary;
 }
 
 .card {
@@ -123,7 +124,6 @@ section {
         }
         &__title {
             display: block;
-            vertical-align: baseline;
             &--text {
                 font-size: 4.8rem;
                 font-weight: 300;
@@ -131,7 +131,6 @@ section {
             }
         }
         &__date {
-            vertical-align: baseline;
             line-height: 1.7;
             font-size: 2.4em;
             display:block;
@@ -157,7 +156,6 @@ section {
 
 .new-pens {
         width: 100%;
-        background-color: $color-secondary;
         
         @include respond(tab-port) {
             margin-bottom: 2rem;
@@ -165,7 +163,6 @@ section {
         &__header {
             display: block;
             background: $color-tertiary;
-            border-radius: 2px;
             text-align: center;
             color: $text-light;
             font-size: 4.8rem;

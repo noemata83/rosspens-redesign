@@ -8,8 +8,7 @@
   </div>
 </div>
 
-<section class="ribbon"> 
-</section>
+<div class="ribbon"></div>
 <section>
  <div class="blog">
   <div class="blog__header">
@@ -24,73 +23,32 @@
   </div>
 </section>
   
-  <section>
-    <div class="new-pens">
-        <h2 class="new-pens__header">Latest Additions</h2>
-        <div class="new-pens__display">
-            <% pens.forEach(pen => { %>
-              <div class="new-pens__display--item">
-                <a href="/pens/<%=pen.slug%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
-                <a class="new-pens__display--title" href="/pens/<%=pen.slug%>"><%=pen.title%></a>
-              </div>
-            <% });%>
-            <div>
-              <a class="new-pens__link" href="/pens/whatsnew">See More...</a>
-            </div>
+<section>
+  <div class="new-pens">
+    <h2 class="new-pens__header">Latest Additions</h2>
+    <div class="new-pens__display">
+      <% pens.forEach(pen => { %>
+        <div class="new-pens__display--item">
+          <a href="/pens/<%=pen.slug%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>
+          <a class="new-pens__display--title" href="/pens/<%=pen.slug%>"><%=pen.title%></a>
         </div>
-      </div>
-  </section>
-  
-  <section class="portrait">
-    <div class="card">
-      <img class="portrait__photo" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" alt="Ross McKinney, Jr."/>
-      <div class="portrait__text">
-         <span class="portrait__text__header">Ross McKinney, Jr.</span>
-         I pride myself as a reliable source of working pens, accurately described. All our pens are guaranteed be as described and to work as they should.
+      <% });%>
+      <div>
+        <a class="new-pens__link" href="/pens/whatsnew">See More...</a>
       </div>
     </div>
-  </section>
-  <!--<div class="grid">-->
-  <!--  <div class="grid__left-column">-->
-       <!--<div class="new-pens">-->
-       <!-- <h2 class="new-pens__header">Latest Additions</h2>-->
-       <!-- <div class="new-pens__display">-->
-       <!--     <% pens.forEach(pen => { %>-->
-       <!--       <div class="new-pens__display--item">-->
-       <!--         <a href="/pens/<%=pen._id%>"><img class="new-pens__display--thumbnail" src=<%=pen.images[0]%> alt=<%=pen.title%>></a>-->
-       <!--         <a class="new-pens__display--title" href="/pens/<%=pen._id%>"><%=pen.title%></a>-->
-       <!--       </div>-->
-       <!--     <% });%>-->
-       <!--       <div class="new-pens__display--item">-->
-       <!--         <a class="new-pens__display--title" href="/pens/whatsnew">See More...</a>-->
-       <!--       </div>-->
-      <!--  </div>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="grid__center-column">-->
-      <!--<div class="blog">-->
-      <!--  <div class="blog__header">-->
-      <!--    <div class="blog__title">-->
-      <!--      <h2 class="blog__title--text"><%=message.title%></h2>-->
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--  <div class="blog__content">-->
-      <!--    <%-message.content%>-->
-      <!--  </div>-->
-      <!--  <p class="blog__date">- Ross McKinney<br><%=message.dateAdded.toDateString()%></p>-->
-      <!--</div>-->
-    <!--</div>    -->
-    <!--<div class="grid__right-column">-->
-       <!--<div class="portrait">-->
-       <!--  <img class="portrait__photo" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" />-->
-       <!--</div>-->
-       <!--<div class="right-content">-->
-       <!--  <em>I pride myself as a reliable source of working pens, accurately described. All our pens are guaranteed be as described and to work as they should.</em>-->
-       <!--</div>-->
-    <!--</div>-->
-
   </div>
-</div>
+</section>
+  
+<section class="portrait">
+  <div class="card">
+    <img class="portrait__photo" src="https://s3.amazonaws.com/rosspens-assets/images/Ross.jpg" alt="Ross McKinney, Jr."/>
+    <div class="portrait__text">
+      <span class="portrait__text__header">Ross McKinney, Jr.</span>
+      I pride myself as a reliable source of working pens, accurately described. All our pens are guaranteed be as described and to work as they should.
+    </div>
+  </div>
+</section>
 
 </section>
 <footer>
