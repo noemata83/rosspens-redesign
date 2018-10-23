@@ -1,11 +1,11 @@
 <% include partials/header %>
 
 <div class="main">
-    <h1>Edit <%=pen.inventorynumber%>: <%=pen.title%></h1>
+    <h1>Edit <%=pen.inventoryNumber%>: <%=pen.title%></h1>
 <form action="/pens/<%=pen.slug%>?_method=PUT" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="inventorynumber">Inventory Number</label>
-        <input class="form-control" type="text" name="pen[inventorynumber]" id="inventorynumber" value="<%=pen.inventorynumber%>">
+        <label for="inventoryNumber">Inventory Number</label>
+        <input class="form-control" type="text" name="pen[inventoryNumber]" id="inventoryNumber" value="<%=pen.inventoryNumber%>">
     </div>
     <div class="form-group">
         <label for="formmaker">Maker</label>

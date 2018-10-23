@@ -53,7 +53,9 @@ const findPenByMakerAndType = async (req, res) => {
 
 const listPens = async (req, res) => {
   try {
-    const pens = await Pen.find({ sold: false }).cache({ key: 'rosspens' });
+    const pens = await Pen.find({ sold: false })    
+      .sort("-dateAdded")
+      .cache({ key: 'rosspens' });
     res.render("index", { pens: pens, sort: "All", banner: DEFAULT_BANNER });
   } catch(err) {
       res.send(`There was an error: ${err}`);
@@ -75,7 +77,9 @@ const listNewPens = async (req, res) => {
 
 const listPensOfType = async (req, res) => {
   try {
-    const pens = await Pen.find({ type: req.params.type, sold: false }).cache({ key: 'rosspens' });
+    const pens = await Pen.find({ type: req.params.type, sold: false })
+      .sort("-dateAdded")
+      .cache({ key: 'rosspens' });
     res.render("index", { pens: pens, sort: req.params.type, banner: DEFAULT_BANNER });
   } catch(err) {
     res.redirect("/404");      

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const penSchema = new mongoose.Schema({
-   inventorynumber: String,
+   inventoryNumber: String,
    maker: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Maker'
