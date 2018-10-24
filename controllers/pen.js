@@ -43,7 +43,7 @@ const findPenByMakerAndType = async (req, res) => {
       maker: maker._id,
       type: req.params.type,
       sold: false
-    }).cache({ key: 'rosspens' });
+    }).sort("-dateAdded").cache({ key: 'rosspens' });
     res.render("index", { pens, sort: maker.name, banner: maker.bannerImage });
   } catch (err) {
     console.log(err);
