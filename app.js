@@ -74,11 +74,6 @@ getTitles().then( titles => {
     global.articleTitles = [...titles];
 });
 
-// Pen.distinct('maker', (err, result) => {
-//     if (err) console.log(err);
-//     console.log(result);
-// });
-
 app.use(async function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.articles = global.articleTitles;
@@ -95,7 +90,6 @@ app.use('/pens', penRoutes);
 app.use('/makers', makerRoutes);
 app.use('/about', aboutRoutes);
 app.use('/admin/message', messageRoutes);
-// seed_and_test();
 
 // AWS Logic
 
@@ -176,14 +170,3 @@ app.use(function(req, res, next) {
 app.listen(process.env.PORT || 5000, process.env.IP, function() {
     console.log("RossPens server has started.");
 });
-
-// const used = process.memoryUsage();
-// for (let key in used) {
-//     console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
-// }
-// async function seed_and_test() {
-//     await seedDB();
-//     getTitles().then(titles => {
-//         articleTitles = titles;
-//     })
-// }

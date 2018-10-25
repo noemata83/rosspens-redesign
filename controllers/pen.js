@@ -65,9 +65,8 @@ const listPens = async (req, res) => {
 const listNewPens = async (req, res) => {
   try {
     const newPens = await Pen.find({ sold: false })
-      .sort("-dateAdded")
-      .limit(9)
-      .cache({ key: 'rosspens' })
+    .limit(9)
+    .sort("-dateAdded")
       .exec();
     res.render("index", { pens: newPens, sort: "New", banner: DEFAULT_BANNER });
   } catch (err) {
