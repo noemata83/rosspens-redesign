@@ -1,20 +1,19 @@
 .gallery {
-  margin: 3rem 2rem;
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-gap: 4rem;
-  justify-content: center;
-  @include respond(tab-land) {
-    grid-template-columns: 50% 50%;
-  }
-  @include respond(tab-port) {
-    grid-template-columns: auto;
-  }
-  // align-items: top;
+  width: 90%;
+  margin: 3rem auto;
+  display: flex;
+  @supports (display:grid) {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 4rem;
+    @include respond(tab-land) {
+      grid-template-columns: 50% 50%;
+    }
+    @include respond(tab-port) {
+      grid-template-columns: auto;
+    }
+  }  
+  align-items: top;
   min-height: 30rem;
   &__edit {
     margin: 30px 50px;
@@ -60,7 +59,15 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   }
   margin: 2.5rem 0.5rem;
-  padding: 1rem;
+  &:not(:nth-child(3n+0)) {
+    margin-right: 5rem;
+  }
+  @supports (display:grid) {
+    &:not(:nth-child(3n+0)) {
+      margin-right: 0.5rem;
+    }
+  }
+  padding: 1rem 1rem 4rem 1rem;
   box-sizing: border-box;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
