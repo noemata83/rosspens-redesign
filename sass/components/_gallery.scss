@@ -2,6 +2,7 @@
   width: 90%;
   margin: 3rem auto;
   display: flex;
+  flex-wrap: wrap;
   @supports (display:grid) {
     display: grid;
     grid-template-columns: 30% 30% 30%;
