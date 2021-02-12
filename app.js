@@ -12,6 +12,7 @@ const express = require("express"),
   session = require("express-session"),
   buildMenu = require("./helpers/buildMenu"),
   keys = require("./config/keys")
+enforce = require("express-sslify")
 const MongoDBStore = require("connect-mongodb-session")(session)
 
 require("./services/cache")
@@ -52,6 +53,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use(methodOverride("_method"))
 app.use(expressSanitizer())
+if (process.env.NODE_ENV === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }))
+}
 
 const S3_BUCKET = keys.S3_BUCKET
 aws.config.region = "us-east-1"
