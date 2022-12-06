@@ -15,8 +15,6 @@ const express = require("express"),
 enforce = require("express-sslify")
 const MongoDBStore = require("connect-mongodb-session")(session)
 
-require("./services/cache")
-
 // USE ROUTES
 const penRoutes = require("./routes/pen"),
   indexRoutes = require("./routes/index"),

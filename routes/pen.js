@@ -1,40 +1,39 @@
-const express = require('express');
-const router = express.Router();
-const Pen = require('../models/pen');
-const multer = require('multer');
-const upload = multer();
-const aws = require('aws-sdk');
-const isLoggedIn = require('../helpers/isLoggedIn');
-const cleanCache = require('../helpers/cleanCache');
-const { 
-    newPen,
-    createPen,
-    listNewPens,
-    listPens,
-    listPensOfType,
-    fetchOnePen,
-    editPen,
-    updatePen,
-    markPenAsSold,
-    reactivatePen,
-    deletePen,
-    findPenByMakerAndType
-} = require('../controllers/pen');
+const express = require("express")
+const router = express.Router()
+const Pen = require("../models/pen")
+const multer = require("multer")
+const upload = multer()
+const aws = require("aws-sdk")
+const isLoggedIn = require("../helpers/isLoggedIn")
+const {
+  newPen,
+  createPen,
+  listNewPens,
+  listPens,
+  listPensOfType,
+  fetchOnePen,
+  editPen,
+  updatePen,
+  markPenAsSold,
+  reactivatePen,
+  deletePen,
+  findPenByMakerAndType,
+} = require("../controllers/pen")
 
-const s3 = new aws.S3();
-const S3_BUCKET = process.env.S3_BUCKET;
+const s3 = new aws.S3()
+const S3_BUCKET = process.env.S3_BUCKET
 
-router.get("/", listPens);
+router.get("/", listPens)
 
-router.post('/', upload.array('image'), isLoggedIn, cleanCache, createPen);
+router.post("/", upload.array("image"), isLoggedIn, createPen)
 
-router.get("/new", isLoggedIn, newPen);
+router.get("/new", isLoggedIn, newPen)
 
-router.get('/whatsnew', listNewPens);
+router.get("/whatsnew", listNewPens)
 
-router.get("/type/:type", listPensOfType);
+router.get("/type/:type", listPensOfType)
 
-router.get("/:slug", fetchOnePen);
+router.get("/:slug", fetchOnePen)
 
 // router.get("/:id", function(req, res) {
 //     Pen.findById(req.params.id, function(err, foundPen) {
@@ -46,15 +45,15 @@ router.get("/:slug", fetchOnePen);
 //     });
 // });
 
-router.get("/:slug/edit", isLoggedIn, editPen);
+router.get("/:slug/edit", isLoggedIn, editPen)
 
-router.put("/:slug", upload.array('imageUpload'), isLoggedIn, cleanCache, updatePen);
+router.put("/:slug", upload.array("imageUpload"), isLoggedIn, updatePen)
 
-router.put("/:slug/sold", isLoggedIn, cleanCache, markPenAsSold);
+router.put("/:slug/sold", isLoggedIn, markPenAsSold)
 
-router.put("/:slug/activate", isLoggedIn, cleanCache, reactivatePen);
+router.put("/:slug/activate", isLoggedIn, reactivatePen)
 
-router.delete("/:slug", isLoggedIn, cleanCache, deletePen);
+router.delete("/:slug", isLoggedIn, deletePen)
 
 /*
 
@@ -91,6 +90,6 @@ function(req, res) {
     });
 } */
 
-router.get("/:maker/:type", findPenByMakerAndType);
+router.get("/:maker/:type", findPenByMakerAndType)
 
-module.exports = router;
+module.exports = router
